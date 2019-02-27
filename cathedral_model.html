@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cathedral</title>
+        <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+        
+        <!-- Script used to register events  https://www.npmjs.com/package/aframe-event-set-component -->
+        <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+        
+        <!-- Component for objects to look at camera -->
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+
+        <!-- Script enabling pointclouds-->
+        <script src="https://unpkg.com/aframe-pointcloud-component/dist/aframe-pointcloud-component.min.js"></script>
+        <script src="control.js"></script>
+        <style>
+            .popup {
+                position:relative;
+                top:1rem;
+                width:30%;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 2rem;
+                z-index : 1; /* this puts the object in front */
+                visibility: hidden;
+                background-color: white;
+                
+            }
+            .popup_body {
+                max-height: 25rem;
+                overflow:auto;
+            }
+            .back_icon {
+                cursor: pointer;
+            }
+            .visible {
+                visibility : visible;
+            }
+        </style>
+    
+    </head>
+    <body>
+        <div id="no1" class="popup">
+                        
+            <div class="popup_heading">
+                <span class="back_icon"><img src="control_graphic/back_icon.png"></span>
+                Heading
+                </div>
+            <div class="popup_body" >
+                <p> Some random paragraph. Or better:</p>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla non lectus sed nisl molestie malesuada.
+                    Aliquam id dolor. Praesent vitae arcu
+                    tempor neque lacinia pretium. Nullam eget nisl.
+                    Maecenas libero. Sed convallis magna eu sem. Mauris dictum facilisis augue. Pellentesque arcu.
+                    Pellentesque pretium lectus id turpis. Ut tempus purus at lorem. Praesent id justo in neque elementum
+                    ultrices. Phasellus rhoncus. Nunc auctor. Donec vitae arcu. Fusce dui leo, imperdiet in, aliquam sit amet,
+                    feugiat eu, orci. Aliquam erat volutpat. Aenean vel massa quis mauris vehicula lacinia. Maecenas fermentum,
+                    sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus.
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla non lectus sed nisl molestie malesuada.
+                    Aliquam id dolor. Praesent vitae arcu tempor neque lacinia pretium. Nullam eget nisl.
+                    Maecenas libero. Sed convallis magna eu sem. Mauris dictum facilisis augue. Pellentesque arcu.
+                    Pellentesque pretium lectus id turpis. Ut tempus purus at lorem. Praesent id justo in neque elementum
+                    ultrices. Phasellus rhoncus. Nunc auctor. Donec vitae arcu. Fusce dui leo, imperdiet in, aliquam sit amet,
+                    feugiat eu, orci. Aliquam erat volutpat. Aenean vel massa quis mauris vehicula lacinia. Maecenas fermentum,
+                    sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus.
+                </p>
+                </div>
+            </div>
+
+        <a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable">
+            <a-assets>
+                <a-asset-item id="model_cath" src="cathedral_model/model.gltf"></a-asset-item>
+                <a-asset-item id="real_cath" src="real_cathedral/bc3.gltf"></a-asset-item>
+            </a-assets>
+
+            <a-gltf-model src="#model_cath" scale="4 4 4" position="-10 0 0"></a-gltf-model>
+            <a-entity id="camera" camera position="0 0 2" look-controls></a-entity>
+            <a-image
+                class="clickable"
+                src="control_graphic/info_logo.png"
+                info-window=" window_id: no1"
+                position="1 0 3"
+                look-at="[camera]"
+                width="0.5" height="0.5" >
+            </a-image>
+            <a-sphere 
+                class="clickable"
+                change-position
+                radius="0.02"
+                color="yellow"
+                position="0 0 3">
+            </a-sphere>
+            <a-circle 
+                class="clickable"
+                change-position
+                look-at="[camera]"
+                radius="0.02"
+                color="yellow"
+                position="0 0 2">
+            </a-circle>
+            <a-sphere 
+                class="clickable"
+                change-position
+                radius="0.02"
+                color="yellow"
+                position="0 2 2">
+            </a-sphere>
+
+        </a-scene>
+
+        <script src=icon.js></script>
+    </body>
+    </html>
+
+
+
+
+

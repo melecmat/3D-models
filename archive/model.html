@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Model</title>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+
+    <!--Scripts enabling camera moving around an object-->
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+    <script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
+    <script src="model.js"></script>
+    <style>
+        a-scene {
+            height: 300px;
+            width: 600px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <p>
+        Toto je odstavec.
+    </p>
+    <div>
+    <a-scene embedded>
+
+        <!-- orbit-controls make the camera move around the object-->
+        <a-entity id="camera" camera look-controls >
+                <a-entity cursor="fuse: true; fuseTimeout: 500"
+                    position="0 0 -1"
+                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                    material="color: black; shader: flat">
+                </a-entity>
+        </a-entity>
+        <a-assets>
+            <a-asset-item id="Model" src="model.obj"></a-asset-item>
+            <a-asset-item id="mtl" src="materials.mtl"></a-asset-item>
+            <img id="sky" src="../panorama_dum.jpg">
+        </a-assets>
+        <a-sky src="#sky"></a-sky>
+        <a-circle color="#CCC" radius="0.01"></a-circle>
+        <a-entity id="model" obj-model="obj: #Model; mtl: #mtl" visible="false"></a-entity>
+        <a-plane id="switch" 
+                switch-camera-mode
+                position="1.60719 0.60535 -6.39757"
+                width="4"
+                color="brown" 
+        ></a-plane>
+    </a-scene>
+    </div>
+
+</body>
+</html>
