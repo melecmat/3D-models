@@ -30,11 +30,33 @@ AFRAME.registerComponent ('change-position', {
         position = el.getAttribute('position');
         this.el.addEventListener('click', function(event) {
             var camera = document.getElementById('camera');
+            var desired_position;
             if (data.position != "") {
+                desired_position = data.position;
+                // to be deleted
                 camera.setAttribute('position', data.position);
             } else { // action when no coordinates provided
-                camera.setAttribute('position', el.getAttribute('position'));
+                desired_position = el.getAttribute("position");
+                camera.setAttribute('position', desired_position);
             }
+
+            // TRYING ANIMATION TODO
+            var animation = document.createElement("a-animation");
+            animation.setAttribute("attribute","position");
+            animation.setAttribute("to",desired_position);
+            animation.setAttribute("dur","2000");
+            animation.setAttribute("easing","linear");
+            console.log("Animating");
+            camera.appendChild(animation);
+
+
+            /*EXPERIMENT
+            actualPos = new Position(camera.getAttribute("position"));
+            console.log("ahoj")
+            desPos = new Position(desired_position);
+            desPos.logout();
+            console.log(desired_position);
+            */
         });
         this.el.addEventListener('mouseenter', function() {
             console.log(el.getAttribute('position'));
@@ -56,3 +78,22 @@ AFRAME.registerComponent ('info-window', {
         });
     }
 });
+
+class Position {
+
+    constructor(position) {
+        var regex = /[+-]?\d+(\.\d+)?/g;
+        var floats = position.match(regex).map(function(v) { return parseFloat(v); });
+        this.x = floats[0];
+        this.y = floats[1];
+        this.z = floats[2];
+    }
+
+    back_to_string() {
+        return this.x.toString() + this.y.toString() + this.z.toString(); 
+    }
+
+    logout() {
+        console.log(this.back_to_string());
+    }
+}
