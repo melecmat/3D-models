@@ -13,57 +13,24 @@
 
     <!-- Script enabling pointclouds-->
     <script src="https://unpkg.com/aframe-pointcloud-component/dist/aframe-pointcloud-component.min.js"></script>
-    <script src="../control.js"></script>
-    <style>
-        .popup_heading {
-            font-size: 2em
-        }
+    
+    <!-- My scripts -->
+    <script src="../javascript/control.js"></script>
+    <script src="../javascript/draco.js"></script>
 
-
-        .popup {
-            font-family: Arial, Helvetica, sans-serif;
-            position: relative;
-            top: 1rem;
-            width: 30%;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 2rem;
-            z-index: 1;
-            /* this puts the object in front */
-            visibility: hidden;
-            background-color: white;
-
-        }
-
-        .popup_body {
-            max-height: 25rem;
-            overflow: auto;
-        }
-
-        .back_icon {
-            cursor: pointer;
-        }
-
-        .visible {
-            visibility: visible;
-        }
-
-        .popup img {
-            max-width: 100%;
-        }
-
-        /*MOBILE*/
-        @media only screen and (max-width : 640px) and (pointer:coarse) {
-            .popup {
-                top: 0rem;
-                width: 90%;
-            }
-        }
-    </style>
+    <link rel='stylesheet' type='text/css' href="../css/main.css" >
+    <link rel='stylesheet' type='text/css' href="../css/loading.css" >
 
 </head>
 
 <body>
+    <div id="loading_screen"> 
+        <div id="container">
+        Loading
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+
     <div id="no1" class="popup">
 
         <div class="popup_heading">
@@ -94,13 +61,15 @@
         </div>
     </div>
 
-    <a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable">
+    <a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable"
+        gltf-model="dracoDecoderPath: ../draco/;"
+    >
         <a-assets>
             <!--<a-asset-item id="model_cath" src="cathedral_model/model.gltf"></a-asset-item>-->
-            <a-asset-item id="real_cath" src="alpha_only.gltf"></a-asset-item>
+            <a-asset-item id="real_cath" src="compressed.glb"></a-asset-item>
         </a-assets>
 
-        <a-gltf-model src="#real_cath" id="gltf_model" scale="1 1 1" position="-10 0 0" rotation="-90 0 0"></a-gltf-model>
+        <a-gltf-model src="#real_cath" id="gltf_model" scale="1 1 1" position="-10 0 0" rotation="-90 0 0" big_model></a-gltf-model>
         <a-entity id="camera" camera position="-7 7 12" look-controls wasd-controls fly="true" acceleration="100">
         </a-entity>
         <a-sky color="black"></a-sky>
@@ -110,18 +79,27 @@
             position="-16.99125 6.29203 0.964" look-at="[camera]" color="white" width="1" height="1">
         </a-image>
 
-        <!--CLICKABLE SPHERE - travel-->
-        <a-sphere class="clickable" id="sp1" change-position radius="0.4" color="yellow" position="-4.24587 14.04143 2.19469">
-        </a-sphere>
+        <!--CLICKABLE IMAGE - travel-->
+        <a-image 
+            class="clickable" id="sp1" src="../control_graphic/transport.png" change-position width="1" height="1"
+            color="white" position="-4.24587 14.04143 2.19469" look-at="[camera]"
+        >
+        </a-image>
 
-        <a-circle class="clickable" id="sp2" change-position look-at="[camera]" radius="0.4" color="yellow" position="-19.00983 2.64736 3.88778">
-        </a-circle>
-        <a-sphere class="clickable" id="sp3" change-position radius="0.4" color="yellow" position="0 2 2">
-        </a-sphere>
+        <a-image 
+            class="clickable" id="sp2" src="../control_graphic/transport.png" change-position width="1" height="1" 
+            color="white" position="-19.00983 2.64736 3.88778" look-at="[camera]"
+        >
+        </a-image>
+        <a-image 
+            class="clickable" id="sp3" src="../control_graphic/transport.png" change-position width="1" height="1"
+            color="white" position="0 2 2" look-at="[camera]"
+        >
+        </a-image>
 
     </a-scene>
 
-    <script src="../icon.js"></script>
+    <script src="../javascript/icon.js"></script>
 </body>
 
 </html>
