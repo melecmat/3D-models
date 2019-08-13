@@ -60,15 +60,6 @@ AFRAME.registerComponent ('change-position', {
             animation.setAttribute("easing","linear");
             console.log("Animating");
             camera.appendChild(animation);
-
-
-            /*EXPERIMENT
-            actualPos = new Position(camera.getAttribute("position"));
-            console.log("ahoj")
-            desPos = new Position(desired_position);
-            desPos.logout();
-            console.log(desired_position);
-            */
         });
         this.el.addEventListener('mouseenter', function() {
             console.log(el.getAttribute('position'));
@@ -123,7 +114,7 @@ class Position {
 }
 
 /**
- * 
+ * Autoscaling component - centers gltf model and scales it
  */
 AFRAME.registerComponent('autoscale', {
     schema: {type: 'number', default: 1},
