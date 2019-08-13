@@ -78,7 +78,7 @@
 
         <a-entity autoscale="5" gltf-model="#real_cath" id="gltf_model" big_model></a-entity>
         
-        <a-entity id="camera" camera position="0 0 0" touch-controls wasd-controls=" fly:true; acceleration:120">
+        <a-entity id="camera" camera position="0 0 0" look-controls wasd-controls=" fly:true; acceleration:120">
         </a-entity>
 
         <a-sky color="black"></a-sky>
@@ -108,6 +108,7 @@
 
     </a-scene>
 
+    <script src="../javascript/gyroscope-control.js"></script>
     <script src="../javascript/icon.js"></script>
 </body>
 
