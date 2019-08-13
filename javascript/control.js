@@ -113,28 +113,45 @@ class Position {
     }
 }
 
+function degToRad(degrees)
+{
+  return degrees * (Math.PI/180);
+}
+
 /**
- * Autoscaling component - centers gltf model and scales it
+ * Autoscaling component - centers gltf model and scales it.
+ * If you use it, note that rotation has to be inserted via this component.
  */
 AFRAME.registerComponent('autoscale', {
-    schema: {type: 'number', default: 1},
+    schema: {
+        scale: {
+            type: 'number', default: 1
+        },
+        rotation: {
+            type: 'vec3', default: "0 0 0"
+        }
+    },
     init: function () {
       this.scale();
       this.el.addEventListener('object3dset', () => this.scale());
     },
     scale: function () {
       const el = this.el;
-      const span = this.data;
+      const span = this.data.scale;
+      const rotation = this.data.rotation;
       const mesh = el.getObject3D('mesh');
   
       if (!mesh) return;
-  
+      // Rotation - IN RADIANS!!
+      mesh.rotation.set(degToRad(rotation.x), degToRad(rotation.y), degToRad(rotation.z));
+      //mesh.rotation.set(-Math.PI/2, 0, Math.PI*0.61);
       // Compute bounds.
       const bbox = new THREE.Box3().setFromObject(mesh);
   
       // Normalize scale.
       const scale = span / bbox.getSize().length();
       mesh.scale.set(scale, scale, scale);
+      //mesh.rotation.set(90, 0, 35);
   
       // Recenter.
       const offset = bbox.getCenter().multiplyScalar(scale);
