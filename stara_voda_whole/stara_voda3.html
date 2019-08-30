@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <title>Whole church</title>
+    <meta charset="UTF-8">
+
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+
+    <!-- Script used to register events  https://www.npmjs.com/package/aframe-event-set-component -->
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+
+    <!-- Component for objects to look at camera -->
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+
+    <!-- Script enabling pointclouds PROBABLY WONT BE NEEDED -->
+    <script src="https://unpkg.com/aframe-pointcloud-component/dist/aframe-pointcloud-component.min.js"></script>
+
+    <!-- Joystick script -->
+    <script src="../javascript/joystick.js"></script>
+
+    <!-- TODO Script for disabling gyroscope on mobile -->
+    <script src="../javascript/a-touch-controls.js" ></script>
+
+    <!-- For restricting cameras movement-->
+    <script src="https://rawgit.com/atomicguy/aframe-fence-component/master/dist/aframe-fence-component.min.js"></script>
+    
+    <!-- My scripts -->
+    <script src="../javascript/control.js"></script>
+    <script src="../javascript/draco.js"></script>
+
+    <link rel='stylesheet' type='text/css' href="../css/main.css" >
+    <link rel='stylesheet' type='text/css' href="../css/loading.css" >
+
+</head>
+
+<body>
+    <div id="loading_screen"> 
+        <div id="container">
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+
+
+    <img id="home_button" title="Return back to origin." src="../control_graphic/home.png">
+   
+   
+    <a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable"
+        gltf-model="dracoDecoderPath: ../draco/;"
+        joystick
+    >
+        <a-assets>
+            <a-asset-item id="main_model" src="texturovane.glb"></a-asset-item>
+        </a-assets>
+
+        
+        <a-entity gltf-model="#main_model" id="gltf_model" big_model autoscale="scale:30; rotation: -90, 0, 0"></a-entity>
+        <a-entity id="camera" camera position="0 0 0" look-controls=" hmdEnabled:false" wasd-controls=" fly:true; acceleration:40">
+        </a-entity>
+
+        <a-sky color="black"></a-sky>
+
+        <a-entity light="type: point; intensity: 1; distance: 100; decay: 2"
+          position="0 0 0"></a-entity>
+        <a-entity light="type: ambient; color: #CCC"></a-entity>
+    </a-scene>
+
+    <script src="../javascript/gyroscope-control.js"></script>
+    <script src="../javascript/icon.js"></script>
+    <script src="../javascript/back_icon.js"></script>
+</body>
+
+</html>
