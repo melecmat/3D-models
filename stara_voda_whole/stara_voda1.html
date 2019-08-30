@@ -47,6 +47,7 @@
    
     <a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable"
         gltf-model="dracoDecoderPath: ../draco/;"
+        background="color: black"
         joystick
     >
         <a-assets>
@@ -57,8 +58,6 @@
         <a-entity gltf-model="#main_model" id="gltf_model" big_model autoscale="scale:30; rotation: -90, 0, 0"></a-entity>
         <a-entity id="camera" camera position="0 0 0" look-controls=" hmdEnabled:false" wasd-controls=" fly:true; acceleration:40">
         </a-entity>
-
-        <a-sky color="black"></a-sky>
 
         <a-entity light="type: point; intensity: 1; distance: 100; decay: 2"
           position="0 0 0"></a-entity>
