@@ -1,0 +1,10 @@
+extends ../../includes/main-template.pug
+
+block annotations
+    +annotation("Attempt", "This is an attempt\
+        with a very long text", "logo_2db.png", "-12.200 6.292 0.964", "uniqueID")
+    +annotation("Another annotation", "This is the second attempt", "", "-7.816 0.871 0.757", "otherID")
+    +annotation("Simple annotation", "", "", "-10.816 0.871 0.757", "diffID")
+
+block 3d-player
+    +3d-player("../../03_models/sv_moric/sv_moric.glb", false, "-5.647 -0.063 5.825")

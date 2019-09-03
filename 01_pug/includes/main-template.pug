@@ -1,0 +1,30 @@
+doctype html
+html(lang='cs')
+    include head.pug
+    body
+        include 3d-player.pug
+        include simple-annotation.pug
+        include gallery-popup.pug
+
+        //- ----- ALL SOURCES RELATIVE TO COMPILATION FOLDER: 02_html -----
+            extend and fill blocks
+        //- 
+            here you can add annotations
+            annotation(
+                heading, -- of text
+                text, -- main text TODO -- enters produce new paragraphs
+                picture_src, -- source of a picture -- optional -- leave out by inputting =""
+                position, -- location in the a-scene -- optional 
+                id -- of the annotation -- connects annotation to its button
+                )
+        block annotations
+
+        //-
+            add your 3d player here
+            3d-player(
+                src, -- model source, write relative to 02_html folder
+                orbit_controls=false, -- orbit controls = camera orbits around object
+                camera_position="0 0 0" -- camera position
+                                        -- default values 0 0 0 for first person movement and 0 -2 20 for orbit-controls
+                )
+        block 3d-player

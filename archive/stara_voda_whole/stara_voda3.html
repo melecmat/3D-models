@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <title>Whole church</title>
+    <meta charset="UTF-8">
+
+    
+
+    
+
+</head>
+
+<body>
+
+        <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+
+        <!-- Script used to register events  https://www.npmjs.com/package/aframe-event-set-component -->
+        <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    
+        <!-- Component for objects to look at camera -->
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    
+        <!-- Script enabling pointclouds PROBABLY WONT BE NEEDED -->
+        <script src="https://unpkg.com/aframe-pointcloud-component/dist/aframe-pointcloud-component.min.js"></script>
+    
+        <!-- Joystick script -->
+        <script src="../javascript/joystick.js"></script>
+    
+        <!-- TODO Script for disabling gyroscope on mobile -->
+        <script src="../javascript/a-touch-controls.js" ></script>
+    
+        <!-- For restricting cameras movement-->
+        <script src="https://rawgit.com/atomicguy/aframe-fence-component/master/dist/aframe-fence-component.min.js"></script>
+        
+        <!-- My scripts -->
+        <script src="../javascript/control.js"></script>
+        <script src="../javascript/draco.js"></script>
+    
+        <link rel='stylesheet' type='text/css' href="../css/main.css" >
+        <link rel='stylesheet' type='text/css' href="../css/loading.css" >
+    
+
+    <my-viewer></my-viewer>
+
+    
+
+    <script src="../javascript/gyroscope-control.js"></script>
+    <script src="../javascript/icon.js"></script>
+    <script src="../javascript/back_icon.js"></script>
+    
+    <!--RIOT.JS-->
+    <script src="https://unpkg.com/riot@4/riot+compiler.min.js"></script>
+    <script src="../javascript/riot-components/3D_viewer.riot" type="riot"></script>
+    <script>
+        (async function main() {
+          await riot.compile();
+        
+          riot.mount('my-viewer');
+        }())
+        </script>
+</body>
+
+</html>

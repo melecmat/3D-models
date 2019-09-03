@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <title>Altar</title>
+    <meta charset="UTF-8">
+
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+
+    <!-- Script used to register events  https://www.npmjs.com/package/aframe-event-set-component -->
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+
+    <!-- Component for objects to look at camera -->
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+
+    <!-- Script enabling pointclouds PROBABLY WONT BE NEEDED -->
+    <script src="https://unpkg.com/aframe-pointcloud-component/dist/aframe-pointcloud-component.min.js"></script>
+
+    <!-- Joystick script -->
+    <script src="../javascript/joystick.js"></script>
+
+    <!-- TODO Script for disabling gyroscope on mobile -->
+    <script src="../javascript/a-touch-controls.js" ></script>
+
+    <!-- For restricting cameras movement-->
+    <script src="https://rawgit.com/atomicguy/aframe-fence-component/master/dist/aframe-fence-component.min.js"></script>
+    
+    <!-- My scripts -->
+    <script src="../javascript/control.js"></script>
+    <script src="../javascript/draco.js"></script>
+
+    <link rel='stylesheet' type='text/css' href="../css/main.css" >
+    <link rel='stylesheet' type='text/css' href="../css/loading.css" >
+
+</head>
+
+<body>
+    <div id="loading_screen"> 
+        <div id="container">
+        Loading
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+
+    <div id="no1" class="popup">
+
+        <div class="popup_heading">
+            <span class="back_icon"><img src="../control_graphic/back_icon.png"></span>
+            Heading
+        </div>
+        <div class="popup_body">
+            <p>
+                Kostel svatého Mořice je gotický proboštský farní kostel v Olomouci. Patří do farnosti svatého Mořice.
+                Farní
+                kostel svatého Mořice vždy plnil roli hlavního městského chrámu, zatímco katedrála svatého Václava byla
+                metropolitním biskupským chrámem.
+            </p>
+            <p>
+                Chrám a jeho bezprostřední okolí patří k nejdéle osídleným místům ve městě. V bezprostřední blízkosti
+                kostela byly v 70. letech 20. století při stavbě obchodního domu Prior nalezeny zbytky románské rotundy
+                z 11. století a rovněž zbytky románského kamenného dvorce ze 12. století. Tyto základy byly vyzvednuty a
+                umístěny do depozitáře Národního památkového ústavu v Olomouci. V místě mořického kostela bývala dříve
+                také řemeslnicko-kupecká česká (slovanská) osada, blízká ulice se ostatně až do počátku 20. století
+                jmenovala Česká (dnešní ulice 8. května). Lokalita byla křižovatkou obchodních cest, fungovalo zde
+                tržiště a tak zdejší nejstarší svatyně plnila zřejmě roli „trhového kostela“. Archeologický průzkum v
+                sousední ulici Pekařské prokázal souvislé osídlení od příchodu Slovanů na přelomu 5. a 6. století
+                (velkomoravské a po-velkomoravské pohřebiště). Do poloviny 13. století byla osada z vůle panovníka
+                právně scelena s královským městem.
+            </p>
+
+        </div>
+    </div>
+
+    <a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable"
+        gltf-model="dracoDecoderPath: ../draco/;"
+        joystick
+    >
+        <a-assets>
+            <a-asset-item id="real_cath" src="optimized.glb"></a-asset-item>
+        </a-assets>
+
+        
+        <a-entity gltf-model="#real_cath" id="gltf_model" big_model autoscale="scale:5; rotation: -90, 0, 35"></a-entity>
+        <a-entity id="camera" camera position="0 0 0" look-controls=" hmdEnabled:false" wasd-controls=" fly:true; acceleration:60">
+        </a-entity>
+
+        <a-entity light="type: point; intensity: 2; distance: 1000; decay: 2"
+          position="0 0 0"></a-entity>
+        <a-entity light="type: ambient; color: #CCC"></a-entity>
+        
+        <a-sky color="black"></a-sky>
+
+    </a-scene>
+
+    <script src="../javascript/gyroscope-control.js"></script>
+    <script src="../javascript/icon.js"></script>
+</body>
+
+</html>
