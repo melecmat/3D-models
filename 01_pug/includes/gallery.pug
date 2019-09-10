@@ -1,8 +1,17 @@
 //-
     This is template for gallery (photo viewer)
 
-//- get gallery 
-- var images; //= require("../") 
+//- get gallery
+div(class="gallery_wrapper" id="gal_wrapper" + id)
+    img(class="gal_left_click" id="glc" + id src="../../control_graphic/back_icon.png")
+    img(class="gal_right_click" id="grc" + id src="../../control_graphic/right.png")
+
+script.
+    // ajax
+    document.addEventListener("DOMContentLoaded", function() {
+        create_gallery("#{id}", "#{json_gallery_src}");
+    });
+
 //- 
     TODO -- get json from a specified folder -- folder should be specified beforehands -- get it as a variable from input in mixin
     make python script to save folder filenames -- make it run with compilation (script compile.sh that runs python + current pug settings )

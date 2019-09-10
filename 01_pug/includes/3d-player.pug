@@ -18,7 +18,7 @@ mixin 3d-player(src, orbit_controls=false, camera_position="0 0 0")
         a-entity(gltf-model="#main_model" id="gltf_model" big_model autoscale="scale:30; rotation: -90, 0, 0")
         if orbit_controls
             if camera_position === "0 0 0"
-                -camera_position = "0 -2 20" //- different default
+                -camera_position = "0 -2 20" //- different default for orbit controls
             a-entity(id="camera" look-controls orbit-controls="\
                 target: 0 0 0; minDistance: 1; \
                 maxDistance: 50; initialPosition: "+ camera_position + "\
@@ -33,8 +33,6 @@ mixin 3d-player(src, orbit_controls=false, camera_position="0 0 0")
             //- custom lighting for viewing inside of models
             a-entity(light="type: point; intensity: 1; distance: 100; decay: 2" position="0 0 0")
             a-entity(light="type: ambient; color: #CCC")
-
-        //- TODO -- add anotation - automatically add visuals for each anotation
 
     script(src="../../04_javascript/gyroscope-control.js")
     script(src="../../04_javascript/icon.js")

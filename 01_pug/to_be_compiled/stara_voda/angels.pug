@@ -1,4 +1,7 @@
 extends ../../includes/main-template.pug
 
+block title
+    +head("Andělíčci")
+
 block 3d-player
     +3d-player("../../03_models/stara_voda/angels.glb", true)

@@ -1,29 +1,22 @@
-mixin gallery-popup(heading, text, picture_src, position, id)
+mixin gallery-popup(heading, json_gallery_src, position, id)
+    -var picture_src = picture_src
     div(id=id class="popup")
         
         div(class="popup_heading") 
             span(class="back_icon")
                 img(src="../../control_graphic/back_icon.png")
+
+            img(src="../../control_graphic/maximize.png" class="enlarge_icon")
             |#{heading}
             
             
         div(class="popup_body")
+            //- ability to put text here as well TODO
             include gallery.pug
 
     //- Script to add element into aframe
     script.
         document.addEventListener("DOMContentLoaded", function() {
-            var ascene = document.querySelector("a-scene");
-            var popup_visual = document.createElement("a-image");
-            popup_visual.setAttribute("id", "rendered#{id}");
-            popup_visual.setAttribute("class", "clickable");
-            popup_visual.setAttribute("info-window", " window_id:"+ "#{id}");
-            popup_visual.setAttribute("position", "#{position}");
-            popup_visual.setAttribute("look-at", "[camera]");
-            popup_visual.setAttribute("color", "white");
-            popup_visual.setAttribute("width", "1");
-            popup_visual.setAttribute("height", "1");
-            popup_visual.setAttribute("src", "../../control_graphic/info_logo.png");
-            ascene.appendChild(popup_visual);
+            create_popup("#{id}", "#{position}", true);
         });
  

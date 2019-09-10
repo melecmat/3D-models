@@ -80,7 +80,15 @@ AFRAME.registerComponent ('info-window', {
             var previous = document.getElementsByClassName("visible");
             if (previous[0] != undefined)
                 previous[0].classList.remove("visible");
-            document.getElementById(window_id).classList.add("visible");
+            var window = document.getElementById(window_id);
+            window.classList.add("visible");
+
+            // find out if there is gallery
+            var window_child = window.children[1].children[0];
+            if (window_child.classList.contains("gallery_wrapper")) {
+                console.log("Initialisng gallery");
+                init_gallery(window_child); // function in gallery control
+            }
         });
     }
 });
@@ -161,3 +169,17 @@ AFRAME.registerComponent('autoscale', {
       mesh.position.sub(offset);
     }
   });
+
+function change_popup_visibility() {
+    var popups = document.getElementsByClassName("clickable");
+    if (popups[0].getAttribute("visible") == false) {
+        for (var i = 0; i < popups.length; ++i) {
+            popups[i].setAttribute("visible", true);
+        }
+    } else {
+        for (var i = 0; i < popups.length; ++i) {
+            console.log(popups[i]);
+            popups[i].setAttribute("visible", false);
+        }
+    }
+}

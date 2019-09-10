@@ -1,4 +1,13 @@
 extends ../../includes/main-template.pug
 
+block title
+    +head("Kostel Sv. Anny")
+
+block annotations
+    +gallery-popup("Andělíčci", "../../galleries/afrika_vlevo_andelicci", "-5.028 0.756 -1.382", "gall1")
+    +gallery-popup("Malba", "../../galleries/vyber_malba_nad_asii", "-1.441 2.181 2.821", "gall2")
+    +gallery-popup("Sochy nad Afrikou", "../../galleries/vyber_afrika_vlevo", "2.970 0.870 -1.235", "gall3")
+    +gallery-popup("Andělíčci nad Asií", "../../galleries/vyber_andelicci_vpravo_nad_asii", "-2.556 0.972 2.760", "gall4")
+    
 block 3d-player
     +3d-player("../../03_models/stara_voda/0_2uvs_textured_diff.glb")

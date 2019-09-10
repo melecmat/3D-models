@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="cs">
-  <head>
-    <title>Whole church</title>
-    <meta charset="UTF-8">
-    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
-    <!-- Script used to register events  https://www.npmjs.com/package/aframe-event-set-component-->
-    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
-    <!-- Component for objects to look at camera-->
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <!-- Script enabling pointclouds PROBABLY WONT BE NEEDED-->
-    <script src="https://unpkg.com/aframe-pointcloud-component/dist/aframe-pointcloud-component.min.js"></script>
-    <!-- Joystick script-->
-    <script src="../../04_javascript/joystick.js"></script>
-    <!-- TODO Script for disabling gyroscope on mobile-->
-    <script src="../../04_javascript/a-touch-controls.js"></script>
-    <!-- For restricting cameras movemen-->
-    <script src="https://rawgit.com/atomicguy/aframe-fence-component/master/dist/aframe-fence-component.min.js"></script>
-    <!-- Orbit controls-->
-    <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
-    <script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
-    <!-- My scripts-->
-    <script src="../../04_javascript/control.js"></script>
-    <script src="../../04_javascript/draco.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../../css/loading.css">
-    <link rel="stylesheet" type="text/css" href="../../css/gallery.css">
-  </head>
+    <head>
+      <title>Sv. Mořic</title>
+      <meta charset="UTF-8">
+      <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+      <!-- Script used to register events  https://www.npmjs.com/package/aframe-event-set-component-->
+      <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+      <!-- Component for objects to look at camera-->
+      <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+      <!-- Script enabling pointclouds PROBABLY WONT BE NEEDED-->
+      <script src="https://unpkg.com/aframe-pointcloud-component/dist/aframe-pointcloud-component.min.js"></script>
+      <!-- Joystick script-->
+      <script src="../../04_javascript/joystick.js"></script>
+      <!-- TODO Script for disabling gyroscope on mobile-->
+      <script src="../../04_javascript/a-touch-controls.js"></script>
+      <!-- For restricting cameras movemen-->
+      <script src="https://rawgit.com/atomicguy/aframe-fence-component/master/dist/aframe-fence-component.min.js"></script>
+      <!-- Orbit controls-->
+      <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
+      <script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
+      <!-- My scripts-->
+      <script src="../../04_javascript/control.js"></script>
+      <script src="../../04_javascript/gallery_control.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../css/main.css">
+      <link rel="stylesheet" type="text/css" href="../../css/loading.css">
+      <link rel="stylesheet" type="text/css" href="../../css/gallery.css">
+    </head>
   <body>
         <div class="popup" id="uniqueID">
           <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span>Attempt</div>
@@ -36,17 +36,7 @@
         <script>
           document.addEventListener("DOMContentLoaded", function() {
           var ascene = document.querySelector("a-scene");
-              var popup_visual = document.createElement("a-image");
-              popup_visual.setAttribute("id", "rendereduniqueID");
-              popup_visual.setAttribute("class", "clickable");
-              popup_visual.setAttribute("info-window", " window_id:"+ "uniqueID");
-              popup_visual.setAttribute("position", "-12.200 6.292 0.964");
-              popup_visual.setAttribute("look-at", "[camera]");
-              popup_visual.setAttribute("color", "white");
-              popup_visual.setAttribute("width", "1");
-              popup_visual.setAttribute("height", "1");
-              popup_visual.setAttribute("src", "../../control_graphic/info_logo.png");
-              ascene.appendChild(popup_visual);
+              create_popup("uniqueID", "-12.200 6.292 0.964", false);
           });
         </script>
         <div class="popup" id="otherID">
@@ -58,39 +48,7 @@
         <script>
           document.addEventListener("DOMContentLoaded", function() {
           var ascene = document.querySelector("a-scene");
-              var popup_visual = document.createElement("a-image");
-              popup_visual.setAttribute("id", "renderedotherID");
-              popup_visual.setAttribute("class", "clickable");
-              popup_visual.setAttribute("info-window", " window_id:"+ "otherID");
-              popup_visual.setAttribute("position", "-7.816 0.871 0.757");
-              popup_visual.setAttribute("look-at", "[camera]");
-              popup_visual.setAttribute("color", "white");
-              popup_visual.setAttribute("width", "1");
-              popup_visual.setAttribute("height", "1");
-              popup_visual.setAttribute("src", "../../control_graphic/info_logo.png");
-              ascene.appendChild(popup_visual);
-          });
-        </script>
-        <div class="popup" id="diffID">
-          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span>Simple annotation</div>
-          <div class="popup_body">
-            <p></p>
-          </div>
-        </div>
-        <script>
-          document.addEventListener("DOMContentLoaded", function() {
-          var ascene = document.querySelector("a-scene");
-              var popup_visual = document.createElement("a-image");
-              popup_visual.setAttribute("id", "rendereddiffID");
-              popup_visual.setAttribute("class", "clickable");
-              popup_visual.setAttribute("info-window", " window_id:"+ "diffID");
-              popup_visual.setAttribute("position", "-10.816 0.871 0.757");
-              popup_visual.setAttribute("look-at", "[camera]");
-              popup_visual.setAttribute("color", "white");
-              popup_visual.setAttribute("width", "1");
-              popup_visual.setAttribute("height", "1");
-              popup_visual.setAttribute("src", "../../control_graphic/info_logo.png");
-              ascene.appendChild(popup_visual);
+              create_popup("otherID", "-7.816 0.871 0.757", false);
           });
         </script>
         <div id="loading_screen"> 

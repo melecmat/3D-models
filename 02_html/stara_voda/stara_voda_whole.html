@@ -1,32 +1,104 @@
 <!DOCTYPE html>
 <html lang="cs">
-  <head>
-    <title>Whole church</title>
-    <meta charset="UTF-8">
-    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
-    <!-- Script used to register events  https://www.npmjs.com/package/aframe-event-set-component-->
-    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
-    <!-- Component for objects to look at camera-->
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <!-- Script enabling pointclouds PROBABLY WONT BE NEEDED-->
-    <script src="https://unpkg.com/aframe-pointcloud-component/dist/aframe-pointcloud-component.min.js"></script>
-    <!-- Joystick script-->
-    <script src="../../04_javascript/joystick.js"></script>
-    <!-- TODO Script for disabling gyroscope on mobile-->
-    <script src="../../04_javascript/a-touch-controls.js"></script>
-    <!-- For restricting cameras movemen-->
-    <script src="https://rawgit.com/atomicguy/aframe-fence-component/master/dist/aframe-fence-component.min.js"></script>
-    <!-- Orbit controls-->
-    <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
-    <script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
-    <!-- My scripts-->
-    <script src="../../04_javascript/control.js"></script>
-    <script src="../../04_javascript/draco.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../../css/loading.css">
-    <link rel="stylesheet" type="text/css" href="../../css/gallery.css">
-  </head>
+    <head>
+      <title>Kostel Sv. Anny</title>
+      <meta charset="UTF-8">
+      <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+      <!-- Script used to register events  https://www.npmjs.com/package/aframe-event-set-component-->
+      <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+      <!-- Component for objects to look at camera-->
+      <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+      <!-- Script enabling pointclouds PROBABLY WONT BE NEEDED-->
+      <script src="https://unpkg.com/aframe-pointcloud-component/dist/aframe-pointcloud-component.min.js"></script>
+      <!-- Joystick script-->
+      <script src="../../04_javascript/joystick.js"></script>
+      <!-- TODO Script for disabling gyroscope on mobile-->
+      <script src="../../04_javascript/a-touch-controls.js"></script>
+      <!-- For restricting cameras movemen-->
+      <script src="https://rawgit.com/atomicguy/aframe-fence-component/master/dist/aframe-fence-component.min.js"></script>
+      <!-- Orbit controls-->
+      <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
+      <script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
+      <!-- My scripts-->
+      <script src="../../04_javascript/control.js"></script>
+      <script src="../../04_javascript/gallery_control.js"></script>
+      <link rel="stylesheet" type="text/css" href="../../css/main.css">
+      <link rel="stylesheet" type="text/css" href="../../css/loading.css">
+      <link rel="stylesheet" type="text/css" href="../../css/gallery.css">
+    </head>
   <body>
+        <div class="popup" id="gall1">
+          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Andělíčci</div>
+          <div class="popup_body">
+            <div class="gallery_wrapper" id="gal_wrappergall1"><img class="gal_left_click" id="glcgall1" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall1" src="../../control_graphic/right.png"></div>
+            <script>
+              // ajax
+              document.addEventListener("DOMContentLoaded", function() {
+                  create_gallery("gall1", "../../galleries/afrika_vlevo_andelicci");
+              });
+              
+            </script>
+          </div>
+        </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              create_popup("gall1", "-5.028 0.756 -1.382", true);
+          });
+        </script>
+        <div class="popup" id="gall2">
+          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Malba</div>
+          <div class="popup_body">
+            <div class="gallery_wrapper" id="gal_wrappergall2"><img class="gal_left_click" id="glcgall2" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall2" src="../../control_graphic/right.png"></div>
+            <script>
+              // ajax
+              document.addEventListener("DOMContentLoaded", function() {
+                  create_gallery("gall2", "../../galleries/vyber_malba_nad_asii");
+              });
+              
+            </script>
+          </div>
+        </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              create_popup("gall2", "-1.441 2.181 2.821", true);
+          });
+        </script>
+        <div class="popup" id="gall3">
+          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Sochy nad Afrikou</div>
+          <div class="popup_body">
+            <div class="gallery_wrapper" id="gal_wrappergall3"><img class="gal_left_click" id="glcgall3" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall3" src="../../control_graphic/right.png"></div>
+            <script>
+              // ajax
+              document.addEventListener("DOMContentLoaded", function() {
+                  create_gallery("gall3", "../../galleries/vyber_afrika_vlevo");
+              });
+              
+            </script>
+          </div>
+        </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              create_popup("gall3", "2.970 0.870 -1.235", true);
+          });
+        </script>
+        <div class="popup" id="gall4">
+          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Andělíčci nad Asií</div>
+          <div class="popup_body">
+            <div class="gallery_wrapper" id="gal_wrappergall4"><img class="gal_left_click" id="glcgall4" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall4" src="../../control_graphic/right.png"></div>
+            <script>
+              // ajax
+              document.addEventListener("DOMContentLoaded", function() {
+                  create_gallery("gall4", "../../galleries/vyber_andelicci_vpravo_nad_asii");
+              });
+              
+            </script>
+          </div>
+        </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              create_popup("gall4", "-2.556 0.972 2.760", true);
+          });
+        </script>
         <div id="loading_screen"> 
           <div id="container">
             <div class="lds-ellipsis">

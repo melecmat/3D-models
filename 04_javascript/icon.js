@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
             for (var l = 0; l < popup.length; l++) {
                 popup[l].classList.remove('visible');
             }
+            document.onkeydown = null;
         });
     }
 });

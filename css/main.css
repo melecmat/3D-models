@@ -1,5 +1,6 @@
 .popup_heading {
-    font-size: 2em
+    font-size: 2em;
+    text-align: center;
 }
 
 
@@ -11,9 +12,9 @@
     margin-left: auto;
     margin-right: auto;
     padding: 2rem;
-    z-index: 1;
+    z-index: 100;
     /* this puts the object in front */
-    visibility: hidden;
+    display: none;
     background-color: white;
 
 }
@@ -24,11 +25,19 @@
 }
 
 .back_icon {
+    margin: 0em;
     cursor: pointer;
+    position: absolute;
+    left: 0em;
+    top: 0em;
+}
+
+.back_icon:hover {
+    background-color: gray;
 }
 
 .visible {
-    visibility: visible;
+    display: block;
 }
 
 .popup img {
