@@ -339,7 +339,7 @@ AFRAME.registerComponent('touch-controls', {
 
     direction = this.data.reverseTouchDrag ? 1 : -1;
     yawObject.rotation.y -= deltaY * 0.5 * direction;
-    pitchObject.rotation.x -= deltaX * 0.5;
+    pitchObject.rotation.x -= deltaX * 0.5 * direction;
     this.touchStart = {
       x: evt.touches[0].pageX,
       y: evt.touches[0].pageY
