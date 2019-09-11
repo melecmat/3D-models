@@ -8,6 +8,26 @@ function bind (fn, ctx/* , arg1, arg2 */) {
   })(Array.prototype.slice.call(arguments, 2));
 };
 
+function PolyfillControls (object) {
+  var frameData;
+  var vrDisplay = window.webvrpolyfill && window.webvrpolyfill.getPolyfillDisplays()[0];
+  if (window.VRFrameData) { frameData = new window.VRFrameData(); }
+  this.update = function () {
+    var pose;
+    if (!vrDisplay) { return; }
+    vrDisplay.getFrameData(frameData);
+    pose = frameData.pose;
+    if (pose.orientation !== null) {
+      object.quaternion.fromArray(pose.orientation);
+    }
+    if (pose.position !== null) {
+      object.position.fromArray(pose.position);
+    } else {
+      object.position.set(0, 0, 0);
+    }
+  };
+}
+
 
 // To avoid recalculation at every mouse movement tick
 var PI_2 = Math.PI / 2;
@@ -37,7 +57,7 @@ AFRAME.registerComponent('touch-controls', {
     this.savedRotation = new THREE.Vector3();
     this.savedPosition = new THREE.Vector3();
     this.polyfillObject = new THREE.Object3D();
-    //this.polyfillControls = new PolyfillControls(this.polyfillObject);
+    this.polyfillControls = new PolyfillControls(this.polyfillObject);
     this.rotation = {};
     this.deltaRotation = {};
     this.savedPose = null;
@@ -215,7 +235,7 @@ AFRAME.registerComponent('touch-controls', {
       // In VR mode, THREE is in charge of updating the camera rotation.
       if (sceneEl.is('vr-mode') && sceneEl.checkHeadsetConnected()) { return; }
       // Calculate polyfilled HMD quaternion.
-      //this.polyfillControls.update();
+      this.polyfillControls.update();
       hmdEuler.setFromQuaternion(this.polyfillObject.quaternion, 'YXZ');
 
       // On mobile, do camera rotation with touch events and sensors.
