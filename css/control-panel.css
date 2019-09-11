@@ -50,12 +50,21 @@ div#change_visibility {
     text-align: center;
 }
 
+#gyroscope {
+    display:none;
+  }
+
+.item{
+    padding-top:0.5em;
+    padding-bottom:0.5em
+}
+
 
 
 /* The switch - the box around the slider */
 .switch {
-    margin-left: 1em;
-    position: relative;
+    position: absolute;
+    right: 1em;
     display: inline-block;
     width: 3em;
     height: 1.5em;
@@ -116,3 +125,9 @@ div#change_visibility {
     border-radius: 50%;
   }
 
+
+  @media only screen and (pointer:coarse) {
+      #gyroscope{
+          display: block;
+      }
+  }

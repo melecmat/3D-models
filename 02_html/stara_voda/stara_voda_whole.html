@@ -122,8 +122,13 @@
             </script><img src="../../control_graphic/right.png" id="control_trigger">
         <div id="control_panel">
           <h3>Nastavení</h3>
-          <div>Anotace
+          <div class="item">Anotace
             <label class="switch" id="change_visibility">
+              <input type="checkbox" checked><span class="slider round"></span>
+            </label>
+          </div>
+          <div class="item" id="gyroscope">Gyroskop
+            <label class="switch" id="switch_gyro">
               <input type="checkbox" checked><span class="slider round"></span>
             </label>
           </div>
@@ -133,7 +138,7 @@
             <a-asset-item id="main_model" src="../../03_models/stara_voda/0_2uvs_textured_diff.glb"></a-asset-item>
           </a-assets>
           <a-entity gltf-model="#main_model" id="gltf_model" big_model autoscale="scale:30; rotation: -90, 0, 0"></a-entity>
-          <a-entity id="camera" camera position="0 0 0" touch-controls wasd-controls=" fly:true; acceleration:40"></a-entity>
+          <a-entity id="camera" camera position="0 0 0" touch-controls="gyroEnabled:true" wasd-controls=" fly:true; acceleration:40"></a-entity>
           <a-entity light="type: point; intensity: 1; distance: 100; decay: 2" position="0 0 0"></a-entity>
           <a-entity light="type: ambient; color: #CCC"></a-entity>
         </a-scene>

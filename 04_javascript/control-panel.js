@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("control_trigger").addEventListener("click", trigger_menu);
     document.getElementById("change_visibility").addEventListener("change", change_popup_visibility);
+    document.getElementById("switch_gyro").addEventListener("change", switch_gyroscope);
 });
 
 function trigger_menu() {
@@ -29,4 +30,17 @@ function change_popup_visibility() {
             popups[i].setAttribute("visible", false);
         }
     }
+}
+
+function switch_gyroscope() {
+    var camera = document.getElementById("camera");
+    console.log("hello");
+    console.log(camera.getAttribute("touch-controls"));
+    var properties = camera.getAttribute("touch-controls");
+    if (properties.gyroEnabled == true) {
+        properties.gyroEnabled = false;
+    } else {
+       properties.gyroEnabled = true
+    }
+    camera.setAttribute("touch-controls", properties);
 }
