@@ -22,12 +22,14 @@
       <!-- My scripts-->
       <script src="../../04_javascript/control.js"></script>
       <script src="../../04_javascript/gallery_control.js"></script>
+      <script src="../../04_javascript/control-panel.js"></script>
       <link rel="stylesheet" type="text/css" href="../../css/main.css">
       <link rel="stylesheet" type="text/css" href="../../css/loading.css">
       <link rel="stylesheet" type="text/css" href="../../css/gallery.css">
+      <link rel="stylesheet" type="text/css" href="../../css/control-panel.css">
     </head>
   <body>
-        <div id="loading_screen"> 
+        <div id="loading_screen">
           <div id="container">
             <div class="lds-ellipsis">
               <div></div>
@@ -45,7 +47,15 @@
                       camera.setAttribute("position", "0 0 0");
                   });
               });
-            </script>
+            </script><img src="../../control_graphic/right.png" id="control_trigger">
+        <div id="control_panel">
+          <h3>Nastavení</h3>
+          <div>Anotace
+            <label class="switch" id="change_visibility">
+              <input type="checkbox" checked><span class="slider round"></span>
+            </label>
+          </div>
+        </div>
         <a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable" gltf-model="dracoDecoderPath: ../../draco/;" background="color: black" joystick>
           <a-assets>
             <a-asset-item id="main_model" src="../../03_models/stara_voda/angels.glb"></a-asset-item>

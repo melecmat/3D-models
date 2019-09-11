@@ -169,17 +169,3 @@ AFRAME.registerComponent('autoscale', {
       mesh.position.sub(offset);
     }
   });
-
-function change_popup_visibility() {
-    var popups = document.getElementsByClassName("clickable");
-    if (popups[0].getAttribute("visible") == false) {
-        for (var i = 0; i < popups.length; ++i) {
-            popups[i].setAttribute("visible", true);
-        }
-    } else {
-        for (var i = 0; i < popups.length; ++i) {
-            console.log(popups[i]);
-            popups[i].setAttribute("visible", false);
-        }
-    }
-}
