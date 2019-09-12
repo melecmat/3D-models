@@ -35,14 +35,11 @@ AFRAME.registerComponent ('change-position', {
             } else { // action when no coordinates provided
                 desired_position = el.getAttribute("position");
             }
-            console.log("Desired " + desired_position.x + " Actual: " + camera.getAttribute('position').toString());
             if (desired_position == camera.getAttribute('position')) {
-                console.log("same");
                 return;
             }
 
             var blinkTeleportationEls = document.querySelectorAll('[change-position]');
-            console.log(blinkTeleportationEls.length);
             for (var i = 0; i < blinkTeleportationEls.length; i++) {
                 // RESET THE CLICKABLE VALUE FOR ALL THE BLINK-TELEPORTATION ELEMENTS
                 blinkTeleportationEls[i].setAttribute('class', 'clickable');
@@ -58,12 +55,8 @@ AFRAME.registerComponent ('change-position', {
             animation.setAttribute("to",desired_position);
             animation.setAttribute("dur","2000");
             animation.setAttribute("easing","linear");
-            console.log("Animating");
             camera.appendChild(animation);
         });
-        this.el.addEventListener('mouseenter', function() {
-            console.log(el.getAttribute('position'));
-        })
     }
 });
 
@@ -86,7 +79,6 @@ AFRAME.registerComponent ('info-window', {
             // find out if there is gallery
             var window_child = window.children[1].children[0];
             if (window_child.classList.contains("gallery_wrapper")) {
-                console.log("Initialisng gallery");
                 init_gallery(window_child); // function in gallery control
             }
         });
@@ -99,7 +91,6 @@ AFRAME.registerComponent ('info-window', {
 AFRAME.registerComponent('big_model', {
     init: function() {
        this.el.addEventListener('model-loaded', e => {
-           console.log("removing loading");
            document.querySelector("#loading_screen").remove();
        });
     }

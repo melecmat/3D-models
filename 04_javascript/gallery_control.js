@@ -2,7 +2,6 @@ function create_gallery(gal_id, json_gallery_src) {
     var oReq = new XMLHttpRequest();
     oReq.onload = function () { // successfully gotten the images
         var images = JSON.parse(this.responseText);
-        console.log(images);
         let i = 0;
         for (var src in images) {
             // make div wrapping the image -- should be numbered - variable for incrementing
@@ -61,7 +60,6 @@ function init_gallery(gallery_wrapper) {
     var img1 = document.getElementById(gallery_wrapper.id + "000");
     var img2 = document.getElementById(gallery_wrapper.id + "001");
     
-    //console.log(gallery_wrapper.id + "0");
     set_src(img1);
     set_src(img2);
     // deactivate image before
@@ -92,7 +90,6 @@ function track_keys(event) {
  */
 function set_src(img) {
     var lazy_src = img.children[0].getAttribute("lazy-src");
-    console.log(lazy_src);
     img.children[0].setAttribute("src", lazy_src);
 }
 
@@ -106,8 +103,6 @@ function right_click() {
     var id = previous_active.id;
     var clean_id = id.slice(0, -3);
     var no_id = id.slice(-3, id.length);
-    console.log(clean_id);
-    console.log(no_id);
     var no = parseInt(no_id, 10);
     // check if this is the last image
     if (document.getElementById(clean_id + int2prepString((++no))) == undefined) {
@@ -130,7 +125,6 @@ function left_click() {
     var id = previous_active.id;
     var clean_id = id.slice(0, -3);
     var no_id = id.slice(-3, id.length);
-    console.log(no_id);
     var no = parseInt(no_id, 10);
     // set new active if exists
     if (document.getElementById(clean_id + int2prepString((--no))) == undefined) {

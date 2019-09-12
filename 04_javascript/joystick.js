@@ -12,8 +12,8 @@ function initJoystick() {
 
   // create text overlay
   var p = document.createElement("p")
-  p.setAttribute("style","text-align: center;margin-top:40px;font-size:12px Roboto; opacity:.5;");
-  p.innerHTML="Hold and drag to move"
+  p.setAttribute("style","text-align: center;margin-top:45px;font-size:12px; font-family:Arial; opacity:.5;");
+  p.innerHTML="Joystick"
   d.appendChild(p)
   var joystickEvent = new CustomEvent("joystick-created", { "detail": "Joystick has been created" });
   // Dispatch/Trigger/Fire the event
@@ -47,205 +47,61 @@ function createJoystick() {
 
   }
   
-  // turn joystick data into WASD movement in AFRAME
-  //var f; var ang; var x_vec; var y_vec; var cam;
+  //KEYS
+  var keys = {
+    up: {
+      "code" : "ArrowUp",
+      "keyCode" : 38
+    },
+    down: {
+      "code" : "ArrowDown",
+      "keyCode" : 40
+    },
+    right : {
+      "code" : "ArrowRight",
+      "keyCode" : 39
+    },
+    left : {
+      "code" : "ArrowLeft",
+      "keyCode" : 37
+    }
+  }
+
+  var previous; // control variable -- for avoiding too many listeners
 
   function updatePosition(data) {
     f = data.force;
     ang = data.angle.radian
     cam = document.getElementById("camera");
     // switch by angles -- emiting events
+    
     if (ang >= 7*Math.PI/4 || ang <= Math.PI/4) {
-      document.dispatchEvent(new KeyboardEvent("keydown", {altKey:false,
-        bubbles: true,
-        cancelBubble: false, 
-        cancelable: true,
-        charCode: 0,
-        code: "ArrowRight",
-        composed: true,
-        ctrlKey: false,
-        currentTarget: null,
-        defaultPrevented: true,
-        detail: 0,
-        eventPhase: 0,
-        isComposing: false,
-        isTrusted: true,
-        key: "Enter",
-        keyCode: 39,
-        location: 0,
-        metaKey: false,
-        repeat: false,
-        returnValue: false,
-        shiftKey: false,
-        type: "keydown",
-        which: 39})); // right
-      document.dispatchEvent(new KeyboardEvent("keyup", {altKey:false,
-        bubbles: true,
-        cancelBubble: false, 
-        cancelable: true,
-        charCode: 0,
-        code: "ArrowLeft",
-        composed: true,
-        ctrlKey: false,
-        currentTarget: null,
-        defaultPrevented: true,
-        detail: 0,
-        eventPhase: 0,
-        isComposing: false,
-        isTrusted: true,
-        key: "Enter",
-        keyCode: 37,
-        location: 0,
-        metaKey: false,
-        repeat: false,
-        returnValue: false,
-        shiftKey: false,
-        type: "keyup",
-        which: 37}));
-      console.log("Going right");
+      if (previous != "right") {
+        previous = "right";
+        myKeyEvent("keydown", keys.right); // right
+        keyupOtherKeys("ArrowRight");
+      }
+      
     } else if (ang <= 3*Math.PI/4) { 
-      document.dispatchEvent(new KeyboardEvent("keydown", {altKey:false,
-        bubbles: true,
-        cancelBubble: false, 
-        cancelable: true,
-        charCode: 0,
-        code: "ArrowUp",
-        composed: true,
-        ctrlKey: false,
-        currentTarget: null,
-        defaultPrevented: true,
-        detail: 0,
-        eventPhase: 0,
-        isComposing: false,
-        isTrusted: true,
-        key: "Enter",
-        keyCode: 38,
-        location: 0,
-        metaKey: false,
-        repeat: false,
-        returnValue: false,
-        shiftKey: false,
-        type: "keydown",
-        which: 38})); // up
-      document.dispatchEvent(new KeyboardEvent("keyup", {altKey:false,
-        bubbles: true,
-        cancelBubble: false, 
-        cancelable: true,
-        charCode: 0,
-        code: "ArrowDown",
-        composed: true,
-        ctrlKey: false,
-        currentTarget: null,
-        defaultPrevented: true,
-        detail: 0,
-        eventPhase: 0,
-        isComposing: false,
-        isTrusted: true,
-        key: "Enter",
-        keyCode: 40,
-        location: 0,
-        metaKey: false,
-        repeat: false,
-        returnValue: false,
-        shiftKey: false,
-        type: "keyup",
-        which: 40}));
-      console.log("Going up");
+      if (previous != "up") {
+        previous = "up";
+        myKeyEvent("keydown", keys.up); // up
+        keyupOtherKeys("ArrowUp");
+      }
     } else if (ang <= Math.PI*(5/4)) {
-      document.dispatchEvent(new KeyboardEvent("keydown", {altKey:false,
-        bubbles: true,
-        cancelBubble: false, 
-        cancelable: true,
-        charCode: 0,
-        code: "ArrowLeft",
-        composed: true,
-        ctrlKey: false,
-        currentTarget: null,
-        defaultPrevented: true,
-        detail: 0,
-        eventPhase: 0,
-        isComposing: false,
-        isTrusted: true,
-        key: "Enter",
-        keyCode: 37,
-        location: 0,
-        metaKey: false,
-        repeat: false,
-        returnValue: false,
-        shiftKey: false,
-        type: "keydown",
-        which: 37})); // left
-      document.dispatchEvent(new KeyboardEvent("keyup", {altKey:false,
-        bubbles: true,
-        cancelBubble: false, 
-        cancelable: true,
-        charCode: 0,
-        code: "ArrowRight",
-        composed: true,
-        ctrlKey: false,
-        currentTarget: null,
-        defaultPrevented: true,
-        detail: 0,
-        eventPhase: 0,
-        isComposing: false,
-        isTrusted: true,
-        key: "Enter",
-        keyCode: 39,
-        location: 0,
-        metaKey: false,
-        repeat: false,
-        returnValue: false,
-        shiftKey: false,
-        type: "keyup",
-        which: 39})); 
-      console.log("Going left");
+      if (previous != "left") {
+        previous = "left";
+        myKeyEvent("keydown", keys.left); // left
+        keyupOtherKeys("ArrowLeft");
+      }
+      
     } else {
-      document.dispatchEvent(new KeyboardEvent("keydown", {altKey:false,
-        bubbles: true,
-        cancelBubble: false, 
-        cancelable: true,
-        charCode: 0,
-        code: "ArrowDown",
-        composed: true,
-        ctrlKey: false,
-        currentTarget: null,
-        defaultPrevented: true,
-        detail: 0,
-        eventPhase: 0,
-        isComposing: false,
-        isTrusted: true,
-        key: "Enter",
-        keyCode: 40,
-        location: 0,
-        metaKey: false,
-        repeat: false,
-        returnValue: false,
-        shiftKey: false,
-        type: "keydown",
-        which: 40})); // down
-      document.dispatchEvent(new KeyboardEvent("keyup", {altKey:false,
-        bubbles: true,
-        cancelBubble: false, 
-        cancelable: true,
-        charCode: 0,
-        code: "ArrowUp",
-        composed: true,
-        ctrlKey: false,
-        currentTarget: null,
-        defaultPrevented: true,
-        detail: 0,
-        eventPhase: 0,
-        isComposing: false,
-        isTrusted: true,
-        key: "Enter",
-        keyCode: 38,
-        location: 0,
-        metaKey: false,
-        repeat: false,
-        returnValue: false,
-        shiftKey: false,
-        type: "keyup",
-        which: 38}));
+      if (previous != "down") {
+        previous = "down";
+        myKeyEvent("keydown", keys.down); // down
+        keyupOtherKeys("ArrowDown");
+      }
+      
     }
 
     
@@ -260,6 +116,7 @@ function createJoystick() {
     cam.setAttribute("position",`${x} ${y} ${z}`)*/
   }
 
+
   var switc = false;
 
   AFRAME.registerComponent('joystick', {
@@ -273,101 +130,52 @@ function createJoystick() {
       } else {
         if (switc) {
           switc = false;
-          console.log("out");
-          document.dispatchEvent(new KeyboardEvent("keyup", {altKey:false,
-            bubbles: true,
-            cancelBubble: false, 
-            cancelable: true,
-            charCode: 0,
-            code: "ArrowLeft",
-            composed: true,
-            ctrlKey: false,
-            currentTarget: null,
-            defaultPrevented: true,
-            detail: 0,
-            eventPhase: 0,
-            isComposing: false,
-            isTrusted: true,
-            key: "Enter",
-            keyCode: 37,
-            location: 0,
-            metaKey: false,
-            repeat: false,
-            returnValue: false,
-            shiftKey: false,
-            type: "keyup",
-            which: 37})); // left
-          document.dispatchEvent(new KeyboardEvent("keyup", {altKey:false,
-            bubbles: true,
-            cancelBubble: false, 
-            cancelable: true,
-            charCode: 0,
-            code: "ArrowUp",
-            composed: true,
-            ctrlKey: false,
-            currentTarget: null,
-            defaultPrevented: true,
-            detail: 0,
-            eventPhase: 0,
-            isComposing: false,
-            isTrusted: true,
-            key: "Enter",
-            keyCode: 38,
-            location: 0,
-            metaKey: false,
-            repeat: false,
-            returnValue: false,
-            shiftKey: false,
-            type: "keyup",
-            which: 38})); // up
-          document.dispatchEvent(new KeyboardEvent("keyup", {altKey:false,
-            bubbles: true,
-            cancelBubble: false, 
-            cancelable: true,
-            charCode: 0,
-            code: "ArrowRight",
-            composed: true,
-            ctrlKey: false,
-            currentTarget: null,
-            defaultPrevented: true,
-            detail: 0,
-            eventPhase: 0,
-            isComposing: false,
-            isTrusted: true,
-            key: "Enter",
-            keyCode: 39,
-            location: 0,
-            metaKey: false,
-            repeat: false,
-            returnValue: false,
-            shiftKey: false,
-            type: "keyup",
-            which: 39})); // right
-          document.dispatchEvent(new KeyboardEvent("keyup", {altKey:false,
-            bubbles: true,
-            cancelBubble: false, 
-            cancelable: true,
-            charCode: 0,
-            code: "ArrowDown",
-            composed: true,
-            ctrlKey: false,
-            currentTarget: null,
-            defaultPrevented: true,
-            detail: 0,
-            eventPhase: 0,
-            isComposing: false,
-            isTrusted: true,
-            key: "Enter",
-            keyCode: 40,
-            location: 0,
-            metaKey: false,
-            repeat: false,
-            returnValue: false,
-            shiftKey: false,
-            type: "keyup",
-            which: 40})); // down
+          keyupOtherKeys("none");
+          previous = "none";
         }
         
       }
     }
   });
+
+  /**
+   * 
+   * @param {*} type of key event - keyup or keydown
+   * @param {*} key {code: "", keyCode: ""}
+   */
+  function myKeyEvent(type, key) {
+    document.dispatchEvent(new KeyboardEvent(type, {altKey:false,
+      bubbles: true,
+      cancelBubble: false, 
+      cancelable: true,
+      charCode: 0,
+      code: key.code,
+      composed: true,
+      ctrlKey: false,
+      currentTarget: null,
+      defaultPrevented: true,
+      detail: 0,
+      eventPhase: 0,
+      isComposing: false,
+      isTrusted: true,
+      key: "Enter",
+      keyCode: key.keyCode,
+      location: 0,
+      metaKey: false,
+      repeat: false,
+      returnValue: false,
+      shiftKey: false,
+      type: type,
+      which: key.keyCode}));
+  }
+
+  /**
+   * Keys up all the keys from var keys apart for the one specified
+   * @param {*} thisKey code of key
+   */
+  function keyupOtherKeys(thisKey) {
+    Object.keys(keys).forEach(function(key) {
+      if (keys[key].code != thisKey)
+        myKeyEvent("keyup", keys[key]);
+    });
+  }
