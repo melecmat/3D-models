@@ -25,7 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
 });</script><div class="popup" id="uniqueID"><div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span>Stará Voda</div><div class="popup_body"><p>Kostel svaté Anny a svatého Jakuba Většího ve Staré Vodě byl v době minulé rozsáhlým barokním poutním kostelem o dvou věžích,     s pěti zvony, dvorem a krytými ambity s křížovou cestou. Na hlavním oltáři byla uctívaná socha sv. Anny, tři boční oltáře zasvěceny obětování Panny      Marie, sv. Josefu a sv. Jáchymu; za zmínku stojí vynikající varhany a další detaily.     Budova kláštera byla poškozena za druhé světové války a po jejím ukončení se dokonce započalo s opravou. Do roku 1946 působila v duchovní      správě kongregace oblátů Panny Marie. Dnes jsou na místě kláštera pouze zbytky zdiva a studna na bývalém nádvoří.</p><img src="../../control_graphic/logo_mrs.png"></div></div><script>document.addEventListener("DOMContentLoaded", function() {
 var ascene = document.querySelector("a-scene");
     create_popup("uniqueID", "0.342 0.756 -3.572", false);
-});</script><div id="loading_screen"><div id="heading">Kostel svaté Anny</div><div id="container"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div></div><img id="home_button" title="Return back to origin." src="../../control_graphic/home.png"><script>document.addEventListener("DOMContentLoaded", function() {
+});</script><div id="loading_screen"><div id="heading">Kostel svaté Anny</div><div id="container"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div></div><style type="text/css">#loading_screen {
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg');
+    background-position:center;
+    background-size: cover;
+}
+
+</style><img id="home_button" title="Return back to origin." src="../../control_graphic/home.png"><script>document.addEventListener("DOMContentLoaded", function() {
     var camera = document.getElementById("camera");
     var homeButton = document.getElementById("home_button");
     homeButton.addEventListener("click", function() {

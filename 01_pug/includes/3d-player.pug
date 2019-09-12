@@ -8,8 +8,16 @@ mixin 3d-player(src, heading="3D model", orbit_controls=false, camera_position="
                 div
                 div
                 div
-            
-    img(id="home_button" title="Return back to origin." src="../../control_graphic/home.png")
+    style(type="text/css").
+        #loading_screen {
+            background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg');
+            background-position:center;
+            background-size: cover;
+        }
+        
+    
+    if !orbit_controls        
+        img(id="home_button" title="Return back to origin." src="../../control_graphic/home.png")
     include back_icon.pug
     +back-icon(camera_position)
 

@@ -4,7 +4,13 @@ var ascene = document.querySelector("a-scene");
 });</script><div class="popup" id="otherID"><div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span>Another annotation</div><div class="popup_body"><p>This is the second attempt</p></div></div><script>document.addEventListener("DOMContentLoaded", function() {
 var ascene = document.querySelector("a-scene");
     create_popup("otherID", "-7.816 0.871 0.757", false);
-});</script><div id="loading_screen"><div id="heading">Kostel Sv. Mořice</div><div id="container"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div></div><img id="home_button" title="Return back to origin." src="../../control_graphic/home.png"><script>document.addEventListener("DOMContentLoaded", function() {
+});</script><div id="loading_screen"><div id="heading">Kostel Sv. Mořice</div><div id="container"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div></div><style type="text/css">#loading_screen {
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpg');
+    background-position:center;
+    background-size: cover;
+}
+
+</style><img id="home_button" title="Return back to origin." src="../../control_graphic/home.png"><script>document.addEventListener("DOMContentLoaded", function() {
     var camera = document.getElementById("camera");
     var homeButton = document.getElementById("home_button");
     homeButton.addEventListener("click", function() {
