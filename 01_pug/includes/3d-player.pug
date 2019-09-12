@@ -1,6 +1,7 @@
-mixin 3d-player(src, orbit_controls=false, camera_position="0 0 0")
+mixin 3d-player(src, heading="3D model", orbit_controls=false, camera_position="0 0 0")
     //- loading screen
     div(id="loading_screen")
+        div(id="heading") #{heading}
         div(id="container")
             div(class="lds-ellipsis")
                 div

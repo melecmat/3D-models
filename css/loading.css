@@ -61,4 +61,12 @@
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+#heading {
+  color:white;
+  text-align:center;
+  padding-top:30vh;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:2em;
+}
   
