@@ -1,6 +1,13 @@
 import os
 import json
 
+def do_whole_project():
+    projects = os.listdir("02_html")
+    for project in projects:
+        gallery_path = os.path.join("02_html", project, "galleries")
+        if os.path.exists(gallery_path):
+            index_files_in_dir(gallery_path)
+
 '''
 File read will be a dictionary -- keys -- filenames and values -- description
 '''
@@ -30,4 +37,4 @@ def index_files_in_dir(rootDir):
 
 
 if __name__ == "__main__":
-    index_files_in_dir("galleries")      
+    do_whole_project()      

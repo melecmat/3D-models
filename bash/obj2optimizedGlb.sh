@@ -11,6 +11,10 @@ if [ ${1: -4} == ".obj" ]; then
     echo "Converting .obj to .gltf"
     obj2gltf --binary -i $1 -o $2
 fi
+if [ ${1: -4} == ".fbx" ]; then
+    echo "Converting .fbx to .gltf"
+    FBX2glTF --binary -i $1 -o $2
+fi
 mkdir tmp
 #separate glb files so that texture can be optimised
 echo "Separating textures to work with"

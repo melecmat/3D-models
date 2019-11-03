@@ -8,7 +8,7 @@ mixin annotation(heading, text, picture_src, position, id)
             
             
         div(class="popup_body")
-            p #{text}
+            p !{text}
             if picture_src != ''
                 img(src=picture_src)
 
