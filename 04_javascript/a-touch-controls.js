@@ -1,3 +1,7 @@
+/**
+ * CUSTOM version of a-control with better support for joystick and Z axis movement
+ */
+
 function bind (fn, ctx/* , arg1, arg2 */) {
   return (function (prependedArgs) {
     return function bound () {

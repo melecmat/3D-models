@@ -1,3 +1,9 @@
+/**
+ * Creates gallery. It takes care of creating HTML representation of it, loading json, setting everything up.
+ * Note: the gallery representation in A-Frame is done by create_popup() function -- below
+ * @param {*} gal_id
+ * @param {*} json_gallery_src 
+ */
 function create_gallery(gal_id, json_gallery_src) {
     var oReq = new XMLHttpRequest();
     oReq.onload = function () { // successfully gotten the images
@@ -31,21 +37,48 @@ function create_gallery(gal_id, json_gallery_src) {
     oReq.send();
 }
 
+/**
+ * Creates A-frame representation of popup 
+ * @param {*} id 
+ * @param {*} position in A-Frame
+ * @param {*} gallery specifies if it is gallery or simple text popup
+ */
 function create_popup(id, position, gallery) {
     var ascene = document.querySelector("a-scene");
-    var popup_visual = document.createElement("a-image");
+    var gallery_without_number = false;
+    if (gallery) {
+        var regex = /\d+/;
+        var popup_no = id.match(regex);
+        if (popup_no == null) {
+            var gallery_without_number = true;
+        } else {
+            var popup_visual = document.createElement("a-text");
+            popup_visual.setAttribute("value", popup_no);
+            //popup_visual.setAttribute("geometry", "primitive:circle color:white");
+            popup_visual.setAttribute("width", "6");
+            popup_visual.setAttribute("align", "center");
+            //popup_visual.setAttribute("height", "0.4");
+        }
+    }
+    if (!gallery || gallery_without_number) {
+        var popup_visual = document.createElement("a-image");
+        popup_visual.setAttribute("width", "0.4");
+        popup_visual.setAttribute("height", "0.4");
+    }
+    popup_visual.setAttribute("look-at", "[camera]");
+    popup_visual.setAttribute("color", "white");
+    
     popup_visual.setAttribute("id", "rendered" + id);
     popup_visual.setAttribute("class", "clickable");
     popup_visual.setAttribute("info-window", " window_id:" + id);
     popup_visual.setAttribute("position", position);
-    popup_visual.setAttribute("look-at", "[camera]");
-    popup_visual.setAttribute("color", "white");
-    popup_visual.setAttribute("width", "0.4");
-    popup_visual.setAttribute("height", "0.4");
-    if (gallery)
+    
+    
+    // try to get id number out of text
+    if (!gallery)
+        popup_visual.setAttribute("src", "../../control_graphic/info_logo.png"); 
+    else if (gallery_without_number)
         popup_visual.setAttribute("src", "../../control_graphic/gallery_logo.png");
-    else
-        popup_visual.setAttribute("src", "../../control_graphic/info_logo.png");
     ascene.appendChild(popup_visual);
 }
 
@@ -72,6 +105,10 @@ function init_gallery(gallery_wrapper) {
     document.onkeydown = track_keys;
 }
 
+/**
+ * For sliding images using arrows.
+ * @param {*} event 
+ */
 function track_keys(event) {
     event.stopPropagation();
     switch (event.key) {
@@ -94,7 +131,7 @@ function set_src(img) {
 }
 
 /**
- * 
+ * Takes care of sliding images and lazy loading new ones.
  * @param {Event} e 
  */
 function right_click() {
@@ -118,6 +155,9 @@ function right_click() {
     set_src(document.getElementById(clean_id + int2prepString((no))));
 }
 
+/**
+ * The other way to right click
+ */
 function left_click() {
     // get current active image
     var previous_active = document.getElementsByClassName("active_img")[0];
@@ -179,6 +219,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+/**
+ * Enlarges gallery
+ */
 function enlarge() {
     var galleries = document.getElementsByClassName("gallery_wrapper");
     for (var i = 0; i < galleries.length; ++i) {

@@ -14,18 +14,28 @@ html(lang='cs')
             extend and fill blocks
         //- 
             here you can add annotations
-            annotation(
+            +annotation(
                 heading, -- of text
-                text, -- main text TODO -- enters produce new paragraphs
+                text, -- main text -- text can be formatted by standart html
                 picture_src, -- source of a picture -- optional -- leave out by inputting =""
-                position, -- location in the a-scene -- optional 
+                position, -- location in the a-scene 
                 id -- of the annotation -- connects annotation to its button
-                )
+            )
+
+            for galleries of pictures:
+            +gallery-popup(heading,
+                json_gallery_src, -- source of the gallery json -- pictures should be located in the same folder.
+                    Descriptions to photos should be located in the json.
+                position, -- location in the a-scene
+                id -- of gallery -- please put in numbers from 1 to n where n is the number of galleries.
+                                    These will be used to generate number visible in 3D -- if there is no number
+                                    specified, there will be only icon of picture. 
+            )
         block annotations
 
         //-
             add your 3d player here
-            3d-player(
+            +3d-player(
                 src, -- model source
                 orbit_controls=false, -- orbit controls = camera orbits around object
                 camera_position="0 0 0" -- camera position
