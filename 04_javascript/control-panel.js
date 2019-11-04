@@ -34,8 +34,6 @@ function change_popup_visibility() {
 
 function switch_gyroscope() {
     var camera = document.getElementById("camera");
-    console.log("hello");
-    console.log(camera.getAttribute("touch-controls"));
     var properties = camera.getAttribute("touch-controls");
     if (properties.gyroEnabled == true) {
         properties.gyroEnabled = false;
