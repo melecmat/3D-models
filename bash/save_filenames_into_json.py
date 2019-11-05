@@ -33,7 +33,7 @@ def index_files_in_dir(rootDir):
             else:
                 result_data[picture] = ""
         with open(json_file_path, "w", encoding="utf-8") as f:
-            json.dump(result_data, f)
+            json.dump(result_data, f, indent=4, ensure_ascii=False)
 
 
 if __name__ == "__main__":

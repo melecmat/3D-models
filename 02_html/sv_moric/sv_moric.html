@@ -22,27 +22,15 @@
     </head>
   <body>
         <div class="popup" id="uniqueID">
-          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span>Attempt</div>
+          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span>Kostel svatého Mořice</div>
           <div class="popup_body">
-            <p>This is an attempt        with a very long text</p><img src="logo_2db.png">
+            <p>Kostel svatého Mořice je <b>gotický</b> proboštský farní kostel v <b>Olomouci</b>. Patří do farnosti svatého Mořice.    Farní kostel svatého Mořice vždy plnil roli hlavního městského chrámu, zatímco katedrála svatého Václava byla metropolitním     biskupským chrámem.</p><img src="background.jpg">
           </div>
         </div>
         <script>
           document.addEventListener("DOMContentLoaded", function() {
           var ascene = document.querySelector("a-scene");
-              create_popup("uniqueID", "-12.200 6.292 0.964", false);
-          });
-        </script>
-        <div class="popup" id="otherID">
-          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span>Another annotation</div>
-          <div class="popup_body">
-            <p>This is the second attempt</p>
-          </div>
-        </div>
-        <script>
-          document.addEventListener("DOMContentLoaded", function() {
-          var ascene = document.querySelector("a-scene");
-              create_popup("otherID", "-7.816 0.871 0.757", false);
+              create_popup("uniqueID", "-7.816 0.871 0.757", false);
           });
         </script>
         <div id="loading_screen">
@@ -86,7 +74,6 @@
               <input type="checkbox"><span class="slider round"></span>
             </label>
           </div>
-          <div class="item" id="speed">Rychlost</div>
         </div>
         <a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable" gltf-model="dracoDecoderPath: ../../draco/;" background="color: black" joystick>
           <a-assets>

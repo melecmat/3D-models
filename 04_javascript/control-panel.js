@@ -1,9 +1,14 @@
+// event listeners for reading values of the control panel
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("control_trigger").addEventListener("click", trigger_menu);
     document.getElementById("change_visibility").addEventListener("change", change_popup_visibility);
     document.getElementById("switch_gyro").addEventListener("change", switch_gyroscope);
+    //document.getElementById(); TODO -- change velocity
 });
 
+/**
+ * Function for menu sliding
+ */
 function trigger_menu() {
     var trigger = document.getElementById("control_trigger");
     var panel = document.getElementById("control_panel");
@@ -18,6 +23,9 @@ function trigger_menu() {
     }
 }
 
+/**
+ * Implements the functionality of making descriptions in A-Frame invisible/visible
+ */
 function change_popup_visibility() {
     var popups = document.getElementsByClassName("clickable");
     if (popups[0].getAttribute("visible") == false) {
@@ -26,7 +34,6 @@ function change_popup_visibility() {
         }
     } else {
         for (var i = 0; i < popups.length; ++i) {
-            console.log(popups[i]);
             popups[i].setAttribute("visible", false);
         }
     }
@@ -41,4 +48,12 @@ function switch_gyroscope() {
        properties.gyroEnabled = true
     }
     camera.setAttribute("touch-controls", properties);
+}
+
+/**
+ * For changing the velocity of camera.
+ * Should be listening to change of speed slider
+ */
+function change_velocity() {
+
 }

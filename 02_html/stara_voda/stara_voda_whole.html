@@ -55,44 +55,44 @@
               create_popup("gall2", "-1.441 2.181 2.821", true);
           });
         </script>
-        <div class="popup" id="gall3">
-          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Sochy nad Afrikou</div>
-          <div class="popup_body">
-            <div class="gallery_wrapper" id="gal_wrappergall3"><img class="gal_left_click" id="glcgall3" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall3" src="../../control_graphic/right.png"></div>
-            <script>
-              // ajax
-              document.addEventListener("DOMContentLoaded", function() {
-                  create_gallery("gall3", "galleries/vyber_afrika_vlevo");
-              });
-            </script>
-          </div>
-        </div>
-        <script>
-          document.addEventListener("DOMContentLoaded", function() {
-              create_popup("gall3", "2.970 0.870 -1.235", true);
-          });
-        </script>
         <div class="popup" id="gall4">
-          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Andělíčci nad Asií</div>
+          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Sochy nad Afrikou</div>
           <div class="popup_body">
             <div class="gallery_wrapper" id="gal_wrappergall4"><img class="gal_left_click" id="glcgall4" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall4" src="../../control_graphic/right.png"></div>
             <script>
               // ajax
               document.addEventListener("DOMContentLoaded", function() {
-                  create_gallery("gall4", "galleries/vyber_andelicci_vpravo_nad_asii");
+                  create_gallery("gall4", "galleries/vyber_afrika_vlevo");
               });
             </script>
           </div>
         </div>
         <script>
           document.addEventListener("DOMContentLoaded", function() {
-              create_popup("gall4", "-2.556 0.972 2.760", true);
+              create_popup("gall4", "2.970 0.870 -1.235", true);
+          });
+        </script>
+        <div class="popup" id="gall3">
+          <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Andělíčci nad Asií</div>
+          <div class="popup_body">
+            <div class="gallery_wrapper" id="gal_wrappergall3"><img class="gal_left_click" id="glcgall3" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall3" src="../../control_graphic/right.png"></div>
+            <script>
+              // ajax
+              document.addEventListener("DOMContentLoaded", function() {
+                  create_gallery("gall3", "galleries/vyber_andelicci_vpravo_nad_asii");
+              });
+            </script>
+          </div>
+        </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              create_popup("gall3", "-2.556 0.972 2.760", true);
           });
         </script>
         <div class="popup" id="uniqueID">
           <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span>Stará Voda</div>
           <div class="popup_body">
-            <p><h3>Kostel svaté Anny</h3> a svatého Jakuba Většího ve Staré Vodě byl v době minulé rozsáhlým barokním poutním kostelem o dvou věžích,     s pěti zvony, dvorem a krytými ambity s křížovou cestou. Na hlavním oltáři byla uctívaná socha sv. Anny, tři boční oltáře zasvěceny obětování Panny      Marie, sv. Josefu a sv. Jáchymu; za zmínku stojí vynikající varhany a další detaily.     Budova kláštera byla poškozena za druhé světové války a po jejím ukončení se dokonce započalo s opravou. Do roku 1946 působila v duchovní      správě kongregace oblátů Panny Marie. Dnes jsou na místě kláštera pouze zbytky zdiva a studna na bývalém <b>nádvoří.</b></p><img src="../../control_graphic/logo_mrs.png">
+            <p>Kostel svaté Anny a svatého Jakuba Většího ve Staré Vodě byl v době minulé rozsáhlým barokním poutním kostelem o dvou věžích,     s pěti zvony, dvorem a krytými ambity s křížovou cestou. Na hlavním oltáři byla uctívaná socha sv. Anny, tři boční oltáře zasvěceny obětování Panny      Marie, sv. Josefu a sv. Jáchymu; za zmínku stojí vynikající varhany a další detaily.<br>     Budova kláštera byla poškozena za druhé světové války a po jejím ukončení se dokonce započalo s opravou. Do roku 1946 působila v duchovní      správě kongregace oblátů Panny Marie. Dnes jsou na místě kláštera pouze zbytky zdiva a studna na bývalém nádvoří.</p><img src="../../control_graphic/logo_mrs.png">
           </div>
         </div>
         <script>
@@ -142,7 +142,6 @@
               <input type="checkbox"><span class="slider round"></span>
             </label>
           </div>
-          <div class="item" id="speed">Rychlost</div>
         </div>
         <a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable" gltf-model="dracoDecoderPath: ../../draco/;" background="color: black" joystick>
           <a-assets>
