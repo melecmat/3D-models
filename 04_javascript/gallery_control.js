@@ -57,6 +57,7 @@ function create_popup(id, position, gallery) {
         //popup_visual.setAttribute("geometry", "primitive:circle color:white");
         popup_visual.setAttribute("width", "6");
         popup_visual.setAttribute("align", "center");
+        popup_visual.setAttribute("xOffset", "10");
         //popup_visual.setAttribute("height", "0.4");
     }
     if (without_number) {
