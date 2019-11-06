@@ -45,22 +45,21 @@ function create_gallery(gal_id, json_gallery_src) {
  */
 function create_popup(id, position, gallery) {
     var ascene = document.querySelector("a-scene");
-    var gallery_without_number = false;
-    if (gallery) {
-        var regex = /\d+/;
-        var popup_no = id.match(regex);
-        if (popup_no == null) {
-            var gallery_without_number = true;
-        } else {
-            var popup_visual = document.createElement("a-text");
-            popup_visual.setAttribute("value", popup_no);
-            //popup_visual.setAttribute("geometry", "primitive:circle color:white");
-            popup_visual.setAttribute("width", "6");
-            popup_visual.setAttribute("align", "center");
-            //popup_visual.setAttribute("height", "0.4");
-        }
+    var without_number = false;
+    var regex = /\d+/;
+    var popup_no = id.match(regex);
+    if (popup_no == null) {
+        without_number = true;
+    } else {
+        var popup_visual = document.createElement("a-text");
+        popup_no = gallery ? popup_no + "." : romanize(popup_no); // let descriptions have roman numbers
+        popup_visual.setAttribute("value", popup_no);
+        //popup_visual.setAttribute("geometry", "primitive:circle color:white");
+        popup_visual.setAttribute("width", "6");
+        popup_visual.setAttribute("align", "center");
+        //popup_visual.setAttribute("height", "0.4");
     }
-    if (!gallery || gallery_without_number) {
+    if (without_number) {
         var popup_visual = document.createElement("a-image");
         popup_visual.setAttribute("width", "0.4");
         popup_visual.setAttribute("height", "0.4");
@@ -73,11 +72,9 @@ function create_popup(id, position, gallery) {
     popup_visual.setAttribute("info-window", " window_id:" + id);
     popup_visual.setAttribute("position", position);
     
-    
-    // try to get id number out of text
-    if (!gallery)
+    if (!gallery && without_number)
         popup_visual.setAttribute("src", "../../control_graphic/info_logo.png"); 
-    else if (gallery_without_number)
+    else if  (without_number)
         popup_visual.setAttribute("src", "../../control_graphic/gallery_logo.png");
     ascene.appendChild(popup_visual);
 }
@@ -239,4 +236,19 @@ function enlarge() {
             icon[i].src =  "../../control_graphic/minimize.png";
         }
     }
+}
+
+/**
+ * Makes roman number out of integer. I am using it for counting descriptions
+ * @param {*} num 
+ */
+function romanize(num) {
+    var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1}, roman = '', i;
+    for ( i in lookup ) {
+        while ( num >= lookup[i] ) {
+            roman += i;
+            num -= lookup[i];
+        }
+    }
+    return roman + ".";
 }
