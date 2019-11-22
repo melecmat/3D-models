@@ -1,0 +1,1 @@
+meshlabserver -i "C:\Users\matou\3D Objects\sobotin\RC_Sobotin_woGPS_Model_3.obj" -o "C:\Users\matou\3D Objects\sobotin\sobotin_simplified01.obj" -s "C:\Users\matou\Documents\GitHub\3D-models\bash\meshlab_simplification.mlx"
