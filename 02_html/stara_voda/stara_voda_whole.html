@@ -15,6 +15,7 @@
       <script src="../../04_javascript/control.js"></script>
       <script src="../../04_javascript/gallery_control.js"></script>
       <script src="../../04_javascript/control-panel.js"></script>
+      <script src="../../04_javascript/popup_control.js"></script>
       <link rel="stylesheet" type="text/css" href="../../css/main.css">
       <link rel="stylesheet" type="text/css" href="../../css/loading.css">
       <link rel="stylesheet" type="text/css" href="../../css/gallery.css">
@@ -24,7 +25,9 @@
         <div class="popup" id="gall1">
           <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Andělíčci</div>
           <div class="popup_body">
-            <div class="gallery_wrapper" id="gal_wrappergall1"><img class="gal_left_click" id="glcgall1" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall1" src="../../control_graphic/right.png"></div>
+            <div class="gallery_wrapper" id="gal_wrappergall1"><img class="gal_left_click" id="glcgall1" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall1" src="../../control_graphic/right.png">
+              <div class="gall_num" id="g_numgall1"><span class="current_img"></span><span class="total"></span></div>
+            </div>
             <script>
               // ajax
               document.addEventListener("DOMContentLoaded", function() {
@@ -41,7 +44,9 @@
         <div class="popup" id="gall2">
           <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Malba</div>
           <div class="popup_body">
-            <div class="gallery_wrapper" id="gal_wrappergall2"><img class="gal_left_click" id="glcgall2" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall2" src="../../control_graphic/right.png"></div>
+            <div class="gallery_wrapper" id="gal_wrappergall2"><img class="gal_left_click" id="glcgall2" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall2" src="../../control_graphic/right.png">
+              <div class="gall_num" id="g_numgall2"><span class="current_img"></span><span class="total"></span></div>
+            </div>
             <script>
               // ajax
               document.addEventListener("DOMContentLoaded", function() {
@@ -58,7 +63,9 @@
         <div class="popup" id="gall4">
           <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Sochy nad Afrikou</div>
           <div class="popup_body">
-            <div class="gallery_wrapper" id="gal_wrappergall4"><img class="gal_left_click" id="glcgall4" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall4" src="../../control_graphic/right.png"></div>
+            <div class="gallery_wrapper" id="gal_wrappergall4"><img class="gal_left_click" id="glcgall4" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall4" src="../../control_graphic/right.png">
+              <div class="gall_num" id="g_numgall4"><span class="current_img"></span><span class="total"></span></div>
+            </div>
             <script>
               // ajax
               document.addEventListener("DOMContentLoaded", function() {
@@ -75,7 +82,9 @@
         <div class="popup" id="gall3">
           <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span><img class="enlarge_icon" src="../../control_graphic/maximize.png">Andělíčci nad Asií</div>
           <div class="popup_body">
-            <div class="gallery_wrapper" id="gal_wrappergall3"><img class="gal_left_click" id="glcgall3" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall3" src="../../control_graphic/right.png"></div>
+            <div class="gallery_wrapper" id="gal_wrappergall3"><img class="gal_left_click" id="glcgall3" src="../../control_graphic/back_icon.png"><img class="gal_right_click" id="grcgall3" src="../../control_graphic/right.png">
+              <div class="gall_num" id="g_numgall3"><span class="current_img"></span><span class="total"></span></div>
+            </div>
             <script>
               // ajax
               document.addEventListener("DOMContentLoaded", function() {
@@ -213,6 +222,10 @@
             <label class="switch" id="switch_gyro">
               <input type="checkbox"><span class="slider round"></span>
             </label>
+          </div>
+          <div class="item" id="speed">Rychlost
+            <input class="speed_slider" type="range" value="40" min="5" max="130" step="1" oninput="change_acceleration(this)">
+            <div id="speed_val">40</div>
           </div>
         </div>
         <a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable" gltf-model="dracoDecoderPath: ../../draco/;" background="color: black" joystick>

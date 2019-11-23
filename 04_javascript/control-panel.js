@@ -54,6 +54,12 @@ function switch_gyroscope() {
  * For changing the velocity of camera.
  * Should be listening to change of speed slider
  */
-function change_velocity() {
-
+function change_acceleration(input) {
+    var acceleration = input.value;
+    document.getElementById("speed_val").innerHTML = acceleration;
+    var camera = document.getElementById("camera");
+    //var acceleration = camera.getAttribute("wasd-controls");
+    //acceleration = parseInt(acceleration.match(/\d+/)[0] );
+    //acceleration += delta;
+    camera.setAttribute("wasd-controls", " fly:true; acceleration:" + acceleration);
 }

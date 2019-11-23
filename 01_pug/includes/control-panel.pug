@@ -10,7 +10,7 @@ div(id="control_panel")
             label(class="switch" id="switch_gyro")
                 input(type="checkbox")
                 span(class="slider round")
-        //- TODO 
-            div(class="item" id="speed")
-                |Rychlost
-                   
+        div(class="item" id="speed")
+            |Rychlost
+            input(type="range" class="speed_slider" value="40" min="5" max="130" step="1" oninput="change_acceleration(this)")
+            div(id="speed_val") 40
