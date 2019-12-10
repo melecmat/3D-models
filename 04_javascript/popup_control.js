@@ -13,7 +13,8 @@ function create_popup(id, position, gallery) {
         without_number = true;
     } else {
         var popup_visual = document.createElement("a-text");
-        popup_no = gallery ? popup_no + "." : romanize(popup_no); // let descriptions have roman numbers
+        //popup_no = gallery ? popup_no + "." : romanize(popup_no); // let descriptions have roman numbers
+        popup_no = popup_no + ".";
         popup_visual.setAttribute("value", popup_no);
         popup_visual.setAttribute("width", "6");
         popup_visual.setAttribute("align", "center");
