@@ -92,7 +92,12 @@ AFRAME.registerComponent('big_model', {
     init: function() {
        this.el.addEventListener('model-loaded', e => {
            document.querySelector("#loading_screen").remove();
+           console.log("Should see model");
        });
+       this.el.addEventListener('model-error', e => {
+        document.querySelector("#loading_screen").remove();
+        console.log("Error in loading model");
+        });
     }
  });
 
