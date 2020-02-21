@@ -101,6 +101,7 @@ AFRAME.registerComponent('big_model', {
     }
  });
 
+// not being used
 class Position {
 
     constructor(position) {

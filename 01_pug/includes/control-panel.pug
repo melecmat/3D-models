@@ -14,3 +14,30 @@ div(id="control_panel")
             |Rychlost
             input(type="range" class="speed_slider" value="40" min="5" max="130" step="1" oninput="change_acceleration(this)")
             div(id="speed_val") 40
+        button(class="item" class="button" id="copy_pos" title="Zkopíruje pozici do schránky")
+            |Kopírovat pozici
+        div(class="item" id="goto")
+            |Přejít na pozici
+            input(type="text" id="user_pos")
+            button(id="goto_pos" class="button") OK
+
+        button(class="item" id="help" class="button") Nápověda
+
+div(class="popup" id="help_popup")
+    div(class="popup_heading") 
+        span(class="back_icon")
+            img(src="../../control_graphic/back_icon.png")
+        |Nápověda
+    div(class="popup_body")
+        p Vítejte ve webovém prohlížeči 3D objektů. Snad Vám tato nápověda usnadní jeho používání.
+        p
+            b Ovládání: 
+            |pomocí šipek nebo WASD a myší otáčení pohledu. Na dotykovém zařízení joystickem.
+        p 
+            |Pokud byste zabloudili, tlačítkem <b>domečku</b> se můžete navrátit zpět na <b>počáteční pozici.</b>
+        p
+            |V bočním panelu, kde se nachází tato nápověda, najdete další užitečné funkce. <br>Můžete <b>vypnout zobrazování 
+            |anotací,</b> pokud si chcete nerušeně prohlédnout model. Také se zde nachází možnost nastavení rychlosti pohybu.
+        p
+            |Dvojicí tlačítek <b>Kopírovat pozici</b> a <b>Přejít na pozici</b> si můžete uschovat svoji aktuální polohu a následně se na 
+            |ni kdykoliv vrátit. <br>Tlačítko <b>Kopírovat pozici</b> ji zkopíruje do schránky.

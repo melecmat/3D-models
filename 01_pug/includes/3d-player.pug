@@ -44,9 +44,8 @@ mixin 3d-player(src, heading="3D model", orbit_controls=false, camera_position="
                     document.getElementById("joystick").style.display = "none" // remove joystick
                 });
         else
-            a-entity(id="camera" camera position=camera_position touch-controls="gyroEnabled:false" wasd-controls=" fly:true; acceleration:40")
+            a-entity(id="camera_rig")
+                a-entity(id="camera" camera position=camera_position touch-controls="gyroEnabled:false" wasd-controls=" fly:true; acceleration:40")
             //- custom lighting for viewing inside of models
             a-entity(light="type: point; intensity: 1; distance: 100; decay: 2" position="0 0 0")
             a-entity(light="type: ambient; color: #CCC")
-
-    script(src="../../04_javascript/icon.js")

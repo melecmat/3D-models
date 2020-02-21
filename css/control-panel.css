@@ -57,7 +57,8 @@ div#change_visibility {
 .item{
     width: 90%;
     padding-top:0.5em;
-    padding-bottom:0.5em
+    padding-bottom:0.5em;
+    font-size: 1em;
 }
 
 
@@ -161,6 +162,32 @@ div#change_visibility {
     border-radius: 50%;
     background: #2196F3;
     cursor: pointer;
+  }
+
+  .button {
+    background-color: white;
+    color: black;
+    border: 2px solid #2196F3;
+    transition-duration: 0.4s;
+    border-radius: 34px;
+    
+  }
+  
+  .button:hover {
+    background-color: #2196F3;
+    color: white;
+  }
+
+  #user_pos {
+    border-radius: 3px;
+    width: 95%;
+  }
+
+  #help {
+    width: 8em;
+    position: absolute;
+    bottom: 2em;
+    left: 12%;
   }
 
 
