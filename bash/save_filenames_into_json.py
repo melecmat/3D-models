@@ -2,9 +2,11 @@ import os
 import json
 
 def do_whole_project():
-    projects = os.listdir("02_html")
+    projects = os.listdir("player")
     for project in projects:
-        gallery_path = os.path.join("02_html", project, "galleries")
+        if os.path.isfile(project):
+            continue
+        gallery_path = os.path.join("player", project, "galleries")
         if os.path.exists(gallery_path):
             index_files_in_dir(gallery_path)
 

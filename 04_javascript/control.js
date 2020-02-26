@@ -1,3 +1,13 @@
+document.addEventListener("template_done", function() {
+    // HOME button functionality
+    var camera = document.getElementById("camera");
+    var homeButton = document.getElementById("home_button");
+    if (homeButton != null) {
+        homeButton.addEventListener("click", function() {
+            camera.setAttribute("position", "0 0 0");
+        });
+    }
+
 /**
  * My first component, it changes the sky
  */
@@ -75,11 +85,13 @@ AFRAME.registerComponent ('info-window', {
                 previous[0].classList.remove("visible");
             var window = document.getElementById(window_id);
             window.classList.add("visible");
+            console.log("Should see window " + window_id);
 
             // find out if there is gallery
-            var window_child = window.children[1].children[0];
-            if (window_child.classList.contains("gallery_wrapper")) {
-                init_gallery(window_child); // function in gallery control
+            var galleries = window.getElementsByClassName("popup_body")[0].getElementsByClassName("gallery_wrapper");
+            for (const gallery of galleries) {
+                console.log("contains gallery");
+                init_gallery(gallery); // function in gallery control
             }
         });
     }
@@ -101,30 +113,7 @@ AFRAME.registerComponent('big_model', {
     }
  });
 
-// not being used
-class Position {
 
-    constructor(position) {
-        var regex = /[+-]?\d+(\.\d+)?/g;
-        var floats = position.match(regex).map(function(v) { return parseFloat(v); });
-        this.x = floats[0];
-        this.y = floats[1];
-        this.z = floats[2];
-    }
-
-    back_to_string() {
-        return this.x.toString() + this.y.toString() + this.z.toString(); 
-    }
-
-    logout() {
-        console.log(this.back_to_string());
-    }
-}
-
-function degToRad(degrees)
-{
-  return degrees * (Math.PI/180);
-}
 
 /**
  * Autoscaling component - centers gltf model and scales it.
@@ -166,3 +155,10 @@ AFRAME.registerComponent('autoscale', {
       mesh.position.sub(offset);
     }
   });
+
+});
+
+function degToRad(degrees)
+{
+  return degrees * (Math.PI/180);
+}

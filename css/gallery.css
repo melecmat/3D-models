@@ -1,18 +1,17 @@
 .gal_left_click, .gal_right_click {
     cursor:pointer;
-    margin: 0.5em;
 }
 
 .gal_left_click {
     position: absolute;
     left: 0%;
-    top: 11.5em;
+    top: 0%;
 }
 
 .gal_right_click {
     position: absolute;
     right: 0%;
-    top: 11.5em;
+    top: 0%;
 }
 
 .gal_left_click:hover, .gal_right_click:hover {
@@ -35,12 +34,15 @@
 }
 
 .gallery_wrapper {
+    position: relative;
     padding-top: 1em;
 }
 
 .enlarge_icon {
     position:absolute;
-    right:0px;
+    right:0%;
+    left:0%;
+    margin:auto;
     top:0px;
     padding:0.1em;
     width:0.7em;
@@ -75,9 +77,14 @@
 }
 
 .gall_num {
-    width: 10%;
+    width: 30%;
     margin: 0 auto;
     font-size: 0.83em;
+    text-align: center;
+}
+
+.current_img, .total {
+    display: inline;
 }
 
 @media only screen and (pointer:coarse) {

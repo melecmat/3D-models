@@ -38,13 +38,15 @@ function create_popup(id, position, gallery) {
     else if  (without_number)
         popup_visual.setAttribute("src", "../../control_graphic/gallery_logo.png");
     ascene.appendChild(popup_visual);
+    console.log("popup added");
 }
 
 /**
  * For minimizing windows
  */
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("template_done", function() {
     var back_icon = document.getElementsByClassName('back_icon');
+    console.log(back_icon.length);
     for (var i = 0; i < back_icon.length; i++) {
         back_icon[i].addEventListener('click', function() {
             var popup = document.getElementsByClassName('popup');

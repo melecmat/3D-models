@@ -1,5 +1,5 @@
 // event listeners for reading values of the control panel
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("template_done", function () {
     document.getElementById("control_trigger").addEventListener("click", trigger_menu);
     document.getElementById("change_visibility").addEventListener("change", change_popup_visibility);
     document.getElementById("switch_gyro").addEventListener("change", switch_gyroscope);

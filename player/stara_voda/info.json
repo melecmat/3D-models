@@ -1,0 +1,127 @@
+{
+    "title": "Stará voda",
+    "player": {
+        "orbit_control": false,
+        "model_src": "stara_voda/0_2uvs_textured_diff.glb",
+        "camera_position": "0 0 0",
+        "model_scale": "30",
+        "model_rotation": "-90, 0, 0",
+        "backgound_color": "black"
+    },
+    "annotations": [
+        {
+            "heading": "Hlavní oltář sv. Anny a sv. Jakuba",
+            "text": "<p><b>autor oltářního obrazu:</b> Luigi Garzi</p> <p><b>datace:</b> říjen 1686 - únor 1687</p> <p>Biskup Karel II. Lichtenstein-Castelcorn jako ctižádostivý donátor zadal svému římskému agentovi Giovannimu Petignierovi, aby zajistil, že obraz hlavního oltáře starovodského kostela zhotoví nejlepší z tamějších malířů. Zakázku nakonec přijal ředitel římské Akademie sv. Lukáše Luigi Garzi, jehož práce máme dochovány například v kapli Cybo chrámu Santa Maria del Popolo v Římě. V centru obrazu sedí na oblaku Panna Maria objímající Ježíška, obklopují je sv. Anna s Jáchymem, sv. Josef, sv. Karel Boromejský, jmenovec biskupův, a zemští patroni sv. Václav či sv. Cyril s Metodějem. Prostředníkem mezi Kristem a skupinou poutníků s dolní části obrazu je sv. Jakub Větší oděný do zeleného pláště. V pozadí zřejmě Garzi zpodobil horu Conero a před ní město italské město Ancona, odkud byly do Staré Vody přeneseny ostatky sv. Anny.</p> <p>Obraz byl v půli 19. století nahrazen kopií od Josefa Kristena  Moravské Berouna, která se dochovala v kroměřížské kostele Blahoslavené Panny Marie. </p> <p>Oltářní architektura znikla během výstavby chrámu Giovannim Pietrem Tencalou v letech 1682-1688.</p>",
+            "position": "5.916 -4.428 7.788",
+            "id": "uniqueID1"
+        },
+        {
+            "heading" : "Vítězný Kristus se sv. Annou",
+            "text" : "Nástropní malba.",
+            "position" : "3.119 0.780 5.479 ",
+            "id" : "uniqueID2"
+        },
+        {
+            "heading" : "Štuková výzdoba v úrovni korunní římsy",
+            "text" : "",
+            "position" : "2.774 0.696 2.922",
+            "id" : "uniqueID3"
+        },
+        {
+            "heading" : "Nástropní malba Apoteóza sv. Anny",
+            "text" : "<p><b>autor:</b> Giovanni Carlone (?)</p> <p><b>datace:</b> 1683-1688</p> Ústředním námětem výzdoby chrámové lodi se stala rozsáhlá dramatická malba otevřeného nebe se světci, anděly a Bohem Otcem jako vládcem všehomíra. Před něj předstupuje ženská postava doprovázená dvojicí mužů, ovšem tito nejsou konkrétně atribuováni. Výjev nápadně připomíná scénu Nanebevzetí Panny Marie, čemuž však neodpovídají ikonografické detaily, takto dominantně umístěná malba by navíc tematicky neodpovídala patrociniu kostela. Pravděpodobně se tedy jedná o neobvyklý námět Apoteózy sv. Anny spolu se sv. Jáchymem a sv. Jakubem Větším. Identifikaci námětu ztěžuje špatný technický stav malby způsobený dlouhodobým zatékáním střechou a střelbou sovětských vojáků.",
+            "position" : "1.072 5.775 -1.926 ",
+            "id" : "uniqueID4" 
+        },
+        {
+            "heading" : "Sv. Jan Evangelista",
+            "text" : "<p><b>autor:</b> Georg Fröml</p> <p><b>datace:</b> 1796 </p> <p>Z malby se téměř nic nedochovalo. Sedící postava sv. Jana byla zobrazena při psaní, přičemž levou rukou si světec podpíral hlavu. Vedle něj stál jako jeho symbol orel, zde snad s kalamářem v zobáku. Nad hlavou evangelisty se vznášela dvojice andílčích hlaviče</p>",
+            "position" : "0.374 -3.995 -6.199",
+            "id" : "uniqueID5"
+        },
+        {
+            "heading" : "Sv. Matouš",
+            "text" : "<p> <b>autor:</b> Georg Fröml </p> <p> <b> datace:</b> 1796 </p>",
+            "position" : "4.744 -4.309 0.657",
+            "id" : "uniqueID6"
+        },
+        {
+            "heading" : "Sv. Marek",
+            "text" : "<p> <b>autor:</b> Georg Fröml </p> <p> <b> datace:</b> 1796 </p>",
+            "position" : "-1.720 -4.208 4.713",
+            "id" : "uniqueID7"
+        },
+        {
+            "heading" : "Sv. Lukáš",
+            "text" : "<p> <b>autor:</b> Georg Fröml </p> <p> <b> datace:</b> 1796 </p>",
+            "position" : "-6.084 -3.724 -2.306",
+            "id" : "uniqueID8"
+        },
+        {
+            "heading" : "Alegorie Ameriky",
+            "text" : "",
+            "position" : "1.040 -0.332 -4.868",
+            "id" : "uniqueID9"
+        },
+        {
+            "heading" : "Alegorie Evropy",
+            "text" : "",
+            "position" : "3.769 -0.318 -0.579",
+            "id" : "uniqueID10"
+        },
+        {
+            "heading" : "Alegorie Asie",
+            "text" : "",
+            "position" : "-2.393 -0.295 3.266",
+            "id" : "uniqueID11"
+        },
+        {
+            "heading" : "Alegorie Afriky",
+            "text" : "",
+            "position" : "-5.153 -0.318 -1.177",
+            "id" : "uniqueID12"
+        },
+        {
+            "heading" : "Útěk do Egypta",
+            "text" : "<p><b>autor:</b> Josef Kristen</p> <p><b>datace:</b> 1873</p> V čelech výsečí neckové klenby, jež završuje chrámovou loď, je zpodobena čtveřice výjevů ze života Panny Marie. Zde, nad alegorií Ameriky, se nachází námět Útěk do Egypta.",
+            "position" : "1.084 3.034 -4.899",
+            "id" : "uniqueID13"
+        },
+        {
+            "heading" : "Dvanáctiletý Kristus v chrámu",
+            "text" : "<p><b>autor:</b> Josef Kristen</p> <p><b>datace:</b> 1873</p> V čelech výsečí neckové klenby, jež završuje chrámovou loď, je zpodobena čtveřice výjevů ze života Panny Marie. Zde, nad alegorií Ameriky, se nacházel námět Dvanáctiletý Kristus v chrámu.",      
+            "position" : "3.714 3.181 -0.701",
+            "id" : "uniqueID14"
+        },
+        {
+            "heading" : "Zvěstování Panny Marie",
+            "text" : "<p><b>autor:</b> Josef Kristen</p> <p><b>datace:</b> 1873</p> V čelech výsečí neckové klenby, jež završuje chrámovou loď, je zpodobena čtveřice výjevů ze života Panny Marie. Zde, nad alegorií Ameriky, se nachází námět Zvěstování Panny Marie.",      
+            "position" : "-2.427 2.994 3.037",
+            "id" : "uniqueID15"
+        },
+        {
+            "heading" : "Navštívení Panny Marie",
+            "text" : "<p> <b> autor:</b> Josef Kristen </p> <p><b>datace:</b> 1873<p> V čelech výsečí neckové klenby, jež završuje chrámovou loď, je zpodobena čtveřice výjevů ze života Panny Marie. Zde, nad alegorií Afriky, se nachází námět Navštívení Panny Marie, která spolu se sv. Josefem přichází do domu své příbuzné sv. Alžběty. Objetí dvojice žen je zobrazeno ve středu výjevu, vpravo za Bohorodičkou stojí sv. Josef, zatímco z postavy sv. Zachariáše, Alžbětina manžela, se zachovala pouze paže. Původně byl vypodobněn vlevo v domovních dveřích, jak se vítá s Kristovým pěstounem Josefem.<br> Celý čtyřdílný mariánský cyklus vytvořil v roce 1873 malíř Josef Kristen z Moravského Berouna, přičemž vedle Navštívení  celek sestává z tématů Zvěstování Panny Marie, Útěku do Egypta a Uvedení Ježíše do chrámu",               
+            "position" : "-4.397 2.116 -1.636",
+            "id" : "uniqueID16"
+        },
+        {
+            "heading" : "Obětování Krista v chrámu",
+            "text" : "Nástropní malba. Zničena vlivem zatékání střechou.",
+            "position" : "4.838 0.236 -4.268",
+            "id" : "uniqueID17"
+        },
+        {
+            "heading" : "Narození Páně",
+            "text" : "Nástropní malba.",
+            "position" : "-6.166 0.329 2.523",
+            "id" : "uniqueID18"
+        }
+    ],
+    "galleries": [
+        {
+            "json_gallery_src": "../02_html/stara_voda/galleries/afrika_vlevo_andelicci",
+            "parent_id": "uniqueID1"
+        }
+    ]
+}

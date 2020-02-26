@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+      <title></title>
+      <meta charset="UTF-8">
+      <!-- AFRAME SCRIPTS -->
+      <script src="../javascript_aframe/aframe.min.js"></script>
+      <script src="../javascript_aframe/aframe-event-set-component.min.js"></script>
+      <script src="../javascript_aframe/aframe-look-at-component.min.js"></script>
+      <script src="../04_javascript/a-touch-controls.js"></script>
+      <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
+      
+      <!--APP LOGIC-->
+      <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
+      <script src="../compiled_templates.js"></script>
+      <script src="../04_javascript/control.js"></script>
+      <script src="../04_javascript/joystick.js"></script>
+      <script src="../04_javascript/gallery_control.js"></script>
+      <script src="../04_javascript/control-panel.js"></script>
+      <script src="../04_javascript/popup_control.js"></script>
+      
+      <link rel="stylesheet" type="text/css" href="../css/main.css">
+      <link rel="stylesheet" type="text/css" href="../css/loading.css">
+      <link rel="stylesheet" type="text/css" href="../css/gallery.css">
+      <link rel="stylesheet" type="text/css" href="../css/control-panel.css">
+    </head>
+  <body>
+
+        <div id="loading_screen">
+          <div id="heading"></div>
+          <div id="container">
+            <div class="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+        <script src="../04_javascript/handlebar.js"></script>
+            
+          <img src="../control_graphic/right.png" id="control_trigger">
+        <div id="control_panel">
+          <h3>Nastavení</h3>
+          <div class="item">Anotace
+            <label class="switch" id="change_visibility">
+              <input type="checkbox" checked><span class="slider round"></span>
+            </label>
+          </div>
+          <div class="item" id="gyroscope">Gyroskop
+            <label class="switch" id="switch_gyro">
+              <input type="checkbox"><span class="slider round"></span>
+            </label>
+          </div>
+          <div class="item" id="speed">Rychlost
+            <input class="speed_slider" type="range" value="40" min="5" max="130" step="1" oninput="change_acceleration(this)">
+            <div id="speed_val">40</div>
+          </div>
+          <button class="item button" id="copy_pos" title="Zkopíruje pozici do schránky">Kopírovat pozici</button>
+          <div class="item" id="goto">Přejít na pozici
+            <input type="text" id="user_pos">
+            <button class="button" id="goto_pos">OK</button>
+          </div>
+          <button class="item button" id="help">Nápověda</button>
+        </div>
+        <div class="popup" id="help_popup">
+          <div class="popup_heading"> <span class="back_icon"><img src="../control_graphic/back_icon.png"></span>Nápověda</div>
+          <div class="popup_body">
+            <p>Vítejte ve webovém prohlížeči 3D objektů. Snad Vám tato nápověda usnadní jeho používání.</p>
+            <p><b>Ovládání: </b>pomocí šipek nebo WASD a myší otáčení pohledu. Na dotykovém zařízení joystickem.</p>
+            <p>
+               Pokud byste zabloudili, tlačítkem <b>domečku</b> se můžete navrátit zpět na <b>počáteční pozici.</b></p>
+            <p>
+              V bočním panelu, kde se nachází tato nápověda, najdete další užitečné funkce. <br>Můžete <b>vypnout zobrazování 
+              anotací,</b> pokud si chcete nerušeně prohlédnout model. Také se zde nachází možnost nastavení rychlosti pohybu.
+            </p>
+            <p>
+              Dvojicí tlačítek <b>Kopírovat pozici</b> a <b>Přejít na pozici</b> si můžete uschovat svoji aktuální polohu a následně se na 
+              ni kdykoliv vrátit. <br>Tlačítko <b>Kopírovat pozici</b> ji zkopíruje do schránky.
+            </p>
+          </div>
+        </div>
+
+  </body>
+</html>

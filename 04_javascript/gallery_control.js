@@ -1,5 +1,5 @@
 /* MAIN */
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("template_done", function () {
 
     // listen for click of gallery button
     // to the right click
@@ -75,6 +75,7 @@ function create_gallery(gal_id, json_gallery_src) {
 function init_gallery(gallery_wrapper) {
     // WHAT I CALL IMG ARE ACTUALLY WRAPPERS OF IMG
     // load first two images
+    console.log("gallery init");
     var img_wrapper1 = document.getElementById(gallery_wrapper.id + "000");
     var img_wrapper2 = document.getElementById(gallery_wrapper.id + "001");
     

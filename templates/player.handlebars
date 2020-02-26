@@ -1,0 +1,23 @@
+<a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable" gltf-model="dracoDecoderPath: ../draco/;" background=" color: {{background_color}}" joystick>
+    {{#if orbit_control}}
+        
+        <a-entity id="camera" camera=" active: true" look-controls orbit-controls=" target: 0 0 0; minDistance: 1; maxDistance: 50; initialPosition: {{camera_position}}; maxPolarAngle: 180"></a-entity>
+          
+    {{else}}
+        <a-entity id="camera_rig">
+            <a-entity id="camera" camera position="{{camera_position}}" default-position="{{camera_position}}" touch-controls="gyroEnabled:false" wasd-controls=" fly:true; acceleration:40"></a-entity>
+        </a-entity>
+    {{/if}}
+
+    <a-assets>
+        <a-asset-item id="main_model" src="{{model_src}}"></a-asset-item>
+    </a-assets>
+    <a-entity gltf-model="#main_model" id="gltf_model" big_model autoscale=" scale:{{model_scale}}; rotation: {{model_rotation}}"></a-entity>
+    <a-entity light="type: point; intensity: 1; distance: 100; decay: 2" position="0 0 0"></a-entity>
+    <a-entity light="type: ambient; color: #CCC"></a-entity>
+</a-scene>
+
+{{#if orbit_control}}
+{{else}}
+<img id="home_button" title="Return back to origin." src="../../control_graphic/home.png"></img>
+{{/if}}

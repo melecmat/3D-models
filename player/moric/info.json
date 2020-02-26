@@ -1,0 +1,13 @@
+{
+    "title" : "Kostel Sv. Mořice",
+    "player": {
+        "orbit_control": false,
+        "model_src": "moric/sv_moric.glb",
+        "camera_position": "-5.647 -0.063 5.825",
+        "model_scale": "30",
+        "model_rotation": "-90, 0, 0",
+        "backgound_color": "black"
+    },
+    "annotations" : [],
+    "galleries" : []
+}
