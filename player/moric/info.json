@@ -8,6 +8,13 @@
         "model_rotation": "-90, 0, 0",
         "backgound_color": "black"
     },
-    "annotations" : [],
+    "annotations" : [
+        {
+            "heading": "Kostel svatého Mořice",
+            "text": "Kostel svatého Mořice je <b>gotický</b> proboštský farní kostel v <b>Olomouci</b>. Patří do farnosti svatého Mořice. Farní kostel svatého Mořice vždy plnil roli hlavního městského chrámu, zatímco katedrála svatého Václava byla metropolitním biskupským chrámem.",
+            "position": "-6.087 -0.063 1.649",
+            "id": "uniqueID1"
+        }
+    ],
     "galleries" : []
 }
