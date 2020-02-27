@@ -29,7 +29,7 @@ document.addEventListener("template_done", function () {
  * @param {*} gal_id
  * @param {*} json_gallery_src 
  */
-function create_gallery(gal_id, json_gallery_src) {
+function create_gallery(gal_id, json_gallery_src, has_full_size_version) {
     var oReq = new XMLHttpRequest();
     oReq.onload = function () { // successfully gotten the images
         var images = JSON.parse(this.responseText);
@@ -47,12 +47,25 @@ function create_gallery(gal_id, json_gallery_src) {
             wrap_div.setAttribute("class", "image_wrapper");
             // make image with lazy loading stuff
             var image = document.createElement("img");
-            image.setAttribute("lazy-src", json_gallery_src + "/" +src);
+            var lazy_src = json_gallery_src + "/" +src;
+            image.setAttribute("lazy-src", lazy_src);
+
+            //for image enlarging upon click
+            // find out if full sized
+            var a = document.createElement("a");
+            a.setAttribute("target", "_blank")
+            if (has_full_size_version) {
+                a.setAttribute("href", json_gallery_src + "/full_" +src);
+            } else {
+                a.setAttribute("href", lazy_src);
+            }
+
             // make description
             var description = document.createElement("p");
             description.innerHTML = images[src];
             // append wrapping div to main wrapping div, append image and description to it
-            wrap_div.appendChild(image);
+            a.appendChild(image);
+            wrap_div.appendChild(a);
             wrap_div.appendChild(description);
             main_gal_div.appendChild(wrap_div);
             // lazy loading itself handled in right click function
@@ -115,8 +128,8 @@ function track_keys(event) {
  * @param {*} img_wrapper 
  */
 function set_src(img_wrapper) {
-    var lazy_src = img_wrapper.children[0].getAttribute("lazy-src");
-    img_wrapper.children[0].setAttribute("src", lazy_src);
+    var lazy_src = img_wrapper.children[0].children[0].getAttribute("lazy-src");
+    img_wrapper.children[0].children[0].setAttribute("src", lazy_src);
 }
 
 /**

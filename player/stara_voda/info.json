@@ -121,7 +121,8 @@
     "galleries": [
         {
             "json_gallery_src": "../02_html/stara_voda/galleries/afrika_vlevo_andelicci",
-            "parent_id": "uniqueID1"
+            "parent_id": "uniqueID1",
+            "has_full_size_version" : false
         }
     ]
 }

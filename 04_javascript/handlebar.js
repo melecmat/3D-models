@@ -29,7 +29,7 @@ oReq.onload = function () {
     // gallery
     for (const gallery of json_obj.galleries) {
         put_template_to_html(gallery, "#"+gallery.parent_id + " .popup_body", Handlebars.templates.gallery);
-        create_gallery(gallery.parent_id, gallery.json_gallery_src);
+        create_gallery(gallery.parent_id, gallery.json_gallery_src, gallery.has_full_size_version);
     }
     //var camera = document.getElementById("camera");
     //camera.setAttribute('camera', 'active', true);
