@@ -1,0 +1,13 @@
+{
+    "title": "Mauzoleum rodiny Kleinů v Sobotíně",
+    "player": {
+        "orbit_control": true,
+        "model_src": "smaller_sobotin/sobotin_1_3.glb",
+        "camera_position": "0 -2 10",
+        "model_scale": "30",
+        "model_rotation": "-90, 0, 0",
+        "backgound_color": "black"
+    },
+    "annotations": [],
+    "galleries": []
+}

@@ -29,10 +29,14 @@ for i in tmp/*.png; do
     convert tmp/$name.png -quality 85 tmp/$name.jpg
     sed -i -e 's/'"$name"'.png/'"$name"'.jpg/g' tmp/tmp.gltf
 done
+for i in tmp/*.jpg tmp/*.jpeg; do
+    [ -f "$i" ] || break # when there is no jpeg
+    jpegoptim $i
+    #sed -i -e 's/'"$name"'.jpeg/'"$name"'.jpg/g' tmp/tmp.gltf
+done
     # get basename
     #NAME=tmp
     # convert png texture to jpg
-    echo "Converting png to jpg"
     #png=$(find . -maxdepth 1 -name "*png" -print)
     #png=${png:2}
     #echo $png
