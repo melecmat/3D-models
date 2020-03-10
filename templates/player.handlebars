@@ -10,14 +10,49 @@
     {{/if}}
 
     <a-assets>
+        {{#if_equals model_src ""}}
+        {{else}}
         <a-asset-item id="main_model" src="{{model_src}}"></a-asset-item>
+        {{/if_equals}}
     </a-assets>
+    {{#if_equals model_src ""}}
+    {{else}}
     <a-entity gltf-model="#main_model" id="gltf_model" big_model autoscale=" scale:{{model_scale}}; rotation: {{model_rotation}}"></a-entity>
+    {{/if_equals}}
     <a-entity light="type: point; intensity: 1; distance: 100; decay: 2" position="0 0 0"></a-entity>
     <a-entity light="type: ambient; color: #CCC"></a-entity>
 </a-scene>
 
+<div class="popup" id="help_popup">
+<div class="popup_heading"> <span class="back_icon"><img src="../control_graphic/back_icon.png"></span>Nápověda</div>
+<div class="popup_body">
 {{#if orbit_control}}
+<p>Vítejte ve webovém prohlížeči 3D objektů. Snad Vám tato nápověda usnadní jeho používání.</p>
+<p><b>Ovládání: </b>v této variantě pouze otáčení pohledu myší.</p>
+<p>
+    V bočním panelu, kde se nachází tato nápověda, najdete také tlačítko anotace, kterým můžete vypnout zobrazování anotací,
+    pokud si chcete nerušeně prohlížet model.
+</p>
+</div>
+</div>
+
 {{else}}
+<p>Vítejte ve webovém prohlížeči 3D objektů. Snad Vám tato nápověda usnadní jeho používání.</p>
+<p><b>Ovládání: </b>pomocí šipek nebo WASD a myší otáčení pohledu. Na dotykovém zařízení joystickem.</p>
+<p>
+    Pokud byste zabloudili, tlačítkem <b>domečku</b> se můžete navrátit zpět na <b>počáteční pozici.</b></p>
+<p>
+    V bočním panelu, kde se nachází tato nápověda, najdete další užitečné funkce. <br>Můžete <b>vypnout zobrazování 
+    anotací,</b> pokud si chcete nerušeně prohlédnout model. Také se zde nachází možnost nastavení rychlosti pohybu.
+</p>
+<p>
+    Dvojicí tlačítek <b>Kopírovat pozici</b> a <b>Přejít na pozici</b> si můžete uschovat svoji aktuální polohu a následně se na 
+    ni kdykoliv vrátit. <br>Tlačítko <b>Kopírovat pozici</b> ji zkopíruje do schránky.
+</p>
+</div>
+</div>
+
 <img id="home_button" title="Return back to origin." src="../../control_graphic/home.png"></img>
+
+
 {{/if}}

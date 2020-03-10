@@ -6,6 +6,7 @@
         "__comment_on_qualities" : "qualities should be in order: best -> worst",
         "qualities": [
             {
+                "model_sr" : "",
                 "file_size" : "telling the size of file -- optional",
                 "short_comment" : "eg not suitable for mobile phones -- may be left blank"
             }

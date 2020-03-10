@@ -5,6 +5,14 @@ Handlebars.registerHelper("get_number", function (id) {
     return id.match(regex) + ".";
 });
 
+Handlebars.registerHelper('if_equals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("increment", function(num) {
+    return ++num;
+});
+
 // get json file
 var oReq = new XMLHttpRequest();
 oReq.onload = function () {
@@ -16,9 +24,14 @@ oReq.onload = function () {
     // orbit controls -- get rid of redundant stuff
     if (json_obj.player.orbit_control == true) {
         console.log("orbit controls: " + json_obj.player.orbit_control);
-        //document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("control_panel").classList.add("orbit_control");
-        //});
+        document.getElementById("control_panel").classList.add("orbit_control");
+        document.addEventListener("joystick-created", function() {
+            document.getElementById("joystick").classList.add("invisible");
+        });
+    }
+    // multiple model selection
+    if (json_obj.player.model_src == "") {
+        put_template_to_html(json_obj.player, "#loading_screen", Handlebars.templates.model_choice);
     }
     // 3d player
     put_template_to_html(json_obj.player, "body", Handlebars.templates.player);
