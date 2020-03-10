@@ -1,5 +1,33 @@
 {
-    "title" : "YOUR TITLE",
-    "orbit-controls" : false,
-    "model-src" : "source of model to be displayed"
+    "title": "Title of project",
+    "player": {
+        "orbit_control": "whether or not we have orbit control true/false",
+        "model_src": "path to model -- paths HAVE TO include folder in which the project is located -- if empty, qualities will be used",
+        "__comment_on_qualities" : "qualities should be in order: best -> worst",
+        "qualities": [
+            {
+                "file_size" : "telling the size of file -- optional",
+                "short_comment" : "eg not suitable for mobile phones -- may be left blank"
+            }
+        ],
+        "camera_position": "0 0 0  -- model position",
+        "model_scale": "30 -- scales the model",
+        "model_rotation": "-90, 0, 0 --- specifies model rotation (if it is upside down for example)",
+        "backgound_color": "black white ...."
+    },
+    "annotations": [
+        {
+            "heading": "",
+            "text": "",
+            "position": "",
+            "id": "uniqueID1 -- when it contains number the annotation will be numbered"
+        }
+    ],
+    "galleries": [
+        {
+            "json_gallery_src": "path from player to source of gallery description JSON file",
+            "parent_id": "uniqueID1 -- ID of a parent element -- will be appended to it",
+            "has_full_size_version" : "true/false -- if true, the full version of image will be opened in new window after clicking"
+        }
+    ]
 }

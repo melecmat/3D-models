@@ -8,6 +8,7 @@
         "model_rotation": "-90, 0, 0",
         "backgound_color": "black"
     },
-    "annotations" : [],
+    "annotations" : [
+    ],
     "galleries" : []
 }
