@@ -17,8 +17,31 @@ Handlebars.registerHelper("increment", function(num) {
 var oReq = new XMLHttpRequest();
 /** Global variable */
 var json_obj;
-oReq.onload = function () {
-    json_obj = JSON.parse(this.responseText);
+oReq.addEventListener("load", main_templating);
+oReq.onerror = function () { console.log('Fetch Error', err); };
+var addr = location.search.slice(1, location.search.length);
+if (addr == "") {
+    // load custom json
+    document.querySelector("body").innerHTML += '<form name="form_input" enctype="multipart/form-data">\
+    <input type="file" name="uploaded_json" id="file" />\
+    <button type="button" onclick="load_json()">Nahrajte upravený JSON soubor</button>\
+    </form>'
+} else {
+    var loading_style = "<style type='text/css'> #loading_screen {background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('"+ addr +"/background.jpg');background-position:center;background-size: cover;} </style>"
+    document.querySelector("body").innerHTML += loading_style;
+    oReq.open('get',  addr + "/info.json", true);
+    oReq.send();
+}
+
+
+function main_templating(e, custom_json) {
+    console.log("custom_json " + custom_json);
+    if (custom_json != undefined) {
+        json_obj = custom_json;
+    } else {
+        json_obj = JSON.parse(this.responseText);
+    }
+    
     // title
     document.querySelector("title").innerHTML = json_obj.title;
     document.getElementById("heading").innerHTML = json_obj.title;
@@ -52,7 +75,11 @@ oReq.onload = function () {
     if(json_obj.edit_mode) {
         var key_comb_pressed = false;
         put_template_to_html(json_obj, "body", Handlebars.templates.annotation_window);
+        
+        console.log("Edit mode allowed.");
         document.addEventListener("template_done", function() {
+            var save_button = '<button class="ed_button button" id="save_button" onclick="save_json()">Uložit JSON soubor</button>'
+            document.getElementById("control_panel").innerHTML += save_button;
             init_editor();
         });
         document.addEventListener ("keydown", function (zEvent) {
@@ -62,20 +89,28 @@ oReq.onload = function () {
                     key_comb_pressed = true;
                     make_edit_buttons_apear();
                 }
-            }
-        });
+            } else {}
+        }, true);
     }
 
     var done_event = new Event("template_done");
     document.dispatchEvent(done_event);
-};
-oReq.onerror = function () { console.log('Fetch Error', err); };
-var addr = location.search.slice(1, location.search.length);
-var loading_style = "<style type='text/css'> #loading_screen {background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('"+ addr +"/background.jpg');background-position:center;background-size: cover;} </style>"
-document.querySelector("body").innerHTML += loading_style;
-oReq.open('get',  addr + "/info.json", true);
-oReq.send();
+}
 
+function load_json() {
+    var file = document.getElementById('file');
+    
+    if(file.files.length) {
+        var reader = new FileReader();
+        
+        reader.onload = function(e) {
+            //document.getElementById('outputDiv').innerHTML = e.target.result;
+            main_templating(null, JSON.parse(e.target.result));
+        };
+        
+        reader.readAsText(file.files[0]);
+    }
+}
 /**
  * @param {*} data_obj 
  * @param {*} parent_selector 
@@ -88,15 +123,4 @@ function put_template_to_html(data_obj, parent_selector, compiled_template) {
         parent.innerHTML += html;
     } catch (TypeError) {console.log("Element doesnt exist.")} // to take care for missing galleries
     
-}
-
-function make_edit_buttons_apear() {
-    var edit_buttons = document.getElementsByClassName("ed_button");
-    for (let button of edit_buttons) {
-        button.classList.add("visible");
-        console.log("visible");
-        button.addEventListener("click", function () {
-            edit_annotation(button.id.slice(4)); // slice gets the ID of annotation
-        });
-    }
 }

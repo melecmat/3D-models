@@ -17,14 +17,14 @@
         "model_rotation": "-90, 0, 0 --- specifies model rotation (if it is upside down for example)",
         "backgound_color": "black white ...."
     },
-    "annotations": [
-        {
+    "annotations": {
+        "id" : {
             "heading": "",
             "text": "",
             "position": "",
             "id": "uniqueID1 -- when it contains number the annotation will be numbered"
         }
-    ],
+    },
     "galleries": [
         {
             "json_gallery_src": "path from player to source of gallery description JSON file",

@@ -80,6 +80,7 @@ AFRAME.registerComponent ('info-window', {
     init: function() {
         var window_id = this.data.window_id;
         this.el.addEventListener('click', function() {
+            console.log(window_id);
             open_popup(window_id, false);
             // find out if there is gallery
             var window = document.getElementById(window_id);

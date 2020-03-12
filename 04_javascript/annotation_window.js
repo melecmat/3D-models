@@ -1,3 +1,15 @@
+function make_edit_buttons_apear() {
+    var edit_buttons = document.getElementsByClassName("ed_button");
+    for (let button of edit_buttons) {
+        button.classList.add("visible");
+        //console.log("visible");
+        if(button.parentNode == document.getElementById("control_panel")) continue;
+        button.addEventListener("click", function () {
+            edit_annotation(button.id.slice(4)); // slice gets the ID of annotation
+        });
+    }
+}
+
 function edit_annotation(annotation_id) {
     // assemble annotation window and make it visible
     build_annotation_window(annotation_id);
@@ -89,28 +101,71 @@ function paste_html() {
     });
 }
 
-function check_if_valid(new_position) {
-    return new_position.split(" ").length == 3;
+function check_if_valid(new_position, input_number) {
+    return new_position.split(" ").length == 3 && Number.isInteger(input_number);
 }
 
 function save_changes() {
     // write changes into json_obj
     var current_annotation = document.getElementById("current_edited").innerHTML; // TODO -- SET THIS UP!!
-    var new_position = document.getElementById("position_inp").getAttribute("value");
-    if (!check_if_valid(new_position)) {
+    var new_position = document.getElementById("position_inp").value;
+    var new_number = document.getElementById("no_inp").value;
+    new_number = parseInt(new_number);
+    //console.log(current_annotation);
+    if (!check_if_valid(new_position, new_number)) {
         // write msg
         return;
     }
-    json_obj[current_annotation].heading = document.getElementById("heading_inp").getAttribute("value");
-    json_obj[current_annotation].text = copy_html();
-    json_obj[current_annotation].position = new_position;
+    // number change handling
+    var new_id = "uniqueID" + new_number;
+    if (new_id != current_annotation) {
+        if (new_id in json_obj.annotations) {
+            // SWAP
+            json_obj.annotations[current_annotation] = json_obj.annotations[new_id];
+            change_popup(current_annotation, json_obj.annotations[new_id]);
+            current_annotation = new_id; 
+        } else {
+            // just putting new number
+            delete json_obj.annotations[current_annotation];
+            var rendered_annot = document.getElementById("rendered" + current_annotation);
+            rendered_annot.setAttribute("id", "rendered"+new_id);
+            rendered_annot.setAttribute("info-window", {window_id: new_id});
+            document.getElementById(current_annotation).setAttribute("id", new_id); // TODO -- new doesnt work yet
+            
+            console.log("new id " + new_id);
+            current_annotation = new_id;
+            json_obj.annotations[new_id] = {};
+        }
+    }
+
+    json_obj.annotations[current_annotation].heading = document.getElementById("heading_inp").value;
+    json_obj.annotations[current_annotation].text = $('#editor').trumbowyg('html');
+    json_obj.annotations[current_annotation].position = new_position;
     // manipulate actual annotation
-    document.querySelector(current_annotation + " span.heading_span").innerHTML = json_obj[current_annotation].heading;
-    document.querySelector(current_annotation + " span.popup_text").innerHTML = json_obj[current_annotation].text;
-    document.getElementById("rendered" + current_annotation);
+    change_popup(current_annotation, json_obj.annotations[current_annotation]);
+    //$('#editor').trumbowyg('html', '');
+    $('#editor').trumbowyg('empty');
+    // swap IDS
+
     close_windows();
 }
 
+function change_popup(popup_id, annotation_info) {
+    document.querySelector("#" + popup_id + " span.heading_span").innerHTML = annotation_info.heading;
+    document.querySelector("#" + popup_id + " span.popup_text").innerHTML = annotation_info.text;
+    document.getElementById("rendered" + popup_id).setAttribute("position", annotation_info.position);
+}
+
 function discard_changes() {
+    if (!confirm("Opravdu chcete zahodit změny?")) return;
+    $('#editor').trumbowyg('empty');
     close_windows();
+}
+
+function save_json() {
+    var a = document.createElement("a");
+    var file = new Blob([JSON.stringify(json_obj)], {type: "text/json"});
+    a.href = URL.createObjectURL(file);
+    a.download = "info.json";
+    a.click();
 }

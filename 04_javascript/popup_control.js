@@ -42,9 +42,10 @@ function create_popup(id, position, gallery) {
 
 function open_popup(window_id, do_not_close) {
     if (!do_not_close) {
-        var previous = document.getElementsByClassName("visible");
-        if (previous[0] != undefined)
-            previous[0].classList.remove("visible");
+        var previous = document.querySelector(".visible .popup");
+        if (previous != undefined) {
+            previous.classList.remove("visible");
+        }
     }
     var window = document.getElementById(window_id);
     window.classList.add("visible");
