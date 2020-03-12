@@ -88,4 +88,26 @@ function paste_html() {
     });
 }
 
+function check_if_valid(new_position) {
+    return new_position.split(" ").length == 3;
+}
+
+function save_changes() {
+    // write changes into json_obj
+    var current_annotation = document.getElementById("current_edited").innerHTML; // TODO -- SET THIS UP!!
+    var new_position = document.getElementById("position_inp").getAttribute("value");
+    if (!check_if_valid(new_position)) {
+        // write msg
+        return;
+    }
+    json_obj[current_annotation].heading = document.getElementById("heading_inp").getAttribute("value");
+    json_obj[current_annotation].text = copy_html();
+    json_obj[current_annotation].position = new_position;
+    close_windows();
+}
+
+function discard_changes() {
+    close_windows();
+}
+
 

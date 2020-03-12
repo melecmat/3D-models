@@ -49,6 +49,15 @@ function open_popup(window_id, do_not_close) {
     var window = document.getElementById(window_id);
     window.classList.add("visible");
 }
+
+function close_windows() {
+    var popup = document.getElementsByClassName('popup');
+    for (var l = 0; l < popup.length; l++) {
+        popup[l].classList.remove('visible');
+    }
+    document.onkeydown = null;
+}
+
 /**
  * For minimizing windows
  */
@@ -56,12 +65,7 @@ document.addEventListener("template_done", function() {
     var back_icon = document.getElementsByClassName('back_icon');
     console.log(back_icon.length);
     for (var i = 0; i < back_icon.length; i++) {
-        back_icon[i].addEventListener('click', function() {
-            var popup = document.getElementsByClassName('popup');
-            for (var l = 0; l < popup.length; l++) {
-                popup[l].classList.remove('visible');
-            }
-            document.onkeydown = null;
-        });
+        back_icon[i].addEventListener('click', close_windows);
     }
 });
+
