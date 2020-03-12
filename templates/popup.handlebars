@@ -1,6 +1,9 @@
 {{#each annotations}}
-<div class="popup" id="{{id}}">
+<div class="popup" id="{{@key}}">
     <div class="popup_heading"> <span class="back_icon"><img src="../../control_graphic/back_icon.png"></span>{{heading}}</div>
     <div class="popup_body"> {{{text}}}</div>
+    {{#if ../edit_mode}}
+        <button class="button ed_button" id="edit{{@key}}">Upravit</button>
+    {{/if}}
 </div>
 {{/each}}

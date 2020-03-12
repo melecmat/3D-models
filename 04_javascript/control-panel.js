@@ -68,19 +68,12 @@ function change_acceleration(input) {
     camera.setAttribute("wasd-controls", " fly:true; acceleration:" + acceleration);
 }
 
-
 /**
  * Copies current camera position.
  * Will be in a listener.
  */
 function copy_position_rotation() {
-    var posrot = "";
-    var camera = document.getElementById("camera");
-    var pos = camera.getAttribute("position");
-    var rot_x = camera.components['touch-controls'].pitchObject.rotation.x;
-    var rot_y = camera.components['touch-controls'].yawObject.rotation.y;
-    posrot = toFixedTruncate(pos.x, 3) + " " + toFixedTruncate(pos.y, 3) + " " + toFixedTruncate(pos.z, 3);
-    posrot += " " + toFixedTruncate(rot_x, 3) + " " + toFixedTruncate(rot_y, 3);
+    var posrot = get_entity_position_string(document.getElementById("camera"), true);
 
     // for copying text into clipboard
     const el = document.createElement('textarea');

@@ -1,5 +1,6 @@
 {
     "title" : "Andělíčci",
+    "edit_mode": false,
     "player": {
         "orbit_control": true,
         "model_src": "angels/angels.glb",

@@ -80,14 +80,9 @@ AFRAME.registerComponent ('info-window', {
     init: function() {
         var window_id = this.data.window_id;
         this.el.addEventListener('click', function() {
-            var previous = document.getElementsByClassName("visible");
-            if (previous[0] != undefined)
-                previous[0].classList.remove("visible");
-            var window = document.getElementById(window_id);
-            window.classList.add("visible");
-            console.log("Should see window " + window_id);
-
+            open_popup(window_id, false);
             // find out if there is gallery
+            var window = document.getElementById(window_id);
             var galleries = window.getElementsByClassName("popup_body")[0].getElementsByClassName("gallery_wrapper");
             for (const gallery of galleries) {
                 console.log("contains gallery");
@@ -161,4 +156,23 @@ AFRAME.registerComponent('autoscale', {
 function degToRad(degrees)
 {
   return degrees * (Math.PI/180);
+}
+
+
+/**
+ * Gets the string representing position and rotation if specified of given aframe entity.
+ * @param {*} entity aframe entity
+ * @param {Boolean} rotation if you want to get rotation
+ */
+function get_entity_position_string(entity, rotation) {
+    var posrot = "";
+    var pos = entity.getAttribute("position");
+    if (pos == null) return posrot;
+    posrot = toFixedTruncate(pos.x, 3) + " " + toFixedTruncate(pos.y, 3) + " " + toFixedTruncate(pos.z, 3);
+    if (rotation) {
+        var rot_x = entity.components['touch-controls'].pitchObject.rotation.x;
+        var rot_y = entity.components['touch-controls'].yawObject.rotation.y;
+        posrot += " " + toFixedTruncate(rot_x, 3) + " " + toFixedTruncate(rot_y, 3);
+    }
+    return posrot;
 }

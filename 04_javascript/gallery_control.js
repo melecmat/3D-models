@@ -1,5 +1,5 @@
 /* MAIN */
-document.addEventListener("template_done", function () {
+/*document.addEventListener("template_done", function () {
 
     // listen for click of gallery button
     // to the right click
@@ -20,64 +20,79 @@ document.addEventListener("template_done", function () {
     for (var i = 0; i < enlarge_icons.length; ++i) {
         enlarge_icons[i].addEventListener("click", enlarge);
     }
-});
+});*/
 
+function build_gallery(gallery_obj) {
+    var oReq = new XMLHttpRequest();
+    var json;
+    oReq.onload = function () {
+        json = JSON.parse(this.responseText);
+        //console.log("json length " + json.length);
+        if (Object.values(json).length == 0) {
+            console.log("Empty gallery " + gallery_obj.json_gallery_src);
+            return;
+        }
+        put_template_to_html(gallery_obj, "#"+gallery_obj.parent_id + " .popup_body", Handlebars.templates.gallery);
+        create_gallery(gallery_obj.parent_id, json, gallery_obj.json_gallery_src, gallery_obj.has_full_size_version);
+    }
+    oReq.onerror = function () { console.log('Fetch Error', err); };
+    oReq.open('get', gallery_obj.json_gallery_src + '/dir_list.json', true);
+    oReq.send();
+}
 
 /**
  * Creates gallery. It takes care of creating HTML representation of it, loading json, setting everything up.
  * Note: the gallery representation in A-Frame is done by create_popup() function -- below
  * @param {*} gal_id
- * @param {*} json_gallery_src 
+ * @param {*} gal_json 
  */
-function create_gallery(gal_id, json_gallery_src, has_full_size_version) {
-    var oReq = new XMLHttpRequest();
-    oReq.onload = function () { // successfully gotten the images
-        var images = JSON.parse(this.responseText);
-        let i = 0;
-        let gal_count = 0; // do not know if correct
-        var main_gal_div = document.getElementById("gal_wrapper" + gal_id);
-        for (var src in images) {
-            ++gal_count;
-            // make div wrapping the image -- should be numbered - variable for incrementing
-            var wrap_div = document.createElement("div");
+function create_gallery(gal_id, gal_json, json_gallery_src, has_full_size_version) {
+    let i = 0;
+    let gal_count = 0; // do not know if correct
+    var main_gal_div = document.getElementById("gal_wrapper" + gal_id);
+    for (var src in gal_json) {
+        ++gal_count;
+        // make div wrapping the image -- should be numbered - variable for incrementing
+        var wrap_div = document.createElement("div");
 
-            // number will be in format 001 010 100 etc.
-            prepend = calc_prepend(i);
-            wrap_div.setAttribute("id", "gal_wrapper" + gal_id + prepend + i); // numbered id
-            wrap_div.setAttribute("class", "image_wrapper");
-            // make image with lazy loading stuff
-            var image = document.createElement("img");
-            var lazy_src = json_gallery_src + "/" +src;
-            image.setAttribute("lazy-src", lazy_src);
+        // number will be in format 001 010 100 etc.
+        prepend = calc_prepend(i);
+        wrap_div.setAttribute("id", "gal_wrapper" + gal_id + prepend + i); // numbered id
+        wrap_div.setAttribute("class", "image_wrapper");
+        // make image with lazy loading stuff
+        var image = document.createElement("img");
+        var lazy_src = json_gallery_src + "/" +src;
+        image.setAttribute("lazy-src", lazy_src);
 
-            //for image enlarging upon click
-            // find out if full sized
-            var a = document.createElement("a");
-            a.setAttribute("target", "_blank")
-            if (has_full_size_version) {
-                a.setAttribute("href", json_gallery_src + "/full_" +src);
-            } else {
-                a.setAttribute("href", lazy_src);
-            }
-
-            // make description
-            var description = document.createElement("p");
-            description.innerHTML = images[src];
-            // append wrapping div to main wrapping div, append image and description to it
-            a.appendChild(image);
-            wrap_div.appendChild(a);
-            wrap_div.appendChild(description);
-            main_gal_div.appendChild(wrap_div);
-            // lazy loading itself handled in right click function
-            ++i;
+        //for image enlarging upon click
+        // find out if full sized
+        var a = document.createElement("a");
+        a.setAttribute("target", "_blank");
+        if (has_full_size_version) {
+            a.setAttribute("href", json_gallery_src + "/full/" +src);
+        } else {
+            a.setAttribute("href", lazy_src);
         }
-        // set gallery counter
-        let count_vis = document.getElementById("g_num" + gal_id);
-        count_vis.querySelector('.total').innerHTML = "/" + gal_count;
-    };
-    oReq.onerror = function () { console.log('Fetch Error', err); };
-    oReq.open('get', json_gallery_src + '/dir_list.json', true);
-    oReq.send();
+
+        // make description
+        var description = document.createElement("p");
+        description.innerHTML = gal_json[src];
+        // append wrapping div to main wrapping div, append image and description to it
+        a.appendChild(image);
+        wrap_div.appendChild(a);
+        wrap_div.appendChild(description);
+        try {
+            main_gal_div.appendChild(wrap_div);
+        } catch (Error) { console.log("Trying to append gallery to a yet nonexistent element"); return;}
+        
+        // lazy loading itself handled in right click function
+        ++i;
+    }
+    // set gallery counter
+    let count_vis = document.getElementById("g_num" + gal_id);
+    count_vis.querySelector('.total').innerHTML = "/" + gal_count;
+
+    // listeners
 }
 
 /**
@@ -88,12 +103,11 @@ function create_gallery(gal_id, json_gallery_src, has_full_size_version) {
 function init_gallery(gallery_wrapper) {
     // WHAT I CALL IMG ARE ACTUALLY WRAPPERS OF IMG
     // load first two images
-    console.log("gallery init");
     var img_wrapper1 = document.getElementById(gallery_wrapper.id + "000");
     var img_wrapper2 = document.getElementById(gallery_wrapper.id + "001");
     
     set_src(img_wrapper1);
-    set_src(img_wrapper2);
+    if (img_wrapper2 != null) set_src(img_wrapper2);
     // deactivate image before
     try {
         (document.getElementsByClassName("active_img"))[0].classList.remove("active_img");

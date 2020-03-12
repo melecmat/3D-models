@@ -19,14 +19,33 @@
       <script src="../04_javascript/gallery_control.js"></script>
       <script src="../04_javascript/control-panel.js"></script>
       <script src="../04_javascript/popup_control.js"></script>
+      <script src="../04_javascript/annotation_window.js"></script>
       
       <link rel="stylesheet" type="text/css" href="../css/main.css">
       <link rel="stylesheet" type="text/css" href="../css/loading.css">
       <link rel="stylesheet" type="text/css" href="../css/gallery.css">
       <link rel="stylesheet" type="text/css" href="../css/control-panel.css">
+
+      <!-- FOR EDITOR -->
+      <link rel="stylesheet" href="../trumbowyg/dist/ui/trumbowyg.min.css">
+      <link rel="stylesheet" href="../trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css">
     </head>
   <body>
+      <!-- Import jQuery  -- FOR EDITOR-->
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
 
+      <!-- Import Trumbowyg -->
+      <script src="../trumbowyg/dist/trumbowyg.min.js"></script>
+
+      <!-- Import Trumbowyg plugins... -->
+      <script src="../trumbowyg/dist/plugins/fontfamily/trumbowyg.fontfamily.min.js"></script>
+      <script src="../trumbowyg/dist/plugins/fontsize/trumbowyg.fontsize.min.js"></script>
+      <script src="../trumbowyg/dist/plugins/history/trumbowyg.history.min.js"></script>
+      <script src="../trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js"></script>
+      <script src="../trumbowyg/dist/plugins/cleanpaste/trumbowyg.cleanpaste.min.js"></script>
+      <script src="../trumbowyg/dist/plugins/allowtagsfrompaste/trumbowyg.allowtagsfrompaste.min.js"></script>
+        
         <div id="loading_screen">
           <div id="heading"></div>
           <div id="container">
@@ -64,6 +83,6 @@
           </div>
           <button class="item button" id="help">Nápověda</button>
         </div>
-
+    
   </body>
 </html>

@@ -21,6 +21,16 @@
 
 }
 
+.popup#annotation_window {
+    width: 80%;
+    max-height: 90%;
+    overflow:auto;
+}
+
+#annotation_window div {
+    margin-top: 0.5em;
+}
+
 .popup_body {
     max-height: 25rem;
     overflow: auto;
@@ -90,7 +100,7 @@
     background-color: white;
     padding: 3em;
     border-radius: 1em;
-    height: 16em;
+    height: 35%;
     overflow: auto;
     left: 50%;
     transform: translate(-50%);
@@ -165,6 +175,14 @@ border-radius: 10px;
 
 }
 
+.ed_button {
+    display:none;
+}
+
+button.ed_button.visible {
+    display: block;
+}
+
 /*MOBILE*/
 @media only screen and (pointer:coarse) {
     .popup {
@@ -174,6 +192,10 @@ border-radius: 10px;
 
     .popup_body {
         max-height: 70%;
+    }
+
+    #model_choices {
+        width: 70%;
     }
 
     #joystick {

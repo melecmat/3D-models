@@ -38,9 +38,17 @@ function create_popup(id, position, gallery) {
     else if  (without_number)
         popup_visual.setAttribute("src", "../../control_graphic/gallery_logo.png");
     ascene.appendChild(popup_visual);
-    console.log("popup added");
 }
 
+function open_popup(window_id, do_not_close) {
+    if (!do_not_close) {
+        var previous = document.getElementsByClassName("visible");
+        if (previous[0] != undefined)
+            previous[0].classList.remove("visible");
+    }
+    var window = document.getElementById(window_id);
+    window.classList.add("visible");
+}
 /**
  * For minimizing windows
  */

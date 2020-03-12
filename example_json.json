@@ -1,5 +1,6 @@
 {
     "title": "Title of project",
+    "edit_mode": "true/false -- specifies whether you can edit the json file and download it",
     "player": {
         "orbit_control": "whether or not we have orbit control true/false",
         "model_src": "path to model -- paths HAVE TO include folder in which the project is located -- if empty, qualities will be used",
@@ -28,7 +29,7 @@
         {
             "json_gallery_src": "path from player to source of gallery description JSON file",
             "parent_id": "uniqueID1 -- ID of a parent element -- will be appended to it",
-            "has_full_size_version" : "true/false -- if true, the full version of image will be opened in new window after clicking"
+            "has_full_size_version" : "true/false -- if true, the full version of image will be opened in new window after clicking -- should be in gallery_path/full"
         }
     ]
 }

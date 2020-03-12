@@ -1,0 +1,27 @@
+<div class="popup" id="annotation_window" > 
+    <form name="change_annotation" action="javascript:void(0);">
+        <div>
+        <label for="position_inp">Pozice: </label>
+        <input type="text" name="position" id="position_inp">
+        </div>
+        <div>
+        <label for="no_inp">Číslo anotace: </label>
+        <input type="number" name="no" id="no_inp">
+        </div>
+        {{! text}}
+        <div>
+        <label for="heading_inp">Nadpis: </label>
+        <input type="text" name="heading" id="heading_inp">
+        </div>
+        <div id="editor"></div>
+        <div>
+        <button id="copy_html" class="button">Kopírovat HTML</button>
+        <button id="paste_html" class="button">Vložit HTML</button>
+        </div>
+        <div>
+            {{! TODO -- make those buttons do something }}
+            <button id="save_change" class="button">Provést změny</button>
+            <button id="discard_change" class="button">Zahodit změny</button>
+        </div>
+    </form>
+</div>

@@ -30,6 +30,8 @@ def index_files_in_dir(rootDir):
         for picture in pictures:
             if picture == "dir_list.json":
                 continue
+            if os.path.isdir(os.path.join(rootDir, subfolder, picture)):
+                continue
             if picture in data:
                 result_data[picture] = data[picture]
             else:

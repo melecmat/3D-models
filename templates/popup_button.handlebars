@@ -1,7 +1,7 @@
 {{#each annotations}}
 <a-text 
-    value="{{get_number id}}" width="6" align="center"
-    look-at="[camera]" color="white" id="rendered{{id}}"
-    class="clickable" info-window=" window_id:{{id}}" position="{{position}}"
+    value="{{get_number @key}}" width="6" align="center"
+    look-at="[camera]" color="white" id="rendered{{@key}}"
+    class="clickable" info-window=" window_id:{{@key}}" position="{{position}}"
 ></a-text>
 {{/each}}

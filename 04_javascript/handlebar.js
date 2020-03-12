@@ -15,8 +15,10 @@ Handlebars.registerHelper("increment", function(num) {
 
 // get json file
 var oReq = new XMLHttpRequest();
+/** Global variable */
+var json_obj;
 oReq.onload = function () {
-    var json_obj = JSON.parse(this.responseText);
+    json_obj = JSON.parse(this.responseText);
     // title
     document.querySelector("title").innerHTML = json_obj.title;
     document.getElementById("heading").innerHTML = json_obj.title;
@@ -41,11 +43,29 @@ oReq.onload = function () {
     put_template_to_html(json_obj, "body", Handlebars.templates.popup);
     // gallery
     for (const gallery of json_obj.galleries) {
-        put_template_to_html(gallery, "#"+gallery.parent_id + " .popup_body", Handlebars.templates.gallery);
-        create_gallery(gallery.parent_id, gallery.json_gallery_src, gallery.has_full_size_version);
+        build_gallery(gallery);
     }
     //var camera = document.getElementById("camera");
     //camera.setAttribute('camera', 'active', true);
+    
+    // check for edit mode
+    if(json_obj.edit_mode) {
+        var key_comb_pressed = false;
+        put_template_to_html(json_obj, "body", Handlebars.templates.annotation_window);
+        document.addEventListener("template_done", function() {
+            init_editor();
+        });
+        document.addEventListener ("keydown", function (zEvent) {
+            if (zEvent.ctrlKey  &&  zEvent.altKey  &&  (zEvent.key === "e" || zEvent.key === "E")) {  // case sensitive
+                console.log("ctrl alt e pressed");
+                if (!key_comb_pressed){
+                    key_comb_pressed = true;
+                    make_edit_buttons_apear();
+                }
+            }
+        });
+    }
+
     var done_event = new Event("template_done");
     document.dispatchEvent(done_event);
 };
@@ -62,7 +82,21 @@ oReq.send();
  * @param {function} compiled_template
  */
 function put_template_to_html(data_obj, parent_selector, compiled_template) {
-    var html = compiled_template(data_obj);
-    var parent = document.querySelector(parent_selector);
-    parent.innerHTML += html;
+    try {
+        var html = compiled_template(data_obj);
+        var parent = document.querySelector(parent_selector);
+        parent.innerHTML += html;
+    } catch (TypeError) {console.log("Element doesnt exist.")} // to take care for missing galleries
+    
+}
+
+function make_edit_buttons_apear() {
+    var edit_buttons = document.getElementsByClassName("ed_button");
+    for (let button of edit_buttons) {
+        button.classList.add("visible");
+        console.log("visible");
+        button.addEventListener("click", function () {
+            edit_annotation(button.id.slice(4)); // slice gets the ID of annotation
+        });
+    }
 }
