@@ -11,6 +11,7 @@ function build_annotation_window(annotation_id) {
         );
     document.getElementById("no_inp").setAttribute("value", get_number_from_string(annotation_id));
     document.getElementById("heading_inp").setAttribute("value", annotation_info.heading);
+    document.getElementById("current_edited").innerHTML = annotation_id;
     open_popup("annotation_window", false);
     // put into editor
     append_html(annotation_info.text);
@@ -103,11 +104,13 @@ function save_changes() {
     json_obj[current_annotation].heading = document.getElementById("heading_inp").getAttribute("value");
     json_obj[current_annotation].text = copy_html();
     json_obj[current_annotation].position = new_position;
+    // manipulate actual annotation
+    document.querySelector(current_annotation + " span.heading_span").innerHTML = json_obj[current_annotation].heading;
+    document.querySelector(current_annotation + " span.popup_text").innerHTML = json_obj[current_annotation].text;
+    document.getElementById("rendered" + current_annotation);
     close_windows();
 }
 
 function discard_changes() {
     close_windows();
 }
-
-
