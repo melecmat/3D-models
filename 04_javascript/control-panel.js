@@ -5,7 +5,9 @@ document.addEventListener("template_done", function () {
     document.getElementById("switch_gyro").addEventListener("change", switch_gyroscope);
     //document.getElementById(); TODO -- change velocity
     document.getElementById("copy_pos").addEventListener("click", copy_position_rotation);
+    console.log(document.getElementById("copy_pos"));
     document.getElementById("goto_pos").addEventListener("click", go_to_position);
+    console.log("listeners added");
     register_enter();
     register_help();
 });
@@ -31,6 +33,7 @@ function trigger_menu() {
  * Implements the functionality of making descriptions in A-Frame invisible/visible
  */
 function change_popup_visibility() {
+    console.log("in change popup visib");
     var popups = document.getElementsByClassName("clickable");
     if (popups[0].getAttribute("visible") == false) {
         for (var i = 0; i < popups.length; ++i) {
@@ -74,7 +77,7 @@ function change_acceleration(input) {
  */
 function copy_position_rotation() {
     var posrot = get_entity_position_string(document.getElementById("camera"), true);
-
+    console.log(posrot);
     // for copying text into clipboard
     const el = document.createElement('textarea');
     el.value = posrot;
@@ -101,6 +104,7 @@ function go_to_position() {
     var camera = document.getElementById("camera");
     var posrot = document.getElementById("user_pos").value;
     var pos_array = posrot.split(" ");
+    console.log("position to go");
     if (pos_array.length != 5) {
         // wrong input
         // TODO -- upon wrong input tell the user

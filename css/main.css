@@ -31,6 +31,10 @@
     margin-top: 0.5em;
 }
 
+.current_edited {
+    display: none;
+}
+
 .popup_body {
     max-height: 25rem;
     overflow: auto;

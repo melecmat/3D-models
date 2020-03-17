@@ -77,11 +77,11 @@ function main_templating(e, custom_json) {
         put_template_to_html(json_obj, "body", Handlebars.templates.annotation_window);
         
         console.log("Edit mode allowed.");
-        document.addEventListener("template_done", function() {
-            var save_button = '<button class="ed_button button" id="save_button" onclick="save_json()">Uložit JSON soubor</button>'
-            document.getElementById("control_panel").innerHTML += save_button;
-            init_editor();
-        });
+        //document.addEventListener("template_done", function() {
+        var save_button = '<button class="ed_button button" id="save_button" onclick="save_json()">Uložit JSON soubor</button>'
+        document.getElementById("control_panel").innerHTML += save_button;
+        init_editor();
+        //});
         document.addEventListener ("keydown", function (zEvent) {
             if (zEvent.ctrlKey  &&  zEvent.altKey  &&  (zEvent.key === "e" || zEvent.key === "E")) {  // case sensitive
                 console.log("ctrl alt e pressed");
