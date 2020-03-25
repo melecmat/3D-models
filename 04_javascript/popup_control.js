@@ -64,7 +64,6 @@ function close_windows() {
  */
 document.addEventListener("template_done", function() {
     var back_icon = document.getElementsByClassName('back_icon');
-    console.log(back_icon.length);
     for (var i = 0; i < back_icon.length; i++) {
         back_icon[i].addEventListener('click', close_windows);
     }

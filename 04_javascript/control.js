@@ -77,16 +77,25 @@ AFRAME.registerComponent ('info-window', {
     schema: {
         window_id: {type: 'string', default: ''}
     },
-    init: function() {
+    update: function() {
+        if (!this.el.classList.contains("clickable")) this.el.classList.toggle('clickable');
+        //var raycasterEl = document.getElementById("a-scene").querySelector('[raycaster]');
+        //raycasterEl.components.raycaster.refreshObjects();
+        // SIMPLY WILL NOT WORK !!! :D
+        //var raycaster = document.getElementById("raycaster");
+        //if (raycaster != null) {
+            //document.querySelector("a-scene").removeChild(raycaster);
+            //raycaster.setAttribute("raycaster", "objects: .clickable");
+            //document.querySelector("a-scene").appendChild(raycaster);
+        //}
         var window_id = this.data.window_id;
         this.el.addEventListener('click', function() {
-            console.log(window_id);
+            if (document.getElementById(window_id) == null) return;
             open_popup(window_id, false);
             // find out if there is gallery
             var window = document.getElementById(window_id);
             var galleries = window.getElementsByClassName("popup_body")[0].getElementsByClassName("gallery_wrapper");
             for (const gallery of galleries) {
-                console.log("contains gallery");
                 init_gallery(gallery); // function in gallery control
             }
         });
@@ -102,6 +111,9 @@ AFRAME.registerComponent('big_model', {
            document.querySelector("#loading_screen").remove();
            console.log("Should see model");
        });
+       this.el.addEventListener("model-progress", e => {
+        console.log(e.progress)
+      });
        this.el.addEventListener('model-error', e => {
         //document.querySelector("#loading_screen").remove();
         console.log("Error in loading model");

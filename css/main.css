@@ -31,7 +31,7 @@
     margin-top: 0.5em;
 }
 
-.current_edited {
+div#current_edited {
     display: none;
 }
 
@@ -118,6 +118,10 @@
 div.model_choice {
     margin-top: 0.5em;
     border-bottom: 0.1em solid #2196F3;
+}
+
+.wrong_input {
+    border: 2px solid red;
 }
 
 /** SCROLLBARS **/

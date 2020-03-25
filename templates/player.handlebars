@@ -1,4 +1,4 @@
-<a-scene cursor="rayOrigin:mouse" raycaster="objects: .clickable" gltf-model="dracoDecoderPath: ../draco/;" background=" color: {{background_color}}" joystick>
+<a-scene {{!cursor="rayOrigin:mouse" raycaster="objects: .clickable"}} gltf-model="dracoDecoderPath: ../draco/;" background=" color: {{background_color}}" joystick>
     {{#if orbit_control}}
         
         <a-entity id="camera" camera=" active: true" look-controls orbit-controls=" target: 0 0 0; minDistance: 1; maxDistance: 50; initialPosition: {{camera_position}}; maxPolarAngle: 180"></a-entity>
@@ -9,7 +9,8 @@
         </a-entity>
     {{/if}}
 
-    <a-assets>
+    <a-entity raycaster="objects: [data-clickable]" id="raycaster" cursor="rayOrigin:mouse"></a-entity>
+    <a-assets timeout="100000000">
         {{#if_equals model_src ""}}
         {{else}}
         <a-asset-item id="main_model" src="{{model_src}}"></a-asset-item>
@@ -17,7 +18,7 @@
     </a-assets>
     {{#if_equals model_src ""}}
     {{else}}
-    <a-entity gltf-model="#main_model" id="gltf_model" big_model autoscale=" scale:{{model_scale}}; rotation: {{model_rotation}}"></a-entity>
+    <a-entity my-gltf-model="#main_model" id="gltf_model" big_model autoscale=" scale:{{model_scale}}; rotation: {{model_rotation}}"></a-entity>
     {{/if_equals}}
     <a-entity light="type: point; intensity: 1; distance: 100; decay: 2" position="0 0 0"></a-entity>
     <a-entity light="type: ambient; color: #CCC"></a-entity>

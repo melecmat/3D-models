@@ -1,3 +1,7 @@
+/**
+ * Functions used in control panel.
+ */
+
 // event listeners for reading values of the control panel
 document.addEventListener("template_done", function () {
     document.getElementById("control_trigger").addEventListener("click", trigger_menu);
@@ -5,15 +9,13 @@ document.addEventListener("template_done", function () {
     document.getElementById("switch_gyro").addEventListener("change", switch_gyroscope);
     //document.getElementById(); TODO -- change velocity
     document.getElementById("copy_pos").addEventListener("click", copy_position_rotation);
-    console.log(document.getElementById("copy_pos"));
     document.getElementById("goto_pos").addEventListener("click", go_to_position);
-    console.log("listeners added");
     register_enter();
     register_help();
 });
 
 /**
- * Function for menu sliding
+ * Menu sliding
  */
 function trigger_menu() {
     var trigger = document.getElementById("control_trigger");
@@ -33,7 +35,6 @@ function trigger_menu() {
  * Implements the functionality of making descriptions in A-Frame invisible/visible
  */
 function change_popup_visibility() {
-    console.log("in change popup visib");
     var popups = document.getElementsByClassName("clickable");
     if (popups[0].getAttribute("visible") == false) {
         for (var i = 0; i < popups.length; ++i) {
@@ -46,6 +47,9 @@ function change_popup_visibility() {
     }
 }
 
+/**
+ * Turns gyroscope on mobile on or off. 
+ */
 function switch_gyroscope() {
     var camera = document.getElementById("camera");
     var properties = camera.getAttribute("touch-controls");
@@ -77,7 +81,6 @@ function change_acceleration(input) {
  */
 function copy_position_rotation() {
     var posrot = get_entity_position_string(document.getElementById("camera"), true);
-    console.log(posrot);
     // for copying text into clipboard
     const el = document.createElement('textarea');
     el.value = posrot;
@@ -104,7 +107,6 @@ function go_to_position() {
     var camera = document.getElementById("camera");
     var posrot = document.getElementById("user_pos").value;
     var pos_array = posrot.split(" ");
-    console.log("position to go");
     if (pos_array.length != 5) {
         // wrong input
         // TODO -- upon wrong input tell the user
@@ -133,16 +135,19 @@ function register_enter() {
 
     // Execute a function when the user releases a key on the keyboard
     input.addEventListener("keyup", function(event) {
-    // Number 13 is the "Enter" key on the keyboard
-    if (event.keyCode === 13) {
-        // Cancel the default action, if needed
-        event.preventDefault();
-        // Trigger the button element with a click
-        document.getElementById("goto_pos").click();
-    }
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("goto_pos").click();
+        }
     });
 }
 
+/**
+ * Adds event listeners to help
+ */
 function register_help() {
     var help_button = document.getElementById("help");
     help_button.addEventListener("click", function(e) {
