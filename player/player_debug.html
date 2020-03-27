@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="cs">
+  <!--DEBUG VERSION -->
     <head>
       <title></title>
       <meta charset="UTF-8">
+      <!-- AFRAME SCRIPTS -->
+      <script src="../javascript_aframe/aframe.min.js"></script>
+      <script src="../javascript_aframe/aframe-event-set-component.min.js"></script>
+      <script src="../javascript_aframe/aframe-look-at-component.min.js"></script>
+      <script src="../04_javascript/a-touch-controls.js"></script>
+      <script src="../04_javascript/my-gltf-model.js"></script>
+      <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
       
+      <!--APP LOGIC-->
       <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
-      <script src="../build/js/3d_player.min-min.js"></script>
+      <script src="../compiled_templates.js"></script>
+      <script src="../04_javascript/control.js"></script>
+      <script src="../04_javascript/model_choice.js"></script>
+      <script src="../04_javascript/joystick.js"></script>
+      <script src="../04_javascript/gallery_control.js"></script>
+      <script src="../04_javascript/control-panel.js"></script>
+      <script src="../04_javascript/popup_control.js"></script>
+      <script src="../04_javascript/annotation_window.js"></script>
       
-      <link rel="stylesheet" type="text/css" href="../build/css/3d_player.min.css">
+      <link rel="stylesheet" type="text/css" href="../css/main.css">
+      <link rel="stylesheet" type="text/css" href="../css/loading.css">
+      <link rel="stylesheet" type="text/css" href="../css/gallery.css">
+      <link rel="stylesheet" type="text/css" href="../css/control-panel.css">
 
       <!-- FOR EDITOR -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/ui/trumbowyg.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/plugins/colors/ui/trumbowyg.colors.min.css">
-      
-      
     </head>
   <body>
       <!-- Import jQuery  -- FOR EDITOR-->
@@ -68,5 +85,6 @@
           </div>
           <button class="item button" id="help">Nápověda</button>
         </div>
+    
   </body>
 </html>
