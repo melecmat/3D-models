@@ -4,7 +4,7 @@ document.addEventListener("template_done", function() {
     var homeButton = document.getElementById("home_button");
     if (homeButton != null) {
         homeButton.addEventListener("click", function() {
-            camera.setAttribute("position", "0 0 0");
+            camera.setAttribute("position", json_obj.player.camera_position);
         });
     }
 

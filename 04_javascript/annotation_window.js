@@ -6,7 +6,6 @@ function make_edit_buttons_apear() {
     var edit_buttons = document.getElementsByClassName("ed_button");
     for (let button of edit_buttons) {
         button.classList.add("visible");
-        //console.log("visible");
         if(button.parentNode == document.getElementById("control_panel")) continue;
         button.addEventListener("click", function () {
             build_annotation_window(button.id.slice(4), json_obj.annotations[button.id.slice(4)]); // slice gets the ID of annotation
@@ -159,9 +158,9 @@ function save_changes() {
     if (new_id in json_obj.annotations) {
         if (new_id != current_annotation) {
             // SWAP
-            json_obj.annotations[current_annotation] = json_obj.annotations[new_id];
+            json_obj.annotations[current_annotation] = JSON.parse(JSON.stringify(json_obj.annotations[new_id])); // doing deep copy
             change_popup(current_annotation, json_obj.annotations[new_id]);
-            current_annotation = new_id; 
+            current_annotation = new_id;
         }
     } else {
         delete json_obj.annotations[current_annotation];
