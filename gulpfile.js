@@ -19,10 +19,10 @@ function js() {
     "04_javascript/a-touch-controls.js", "04_javascript/my-gltf-model.js", "javascript_aframe/aframe-orbit-controls.min.js",
     "04_javascript/control.js", "04_javascript/model_choice.js", "04_javascript/joystick.js", "04_javascript/gallery_control.js",
     "04_javascript/control-panel.js", "04_javascript/popup_control.js", "04_javascript/annotation_window.js"
-  ], { sourcemaps: true })
+  ], { sourcemaps: false })
     .pipe(concat('3d_player.min.js'))
     .pipe(minify())
-    .pipe(dest('build/js', { sourcemaps: true }))
+    .pipe(dest('build/js', { sourcemaps: false }))
 }
 
 exports.js = js;
