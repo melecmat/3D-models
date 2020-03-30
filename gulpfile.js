@@ -6,7 +6,6 @@ const minify = require('gulp-minify');
 var handlebars = require('gulp-handlebars');
 var wrap = require('gulp-wrap');
 var declare = require('gulp-declare');
-//var pipeline = require('readable-stream').pipeline;
 
 
 function css() {

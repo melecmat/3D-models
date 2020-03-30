@@ -45,14 +45,13 @@ Handlebars.registerHelper("increment", function(num) {
  * @param {object} custom_json object containing information about player 
  * -- if left out will try to parse response text from request.
  */
-function main_templating(e, custom_json) {
+function main_templating(e, custom_json, only_player = false) {
     //const lbd = function() {
         if (custom_json != undefined) {
             json_obj = custom_json;
         } else {
             json_obj = JSON.parse(this.responseText);
         }
-        
         // title
         document.querySelector("title").innerHTML = json_obj.title;
         document.getElementById("heading").innerHTML = json_obj.title;
@@ -85,8 +84,8 @@ function main_templating(e, custom_json) {
             put_template_to_html(json_obj, "body", Handlebars.templates.annotation_window);
             
             console.log("Edit mode allowed.");
-            var extra_buttons = '<button class="ed_button button" id="save_button" onclick="save_json()">Uložit JSON soubor</button>'
-            //<button class="ed_button button" id="new_popup_button" onclick="create_new_popup()">Vytvořit novou anotaci</button>' // TODO -- make this work!!!!
+            var extra_buttons = '<button class="ed_button button" id="new_popup_button" onclick="create_new_popup()">Vytvořit novou anotaci</button>\
+            <button class="ed_button button" id="save_button" onclick="save_json()">Uložit JSON soubor</button>';
             document.getElementById("control_panel").innerHTML += extra_buttons;
             init_editor();
 

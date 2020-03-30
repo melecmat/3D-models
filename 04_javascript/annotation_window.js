@@ -7,9 +7,14 @@ function make_edit_buttons_apear() {
     for (let button of edit_buttons) {
         button.classList.add("visible");
         if(button.parentNode == document.getElementById("control_panel")) continue;
-        button.addEventListener("click", function () {
-            build_annotation_window(button.id.slice(4), json_obj.annotations[button.id.slice(4)]); // slice gets the ID of annotation
-        });
+        if (button.classList.contains("delete")) {
+            button.addEventListener("click", function () {
+                delete_annotation(button.id.slice(6)); // slice gets the ID of annotation
+            });
+        } else 
+            button.addEventListener("click", function () {
+                build_annotation_window(button.id.slice(4), json_obj.annotations[button.id.slice(4)]); // slice gets the ID of annotation
+            });
     }
 }
 
@@ -26,11 +31,24 @@ function build_annotation_window(annotation_id, annotation_info) {
         );
     } catch(e) {}
     document.getElementById("no_inp").setAttribute("value", get_number_from_string(annotation_id));
+    if (annotation_info.heading == undefined) annotation_info.heading = "";
+    if (annotation_info.text == undefined) annotation_info.text = "";
     document.getElementById("heading_inp").setAttribute("value", annotation_info.heading);
     document.getElementById("current_edited").innerHTML = annotation_id;
     open_popup("annotation_window", false);
     // put into editor
     append_html(annotation_info.text);
+}
+
+function delete_annotation(annotation_id) {
+    // really?
+    if (!confirm("Opravdu chcete smazat anotaci?")) return;
+    console.log(annotation_id);
+    var annotation_button = document.getElementById("rendered" + annotation_id);
+    var annotation = document.getElementById(annotation_id);
+    annotation_button.parentNode.removeChild(annotation_button);
+    annotation.parentNode.removeChild(annotation);
+    delete json_obj.annotations[annotation_id];
 }
 
 function get_number_from_string(string) {
@@ -154,7 +172,21 @@ function save_changes() {
     }
     // number change handling
     var new_id = "uniqueID" + new_number;
-    //if (new_id != current_annotation) {
+    // if new annotation
+    var rendered_anno = document.getElementById("rendered" + current_annotation);
+    if (rendered_anno == null) {
+        // make it with id number_annotations + 1
+        current_annotation = "uniqueID" + (document.getElementsByClassName("rendered_annotation").length + 1);
+        make_new_annotation(new_position, current_annotation);
+        // if that is the number we wanted -- were done
+        if (current_annotation == new_id) {
+            $('#editor').trumbowyg('empty');
+            close_windows();
+            return;
+        }
+        // else -- continue executing
+    }
+    
     if (new_id in json_obj.annotations) {
         if (new_id != current_annotation) {
             // SWAP
@@ -165,23 +197,17 @@ function save_changes() {
     } else {
         delete json_obj.annotations[current_annotation];
         var rendered_annot = document.getElementById("rendered" + current_annotation);
-        // if I have new annotation
-        if (rendered_annot == null) {
-            // TODO -- new annotation
-            make_new_annotation(new_position, new_id);
-            $('#editor').trumbowyg('empty');
-            close_windows();
-            return;
-        } else {
-            // just putting new number
-            rendered_annot.setAttribute("id", "rendered"+new_id);
-            rendered_annot.setAttribute("info-window", {window_id: new_id});
-            rendered_annot.setAttribute("value", new_number + ".");
-            document.getElementById(current_annotation).setAttribute("id", new_id); 
+        
+        // just putting new number
+        rendered_annot.setAttribute("id", "rendered"+new_id);
+        rendered_annot.setAttribute("info-window", {window_id: new_id});
+        rendered_annot.setAttribute("value", new_number + ".");
+        document.getElementById(current_annotation).setAttribute("id", new_id);
+        try {
             document.getElementById("edit" + current_annotation).setAttribute("id", "edit" + new_id);
-            json_obj.annotations[new_id] = {};
-            current_annotation = new_id;
-        }
+        } catch (e) {}
+        json_obj.annotations[new_id] = {};
+        current_annotation = new_id;
     }
     //}
 
@@ -211,11 +237,9 @@ function make_new_annotation(new_position, new_id) {
             }
         }
     }
-    //put_template_to_html(template_info, "a-scene", Handlebars.templates.popup_button);
+    put_template_to_html(template_info, "a-scene", Handlebars.templates.popup_button);
     put_template_to_html(template_info, "body", Handlebars.templates.popup);
-    create_popup(new_id, new_position, false);
-    //console.log("#"+new_id+" .back_icon");
-    //document.querySelector("#"+new_id+" .back_icon").addEventListener('click', close_windows);
+    json_obj.annotations[new_id] = template_info.annotations[new_id];
 }
 
 
