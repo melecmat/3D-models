@@ -93,6 +93,7 @@ function main_templating(e, custom_json) {
             // catch ctrl + shift + e and turn on edit buttons
             document.addEventListener("keydown", function (zEvent) {
                 if (zEvent.ctrlKey  &&  zEvent.shiftKey  &&  (zEvent.key === "e" || zEvent.key === "E")) {  // case sensitive
+                    zEvent.preventDefault();
                     if (!key_comb_pressed){
                         key_comb_pressed = true;
                         make_edit_buttons_apear();

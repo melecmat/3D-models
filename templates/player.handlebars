@@ -1,4 +1,4 @@
-<a-scene {{!cursor="rayOrigin:mouse" raycaster="objects: .clickable"}} gltf-model="dracoDecoderPath: ../draco/;" background=" color: {{background_color}}" joystick>
+<a-scene {{!cursor="rayOrigin:mouse" raycaster="objects: .clickable"}} background=" color: {{background_color}}" joystick>
     {{#if orbit_control}}
         
         <a-entity id="camera" camera=" active: true" look-controls orbit-controls=" target: 0 0 0; minDistance: 1; maxDistance: 50; initialPosition: {{camera_position}}; maxPolarAngle: 180"></a-entity>

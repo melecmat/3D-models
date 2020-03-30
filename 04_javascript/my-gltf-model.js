@@ -5,7 +5,7 @@ AFRAME.registerComponent('my-gltf-model', {
     schema: {type: 'model'},
   
     init: function () {
-      this.dracoLoader = new THREE.DRACOLoader;
+      var dracoLoader = new THREE.DRACOLoader;
       dracoLoader.setDecoderPath( "../draco/" );
       this.model = null;
       this.loader = new THREE.GLTFLoader();
@@ -31,7 +31,7 @@ AFRAME.registerComponent('my-gltf-model', {
             el.emit('model-loaded', {format: 'gltf', model: self.model});
       },
       function onProgress(xhr) {
-        console.log(xhr.loaded / xhr.total * 100);
+        console.log("xhr.loaded / xhr.total * 100");
         el.emit("model-progress", {progress: ( xhr.loaded / xhr.total * 100 ) })
      },
      function gltfFailed (error) {

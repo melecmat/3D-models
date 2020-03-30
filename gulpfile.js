@@ -1,7 +1,11 @@
-const { src, dest, parallel } = require('gulp');
+const { src, dest, parallel, series } = require('gulp');
 const minifyCSS = require('gulp-csso');
 const concat = require('gulp-concat');
 const minify = require('gulp-minify');
+
+var handlebars = require('gulp-handlebars');
+var wrap = require('gulp-wrap');
+var declare = require('gulp-declare');
 //var pipeline = require('readable-stream').pipeline;
 
 
@@ -25,6 +29,19 @@ function js() {
     .pipe(dest('build/js', { sourcemaps: false }))
 }
 
+function templates () {
+  return src('templates/*.handlebars')
+    .pipe(handlebars())
+    .pipe(wrap('Handlebars.template(<%= contents %>)'))
+    .pipe(declare({
+      namespace: 'Handlebars.templates',
+      noRedeclare: true, // Avoid duplicate declarations
+    }))
+    .pipe(concat('compiled_templates.js'))
+    .pipe(dest('./'));
+}
+
+exports.templates = templates;
 exports.js = js;
 exports.css = css;
-exports.default = parallel(css, js);
+exports.default = series(templates, parallel(css, js));

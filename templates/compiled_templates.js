@@ -1,9 +1,8 @@
-this["Handlebars"] = this["Handlebars"] || {};
-this["Handlebars"]["templates"] = this["Handlebars"]["templates"] || {};
-this["Handlebars"]["templates"]["annotation_window"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+this["templates"] = this["templates"] || {};
+this["templates"]["annotation_window"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class=\"popup\" id=\"annotation_window\" > \r\n    <div id=\"current_edited\"></div>\r\n    <form name=\"change_annotation\" action=\"javascript:void(0);\">\r\n        <div>\r\n        <label for=\"position_inp\">Pozice: </label>\r\n        <input type=\"text\" name=\"position\" id=\"position_inp\">\r\n        </div>\r\n        <div>\r\n        <label for=\"no_inp\">Číslo anotace: </label>\r\n        <input type=\"number\" name=\"no\" id=\"no_inp\">\r\n        </div>\r\n        <div>\r\n        <label for=\"heading_inp\">Nadpis: </label>\r\n        <input type=\"text\" name=\"heading\" id=\"heading_inp\">\r\n        </div>\r\n        <div id=\"editor\"></div>\r\n        <div>\r\n        <button id=\"copy_html\" class=\"button\">Kopírovat HTML</button>\r\n        <button id=\"paste_html\" class=\"button\">Vložit HTML</button>\r\n        </div>\r\n        <div>\r\n            <button id=\"save_change\" class=\"button\" onclick=\"save_changes()\">Provést změny</button>\r\n            <button id=\"discard_change\" class=\"button\" onclick=\"discard_changes()\">Zahodit změny</button>\r\n        </div>\r\n    </form>\r\n</div>";
 },"useData":true});
-this["Handlebars"]["templates"]["gallery"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+this["templates"]["gallery"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
@@ -21,7 +20,7 @@ this["Handlebars"]["templates"]["gallery"] = Handlebars.template({"compiler":[8,
     + alias4(((helper = (helper = lookupProperty(helpers,"parent_id") || (depth0 != null ? lookupProperty(depth0,"parent_id") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"parent_id","hash":{},"data":data,"loc":{"start":{"line":5,"column":35},"end":{"line":5,"column":48}}}) : helper)))
     + "\" >\r\n        <span class=\"current_img\"></span>\r\n        <span class=\"total\"></span>\r\n    </div>\r\n</div>";
 },"useData":true});
-this["Handlebars"]["templates"]["model_choice"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+this["templates"]["model_choice"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
@@ -71,7 +70,7 @@ this["Handlebars"]["templates"]["model_choice"] = Handlebars.template({"1":funct
     + ((stack1 = lookupProperty(helpers,"each").call(alias1,(depth0 != null ? lookupProperty(depth0,"qualities") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":4,"column":4},"end":{"line":18,"column":13}}})) != null ? stack1 : "")
     + "\r\n    <input type=\"submit\" value=\"OK\">\r\n</form>\r\n</div>";
 },"useData":true});
-this["Handlebars"]["templates"]["player"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+this["templates"]["player"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
@@ -144,7 +143,7 @@ this["Handlebars"]["templates"]["player"] = Handlebars.template({"1":function(co
     + "    <a-entity light=\"type: point; intensity: 1; distance: 100; decay: 2\" position=\"0 0 0\"></a-entity>\r\n    <a-entity light=\"type: ambient; color: #CCC\"></a-entity>\r\n</a-scene>\r\n\r\n<div class=\"popup\" id=\"help_popup\">\r\n<div class=\"popup_heading\"> <span class=\"back_icon\"><img src=\"../control_graphic/back_icon.png\"></span>Nápověda</div>\r\n<div class=\"popup_body\">\r\n"
     + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"orbit_control") : depth0),{"name":"if","hash":{},"fn":container.program(11, data, 0),"inverse":container.program(13, data, 0),"data":data,"loc":{"start":{"line":30,"column":0},"end":{"line":59,"column":7}}})) != null ? stack1 : "");
 },"useData":true});
-this["Handlebars"]["templates"]["popup"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
+this["templates"]["popup"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
@@ -182,7 +181,7 @@ this["Handlebars"]["templates"]["popup"] = Handlebars.template({"1":function(con
 
   return ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"annotations") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0, blockParams, depths),"inverse":container.noop,"data":data,"loc":{"start":{"line":1,"column":0},"end":{"line":9,"column":9}}})) != null ? stack1 : "");
 },"useData":true,"useDepths":true});
-this["Handlebars"]["templates"]["popup_button"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+this["templates"]["popup_button"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, alias4="function", lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
