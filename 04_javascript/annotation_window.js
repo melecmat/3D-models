@@ -1,3 +1,15 @@
+var is_dirty = false; // global value used for handling unsaved data
+function prevent_data_deletion() {
+    window.onbeforeunload = function () {
+        if (!is_dirty) { // no chang assumed
+            return undefined;
+        }
+        var confirmation_message = "";
+        return confirmation_message;
+    };
+}
+
+
 /**
  * Functions called when editation mode is allowed and user presses ctrl + alt + e.
  * Enables buttons for editing
@@ -5,45 +17,59 @@
 function make_edit_buttons_apear() {
     var edit_buttons = document.getElementsByClassName("ed_button");
     for (let button of edit_buttons) {
-        button.classList.add("visible");
-        if(button.parentNode == document.getElementById("control_panel")) continue;
+        make_edit_button_apear(button);
+    }
+}
+
+function make_edit_button_apear(button) {
+    button.classList.add("visible");
+        if(button.parentNode == document.getElementById("control_panel")) return;
         if (button.classList.contains("delete")) {
             button.addEventListener("click", function () {
-                delete_annotation(button.id.slice(6)); // slice gets the ID of annotation
+                // TODO -- change the way this is implemented -- get parent of the button!!!
+                delete_annotation(button); // slice gets the ID of annotation
             });
         } else 
             button.addEventListener("click", function () {
-                build_annotation_window(button.id.slice(4), json_obj.annotations[button.id.slice(4)]); // slice gets the ID of annotation
+                build_annotation_window(button); // slice gets the ID of annotation
             });
-    }
 }
 
 /**
  * Assembles annotation window and makes it visible.
  * @param {object} annotation_object 
+ * @param {Node} button
  */
-function build_annotation_window(annotation_id, annotation_info) {
+function build_annotation_window(button, annotation_id = null/*annotation_id, annotation_info*/) {
     // put data into annotation window
     //var annotation_info = json_obj.annotations[annotation_id];
+    is_dirty = true; // something is hapenning -- better note the changes
+    var annotation_info = {};
+    if (button != null) { // if creating new annotation
+         // get information from buttons parent
+        annotation_id = button.parentNode.id;
+        annotation_info = json_obj.annotations[annotation_id];
+    }
+    
     try {
-        document.getElementById("position_inp").setAttribute(
-            "value", get_entity_position_string(document.getElementById("rendered" + annotation_id), false)
-        );
+        document.getElementById("position_inp").value = get_entity_position_string(
+            document.getElementById("rendered" + annotation_id), false
+            )
     } catch(e) {}
-    document.getElementById("no_inp").setAttribute("value", get_number_from_string(annotation_id));
+    document.getElementById("no_inp").value = get_number_from_string(annotation_id);
     if (annotation_info.heading == undefined) annotation_info.heading = "";
     if (annotation_info.text == undefined) annotation_info.text = "";
-    document.getElementById("heading_inp").setAttribute("value", annotation_info.heading);
+    document.getElementById("heading_inp").value = annotation_info.heading;
     document.getElementById("current_edited").innerHTML = annotation_id;
     open_popup("annotation_window", false);
     // put into editor
     append_html(annotation_info.text);
 }
 
-function delete_annotation(annotation_id) {
+function delete_annotation(button) {
     // really?
     if (!confirm("Opravdu chcete smazat anotaci?")) return;
-    console.log(annotation_id);
+    var annotation_id = button.parentNode.id;
     var annotation_button = document.getElementById("rendered" + annotation_id);
     var annotation = document.getElementById(annotation_id);
     annotation_button.parentNode.removeChild(annotation_button);
@@ -176,7 +202,7 @@ function save_changes() {
     var rendered_anno = document.getElementById("rendered" + current_annotation);
     if (rendered_anno == null) {
         // make it with id number_annotations + 1
-        current_annotation = "uniqueID" + (document.getElementsByClassName("rendered_annotation").length + 1);
+        current_annotation = "uniqueID" + find_empty_id();
         make_new_annotation(new_position, current_annotation);
         // if that is the number we wanted -- were done
         if (current_annotation == new_id) {
@@ -229,6 +255,7 @@ function save_changes() {
  */
 function make_new_annotation(new_position, new_id) {
     var template_info = {
+        "edit_mode" : true,
         "annotations" : {
             [new_id] : {
                 "heading" : document.getElementById("heading_inp").value,
@@ -240,6 +267,17 @@ function make_new_annotation(new_position, new_id) {
     put_template_to_html(template_info, "a-scene", Handlebars.templates.popup_button);
     put_template_to_html(template_info, "body", Handlebars.templates.popup);
     json_obj.annotations[new_id] = template_info.annotations[new_id];
+    /*document.arrive("#delete" + new_id, function() {
+        // 'this' refers to the newly created element
+        console.log("HELLO form the other side");
+        this.classList.add("visible");
+    });
+    document.arrive("#edit" + new_id, function() {
+        this.classList.add("visible");
+    });*/
+
+    make_edit_button_apear(document.getElementById("delete" + new_id));
+    make_edit_button_apear(document.getElementById("edit" + new_id));
 }
 
 
@@ -255,14 +293,18 @@ function change_popup(popup_id, annotation_info) {
 }
 
 function create_new_popup() {
+    var id = find_empty_id();
+    build_annotation_window(null, "uniqueID" + id);
+}
+
+function find_empty_id() {
     var id = document.getElementsByClassName("clickable").length + 1;
-    // non elegant solution :D
+    // non elegant solution to find empty id :D
     while (document.getElementById("uniqueID" + id) != null) {
         ++id;
     }
-    build_annotation_window("uniqueID" + id, {});
+    return id;
 }
-
 /**
  * Discards changes and closest the annotation window.
  */
@@ -281,4 +323,5 @@ function save_json() {
     a.href = URL.createObjectURL(file);
     a.download = "info.json";
     a.click();
+    is_dirty = false;
 }

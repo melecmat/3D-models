@@ -10,6 +10,7 @@ document.addEventListener("template_done", function() {
 
 /**
  * My first component, it changes the sky
+ * CURRENTLT NOT USED
  */
 AFRAME.registerComponent ('cursor-listener', {
     init: function() {
@@ -28,6 +29,7 @@ AFRAME.registerComponent ('cursor-listener', {
  * this component is used to change camera position, allowing for movement around the world
  * syntax in HTML: <a-sth change-position=' position : x y z' > </a-sth>
  * when the position atttribute is left out, the camera position will be changed to that of element
+ * CURRENTLY NOT USED
  */
 AFRAME.registerComponent ('change-position', {
     schema: {

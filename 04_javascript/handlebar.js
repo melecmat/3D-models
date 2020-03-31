@@ -96,6 +96,7 @@ function main_templating(e, custom_json, only_player = false) {
                     if (!key_comb_pressed){
                         key_comb_pressed = true;
                         make_edit_buttons_apear();
+                        prevent_data_deletion();
                     }
                 } else {}
             }, true);

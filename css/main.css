@@ -22,9 +22,10 @@
 }
 
 .popup#annotation_window {
-    width: 80%;
+    width: 66%;
     max-height: 90%;
     overflow:auto;
+    z-index: 1006;
 }
 
 #annotation_window div {
