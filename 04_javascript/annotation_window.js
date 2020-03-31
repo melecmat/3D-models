@@ -75,6 +75,36 @@ function delete_annotation(button) {
     annotation_button.parentNode.removeChild(annotation_button);
     annotation.parentNode.removeChild(annotation);
     delete json_obj.annotations[annotation_id];
+    // save to local storage
+    save_to_local_storage();
+}
+
+function save_to_local_storage() {
+    var error_msg = "Couldnt save to local storage, something went wrong";
+    try {
+        console.log("should save");
+        // get where to save to
+        var key = get_local_location();
+        if (key == null) {
+            console.log(error_msg);
+            return; // cannot save
+        }
+        window.localStorage.setItem(key, JSON.stringify(json_obj));
+    } catch (e) {
+        console.log(error_msg);
+    }
+    is_dirty = false;
+}
+
+function get_local_location() {
+    var addr = location.search.slice(1, location.search.length);
+    if (addr == "") {
+        if ((addr = json_obj.path_name) == undefined) {
+            console.log("Couldnt get local storage");
+            return null;
+        }
+    }
+    return addr;
 }
 
 function get_number_from_string(string) {
@@ -208,6 +238,7 @@ function save_changes() {
         if (current_annotation == new_id) {
             $('#editor').trumbowyg('empty');
             close_windows();
+            save_to_local_storage();
             return;
         }
         // else -- continue executing
@@ -244,6 +275,9 @@ function save_changes() {
     change_popup(current_annotation, json_obj.annotations[current_annotation]);
     //$('#editor').trumbowyg('html', '');
     $('#editor').trumbowyg('empty');
+
+    // save into local storage
+    save_to_local_storage();
 
     close_windows();
 }
@@ -323,5 +357,24 @@ function save_json() {
     a.href = URL.createObjectURL(file);
     a.download = "info.json";
     a.click();
+    // save to local storage
+    save_to_local_storage();
     is_dirty = false;
+}
+
+/**
+ * Returns fresh version from the web
+ */
+function get_version_from_web() {
+    delete_old_data();
+    load_from_web_or_user(get_local_location());
+}
+
+function delete_old_data() {
+    var annotations = document.getElementsByClassName("popup");
+    for (let popup of annotations) {
+        popup.parentNode.removeChild(popup);
+    }
+    var a_scene = document.querySelector("a-scene");
+    a_scene.parentNode.removeChild(a_scene);
 }

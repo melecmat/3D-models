@@ -1,5 +1,6 @@
 {
     "title": "Stará voda",
+    "path_name" : "stara_voda",
     "edit_mode" : true,
     "player": {
         "orbit_control": false,

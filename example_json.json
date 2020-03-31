@@ -1,5 +1,6 @@
 {
     "title": "Title of project",
+    "path_name" : "name of folder containing the project -- used for saving and loading purposes",
     "edit_mode": "true/false -- specifies whether you can edit the json file and download it",
     "player": {
         "orbit_control": "whether or not we have orbit control true/false",
