@@ -98,7 +98,7 @@ AFRAME.registerComponent ('info-window', {
             var window = document.getElementById(window_id);
             var galleries = window.getElementsByClassName("popup_body")[0].getElementsByClassName("gallery_wrapper");
             for (const gallery of galleries) {
-                init_gallery(gallery); // function in gallery control
+                GalleryControl.init_gallery(gallery); // function in gallery control
             }
         });
     }
@@ -113,8 +113,8 @@ AFRAME.registerComponent('big_model', {
            document.querySelector("#loading_screen").remove();
            console.log("Should see model");
        });
-       this.el.addEventListener("model-progress", e => {
-        console.log(e.progress)
+       this.el.addEventListener("model-progress", function(e) {
+        //console.log(e.progress);
       });
        this.el.addEventListener('model-error', e => {
         //document.querySelector("#loading_screen").remove();
@@ -175,6 +175,7 @@ function degToRad(degrees)
 
 
 /**
+ * Not used?
  * Gets the string representing position and rotation if specified of given aframe entity.
  * @param {*} entity aframe entity
  * @param {Boolean} rotation if you want to get rotation
@@ -191,3 +192,13 @@ function get_entity_position_string(entity, rotation) {
     }
     return posrot;
 }
+
+ /**
+     * Helper function for cutting off too long floats.
+     * Shortens them to precision and truncates trailing zeroes.
+     * @param {*} no 
+     * @param {*} precision 
+     */
+    function toFixedTruncate(no, precision) {
+        return parseFloat(no.toFixed(precision));
+    }

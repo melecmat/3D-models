@@ -7,6 +7,7 @@ AFRAME.registerComponent('my-gltf-model', {
     init: function () {
       var dracoLoader = new THREE.DRACOLoader;
       dracoLoader.setDecoderPath( "../draco/" );
+      //console.log(dracoLoader);
       this.model = null;
       this.loader = new THREE.GLTFLoader();
       if (dracoLoader) {
@@ -31,7 +32,11 @@ AFRAME.registerComponent('my-gltf-model', {
             el.emit('model-loaded', {format: 'gltf', model: self.model});
       },
       function onProgress(xhr) {
-        console.log("xhr.loaded / xhr.total * 100");
+        //console.log(Math.floor(xhr.loaded / xhr.total * 100));
+        try {
+          document.getElementById("progress").innerText = Math.floor(xhr.loaded / xhr.total * 100);
+        } catch (e) {console.log("Not present loading screen.");}
+        
         el.emit("model-progress", {progress: ( xhr.loaded / xhr.total * 100 ) })
      },
      function gltfFailed (error) {

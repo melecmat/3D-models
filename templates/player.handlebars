@@ -10,7 +10,8 @@
     {{/if}}
 
     <a-entity raycaster="objects: [data-clickable]" id="raycaster" cursor="rayOrigin:mouse"></a-entity>
-    <a-assets timeout="100000000">
+    {{!model id put instead using a function}}
+    <!--<a-assets timeout="100000000">
         {{#if_equals model_src ""}}
         {{else}}
         <a-asset-item id="main_model" src="{{model_src}}"></a-asset-item>
@@ -18,8 +19,8 @@
     </a-assets>
     {{#if_equals model_src ""}}
     {{else}}
-    <a-entity my-gltf-model="#main_model" id="gltf_model" big_model autoscale=" scale:{{model_scale}}; rotation: {{model_rotation}}"></a-entity>
-    {{/if_equals}}
+    <a-entity my-gltf-model="{{model_src}}" id="gltf_model" big_model autoscale=" scale:{{model_scale}}; rotation: {{model_rotation}}"></a-entity>
+    {{/if_equals}}-->
     <a-entity light="type: point; intensity: 1; distance: 100; decay: 2" position="0 0 0"></a-entity>
     <a-entity light="type: ambient; color: #CCC"></a-entity>
 </a-scene>
