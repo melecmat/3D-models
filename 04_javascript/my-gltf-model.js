@@ -39,12 +39,17 @@ AFRAME.registerComponent('my-gltf-model', {
           } else {
             contentLength = xhr.target.getResponseHeader('x-decompressed-content-length');
             console.log(contentLength);
-            console.log(parseInt(contentLength));
+            contentLength = parseInt(contentLength);
           }
           console.log(contentLength);
           console.log(xhr.loaded);
           console.log(xhr);
-          document.getElementById("progress").innerText = Math.floor(xhr.loaded / contentLength * 100);
+          var to_print = Math.floor(xhr.loaded / contentLength * 100);
+          if (contentLength == NaN) {
+            to_print = Math.floor((xhr.loaded/1000)) + " MB";
+          }
+          console.log("To print: " + to_print);
+          document.getElementById("progress").innerText = to_print;
         } catch (e) {console.log("Not present loading screen.");}
         
         el.emit("model-progress", {progress: ( xhr.loaded / xhr.total * 100 ) })
