@@ -34,10 +34,15 @@ AFRAME.registerComponent('my-gltf-model', {
       function onProgress(xhr) {
         console.log(Math.floor(xhr.loaded / xhr.total * 100));
         try {
-          console.log(xhr.total);
+          if (xhr.lengthComputable) {
+            contentLength = xhr.total;
+          } else {
+            contentLength = parseInt(xhr.target.getResponseHeader('x-decompressed-content-length'), 10);
+          }
+          console.log(contentLength);
           console.log(xhr.loaded);
           console.log(xhr);
-          document.getElementById("progress").innerText = Math.floor(xhr.loaded / xhr.total * 100);
+          document.getElementById("progress").innerText = Math.floor(xhr.loaded / contentLength * 100);
         } catch (e) {console.log("Not present loading screen.");}
         
         el.emit("model-progress", {progress: ( xhr.loaded / xhr.total * 100 ) })
