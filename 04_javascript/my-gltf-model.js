@@ -38,19 +38,11 @@ AFRAME.registerComponent('my-gltf-model', {
             contentLength = xhr.total;
           } else {
             contentLength = xhr.target.getResponseHeader('x-decompressed-content-length');
-            //console.log(contentLength);
             contentLength = parseInt(contentLength);
           }
-          //console.log(contentLength);
-          //console.log(xhr.loaded);
-          //console.log(xhr);
           var to_print = Math.floor(xhr.loaded / contentLength * 100);
           if (isNaN(to_print)) {
-            //console.log(xhr.loaded);
-            //console.log(xhr.loaded/1000);
-            //console.log(Math.floor(xhr.loaded/1000));
-            to_print = Math.floor((xhr.loaded/1048576)) + " MB";
-            console.log("in if " + to_print);
+            to_print = Math.floor((xhr.loaded/1000000)) + " MB";
           }
           console.log("To print: " + to_print);
           document.getElementById("progress").innerText = to_print;
