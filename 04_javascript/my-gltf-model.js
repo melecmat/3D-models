@@ -46,10 +46,10 @@ AFRAME.registerComponent('my-gltf-model', {
           //console.log(xhr);
           var to_print = Math.floor(xhr.loaded / contentLength * 100);
           if (isNaN(to_print)) {
-            console.log(xhr.loaded);
-            console.log(xhr.loaded/1000);
-            console.log(Math.floor(xhr.loaded/1000));
-            to_print = Math.floor((xhr.loaded/1000)) + " MB";
+            //console.log(xhr.loaded);
+            //console.log(xhr.loaded/1000);
+            //console.log(Math.floor(xhr.loaded/1000));
+            to_print = Math.floor((xhr.loaded/1000000)) + " MB";
             console.log("in if " + to_print);
           }
           console.log("To print: " + to_print);
