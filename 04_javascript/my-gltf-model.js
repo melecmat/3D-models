@@ -35,6 +35,8 @@ AFRAME.registerComponent('my-gltf-model', {
         console.log(Math.floor(xhr.loaded / xhr.total * 100));
         try {
           console.log(xhr.total);
+          console.log(xhr.loaded);
+          console.log(xhr);
           document.getElementById("progress").innerText = Math.floor(xhr.loaded / xhr.total * 100);
         } catch (e) {console.log("Not present loading screen.");}
         
