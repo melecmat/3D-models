@@ -41,12 +41,16 @@ AFRAME.registerComponent('my-gltf-model', {
             console.log(contentLength);
             contentLength = parseInt(contentLength);
           }
-          console.log(contentLength);
-          console.log(xhr.loaded);
-          console.log(xhr);
+          //console.log(contentLength);
+          //console.log(xhr.loaded);
+          //console.log(xhr);
           var to_print = Math.floor(xhr.loaded / contentLength * 100);
           if (to_print == NaN) {
+            console.log(xhr.loaded);
+            console.log(xhr.loaded/1000);
+            console.log(Math.floor(xhr.loaded/1000));
             to_print = Math.floor((xhr.loaded/1000)) + " MB";
+            console.log("in if " + to_print);
           }
           console.log("To print: " + to_print);
           document.getElementById("progress").innerText = to_print;
