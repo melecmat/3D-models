@@ -37,7 +37,9 @@ AFRAME.registerComponent('my-gltf-model', {
           if (xhr.lengthComputable) {
             contentLength = xhr.total;
           } else {
-            contentLength = parseInt(xhr.target.getResponseHeader('x-decompressed-content-length'), 10);
+            contentLength = xhr.target.getResponseHeader('x-decompressed-content-length');
+            console.log(contentLength);
+            console.log(parseInt(contentLength));
           }
           console.log(contentLength);
           console.log(xhr.loaded);
