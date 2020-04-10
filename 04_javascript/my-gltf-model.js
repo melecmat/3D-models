@@ -49,7 +49,7 @@ AFRAME.registerComponent('my-gltf-model', {
             //console.log(xhr.loaded);
             //console.log(xhr.loaded/1000);
             //console.log(Math.floor(xhr.loaded/1000));
-            to_print = Math.floor((xhr.loaded/1000000)) + " MB";
+            to_print = Math.floor((xhr.loaded/1048576)) + " MB";
             console.log("in if " + to_print);
           }
           console.log("To print: " + to_print);
