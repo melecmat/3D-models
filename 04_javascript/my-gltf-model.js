@@ -45,7 +45,7 @@ AFRAME.registerComponent('my-gltf-model', {
           console.log(xhr.loaded);
           console.log(xhr);
           var to_print = Math.floor(xhr.loaded / contentLength * 100);
-          if (contentLength == NaN) {
+          if (to_print == NaN) {
             to_print = Math.floor((xhr.loaded/1000)) + " MB";
           }
           console.log("To print: " + to_print);
