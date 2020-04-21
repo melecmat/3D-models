@@ -148,4 +148,5 @@ var ControlPanel = (function () {
             else help.classList.add("visible");
         });
     }
+
 })();

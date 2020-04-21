@@ -15,6 +15,7 @@ var AnnotationWindow = (function () {
         document.getElementById("save_browser").addEventListener("click", save_to_local_storage);
         document.getElementById("save_button").addEventListener("click", save_json);
         document.getElementById("new_popup_button").addEventListener("click", create_new_popup);
+        document.getElementById("data_delete_button").addEventListener("click", delete_local_data);
     }
 
     /**
@@ -434,6 +435,19 @@ var AnnotationWindow = (function () {
         a_scene.parentNode.removeChild(a_scene);
     }
 
+    /**
+     * Deletes local changes saved in data and refreshes page to get fresh data.
+     */
+    function delete_local_data() {
+        // confirmation dialog
+        if (!confirm("Opravdu chcete smazat lokální změny? Tato akce smaže z prohlížeče změny provedené v anotacích a\
+        vyvolá načtení stránky s aktuálními údaji ze serveru. Pokud si chcete změny uložit, využijte tlačítka Uložit JSON.")) return;
+        // delete local data
+        window.localStorage.removeItem(get_local_location());
+        // trigger page refresh
+        location.reload();
+    }
+
     return {
 
         /**
@@ -448,7 +462,8 @@ var AnnotationWindow = (function () {
             var extra_buttons = '<button class="ed_button button" id="new_popup_button">Vytvořit novou anotaci</button>\
             <button class="ed_button button" id="reveal_server_v">Načíst verzi ze serveru</button>\
             <button class="ed_button button" id="save_browser">Uložit do prohlížeče</button>\
-            <button class="ed_button button" id="save_button">Uložit JSON soubor</button>';
+            <button class="ed_button button" id="save_button">Uložit JSON soubor</button>\
+            <button class="ed_button button" id="data_delete_button">Vymazat úpravy</button>';
             document.getElementById("control_panel").innerHTML += extra_buttons;
             Editor.init_editor();
 
