@@ -8,7 +8,9 @@ var App = (function () {
     // custom templating helpers
     Handlebars.registerHelper("get_number", function (id) {
         var regex = /\d+/;
-        return id.match(regex) + ".";
+        var num = id.match(regex);
+        if (null == num) num = "i";
+        return num + ".";
     });
 
     Handlebars.registerHelper('if_equals', function(arg1, arg2, options) {
