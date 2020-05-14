@@ -93,11 +93,15 @@ var ControlPanel = (function () {
     }
 
     /**
-     * Enables jump to position specified in a form field
+     * Enables jump to position specified in a form field.
+     * Or to position provided as a function argument
      */
-    function go_to_position() {
+    function go_to_position(e, posrot="") {
         var camera = document.getElementById("camera");
-        var posrot = document.getElementById("user_pos").value;
+        if (posrot == "") {
+            posrot = document.getElementById("user_pos").value;
+        }
+        //console.log(posrot);
         var pos_array = posrot.split(" ");
         if (pos_array.length != 5) {
             // wrong input
@@ -147,6 +151,10 @@ var ControlPanel = (function () {
             if (help.classList.contains("visible")) help.classList.remove("visible");
             else help.classList.add("visible");
         });
+    }
+
+    return {
+        go_to_position: go_to_position
     }
 
 })();

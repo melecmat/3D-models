@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="cs">
+  
+    <!-- RELEASE VERSION -- scripts and css are minified -->
+    <head>
+      <title></title>
+      <meta charset="UTF-8">
+      
+      <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
+      <script src="../build/js/3d_player.min-min.js"></script>
+      
+      <link rel="stylesheet" type="text/css" href="../build/css/3d_player.min.css">
+
+      <!-- FOR EDITOR -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/ui/trumbowyg.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/plugins/colors/ui/trumbowyg.colors.min.css">
+      
+      
+    </head>
+  <body>
+    
+      
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/trumbowyg.min.js"></script>
+
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/plugins/fontfamily/trumbowyg.fontfamily.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/plugins/fontsize/trumbowyg.fontsize.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/plugins/history/trumbowyg.history.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/plugins/colors/trumbowyg.colors.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/plugins/cleanpaste/trumbowyg.cleanpaste.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/plugins/allowtagsfrompaste/trumbowyg.allowtagsfrompaste.min.js"></script>
+    
+        <div id="loading_screen">
+          <div id="heading"></div>
+          <div id="container">
+            <div class="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div id="progress"></div>
+        </div>
+        <script src="../build/js/handlebar.js"></script>
+            
+          <img src="../control_graphic/right.png" id="control_trigger">
+        <div id="control_panel">
+          <h3>Nastavení</h3>
+          <div class="item">Anotace
+            <label class="switch" id="change_visibility">
+              <input type="checkbox" checked><span class="slider round"></span>
+            </label>
+          </div>
+          <div class="item" id="gyroscope">Gyroskop
+            <label class="switch" id="switch_gyro">
+              <input type="checkbox"><span class="slider round"></span>
+            </label>
+          </div>
+          <div class="item" id="speed">Rychlost
+            <input class="speed_slider" type="range" value="40" min="5" max="130" step="1">
+            <div id="speed_val">40</div>
+          </div>
+          <button class="item button" id="copy_pos" title="Zkopíruje pozici do schránky">Kopírovat pozici</button>
+          <div class="item" id="goto">Přejít na pozici
+            <input type="text" id="user_pos">
+            <button class="button" id="goto_pos">OK</button>
+          </div>
+          <button class="item button" id="help">Nápověda</button>
+        </div>
+  </body>
+</html>
