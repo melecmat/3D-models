@@ -6,14 +6,36 @@ var ControlPanel = (function () {
 
     // event listeners for reading values of the control panel
     document.addEventListener("template_done", function () {
-        document.getElementById("control_trigger").addEventListener("click", trigger_menu);
-        document.getElementById("change_visibility").addEventListener("change", change_popup_visibility);
-        document.getElementById("switch_gyro").addEventListener("change", switch_gyroscope);
-        document.querySelector("div#speed .speed_slider").addEventListener("input", change_acceleration);
-        document.getElementById("copy_pos").addEventListener("click", copy_position_rotation);
-        document.getElementById("goto_pos").addEventListener("click", go_to_position);
+        var body = document.querySelector('body');
+        body.addEventListener('click', function(event) {
+            if (event.target.id == "control_trigger") trigger_menu();
+            else if (event.target.id == "copy_pos") copy_position_rotation();
+            else if (event.target.id == "goto_pos") go_to_position();
+            else if (event.target.id == "help") {
+                var help = document.getElementById("help_popup");
+                if (help.classList.contains("visible")) help.classList.remove("visible");
+                else help.classList.add("visible");
+            }
+        });
+
+        body.addEventListener("change", function() {
+            if (event.target.parentElement.id == "change_visibility") change_popup_visibility();
+            else if (event.target.parentElement.id == "switch_gyro") switch_gyroscope();
+            else if (event.target.id == "lang_switch") Language.swapLanguageVersion(event.target.value);
+        });
+
+        body.addEventListener("input", function() {
+            if (event.target.classList.contains("speed_slider")) change_acceleration(event);
+        });
+
+        //document.getElementById("control_trigger").addEventListener("click", trigger_menu);
+        //document.getElementById("change_visibility").addEventListener("change", change_popup_visibility);
+        //document.getElementById("switch_gyro").addEventListener("change", switch_gyroscope);
+        //document.querySelector("div#speed .speed_slider").addEventListener("input", change_acceleration);
+        //document.getElementById("copy_pos").addEventListener("click", copy_position_rotation);
+        //document.getElementById("goto_pos").addEventListener("click", go_to_position);
         register_enter();
-        register_help();
+        console.log("added listeners");
     });
 
     /**
@@ -127,10 +149,14 @@ var ControlPanel = (function () {
     }
 
     function register_enter() {
-        var input = document.getElementById("user_pos");
+        var body = document.querySelector("body");
 
         // Execute a function when the user releases a key on the keyboard
-        input.addEventListener("keyup", function(event) {
+        body.addEventListener("keyup", function(event) {
+            if (event.target.id != "user_pos") {
+                console.log(event.target.id);
+                return;
+            }
             // Number 13 is the "Enter" key on the keyboard
             if (event.keyCode === 13) {
                 // Cancel the default action, if needed

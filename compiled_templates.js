@@ -3,6 +3,49 @@ this["Handlebars"]["templates"] = this["Handlebars"]["templates"] || {};
 this["Handlebars"]["templates"]["annotation_window"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class=\"popup\" id=\"annotation_window\" > \r\n    <div id=\"current_edited\"></div>\r\n    <form name=\"change_annotation\" action=\"javascript:void(0);\">\r\n        <div>\r\n        <label for=\"position_inp\">Pozice: </label>\r\n        <input type=\"text\" name=\"position\" id=\"position_inp\">\r\n        </div>\r\n        <div>\r\n        <label for=\"no_inp\">Číslo anotace: </label>\r\n        <input type=\"number\" name=\"no\" id=\"no_inp\">\r\n        </div>\r\n        <div>\r\n        <label for=\"heading_inp\">Nadpis: </label>\r\n        <input type=\"text\" name=\"heading\" id=\"heading_inp\">\r\n        </div>\r\n        <div id=\"editor\"></div>\r\n        <div>\r\n        <button id=\"copy_html\" class=\"button\">Kopírovat HTML</button>\r\n        <button id=\"paste_html\" class=\"button\">Vložit HTML</button>\r\n        </div>\r\n        <div>\r\n            <button id=\"save_change\" class=\"button\">Provést změny</button>\r\n            <button id=\"discard_change\" class=\"button\">Zahodit změny</button>\r\n        </div>\r\n    </form>\r\n</div>";
 },"useData":true});
+this["Handlebars"]["templates"]["control_panel"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "  <div class=\"item\"> "
+    + container.escapeExpression((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"language_choice",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":7,"column":21},"end":{"line":7,"column":57}}}))
+    + "\r\n      <select id=\"lang_switch\">\r\n        "
+    + ((stack1 = ((helper = (helper = lookupProperty(helpers,"languageSwitch") || (depth0 != null ? lookupProperty(depth0,"languageSwitch") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"languageSwitch","hash":{},"data":data,"loc":{"start":{"line":9,"column":8},"end":{"line":9,"column":28}}}) : helper))) != null ? stack1 : "")
+    + "\r\n      </select>\r\n    </form>\r\n    \r\n  </div>\r\n";
+},"3":function(container,depth0,helpers,partials,data) {
+    return "";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<img src=\"../control_graphic/right.png\" id=\"control_trigger\">\r\n\r\n<div id=\"control_panel\">\r\n  <h3>"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"cp_heading",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":4,"column":6},"end":{"line":4,"column":37}}}))
+    + "</h3> \r\n\r\n"
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(lookupProperty(helpers,"notNullLanguages")||(depth0 && lookupProperty(depth0,"notNullLanguages"))||alias2).call(alias1,{"name":"notNullLanguages","hash":{},"data":data,"loc":{"start":{"line":6,"column":8},"end":{"line":6,"column":26}}}),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data,"loc":{"start":{"line":6,"column":2},"end":{"line":15,"column":9}}})) != null ? stack1 : "")
+    + "\r\n  <div class=\"item\">"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"cp_annot_switch",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":17,"column":20},"end":{"line":17,"column":56}}}))
+    + "\r\n    <label class=\"switch\" id=\"change_visibility\">\r\n      <input type=\"checkbox\" checked><span class=\"slider round\"></span>\r\n    </label>\r\n  </div>\r\n  <div class=\"item\" id=\"gyroscope\">"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"cp_gyro",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":22,"column":35},"end":{"line":22,"column":63}}}))
+    + "\r\n    <label class=\"switch\" id=\"switch_gyro\">\r\n      <input type=\"checkbox\"><span class=\"slider round\"></span>\r\n    </label>\r\n  </div>\r\n  <div class=\"item\" id=\"speed\">"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"cp_speed",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":27,"column":31},"end":{"line":27,"column":60}}}))
+    + "\r\n    <input class=\"speed_slider\" type=\"range\" value=\"40\" min=\"5\" max=\"130\" step=\"1\">\r\n    <div id=\"speed_val\">40</div>\r\n  </div>\r\n  <button class=\"item button\" id=\"copy_pos\" title=\""
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"cp_copy_bin",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":31,"column":51},"end":{"line":31,"column":83}}}))
+    + "\">"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"cp_copypos",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":31,"column":85},"end":{"line":31,"column":116}}}))
+    + "</button>\r\n  <div class=\"item\" id=\"goto\">"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"cp_gotopos",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":32,"column":30},"end":{"line":32,"column":61}}}))
+    + "\r\n    <input type=\"text\" id=\"user_pos\">\r\n    <button class=\"button\" id=\"goto_pos\">OK</button>\r\n  </div>\r\n  <button class=\"item button\" id=\"help\">"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"cp_help",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":36,"column":40},"end":{"line":36,"column":68}}}))
+    + "</button>\r\n</div>";
+},"useData":true});
 this["Handlebars"]["templates"]["gallery"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -45,28 +88,32 @@ this["Handlebars"]["templates"]["model_choice"] = Handlebars.template({"1":funct
 },"2":function(container,depth0,helpers,partials,data) {
     return "";
 },"4":function(container,depth0,helpers,partials,data) {
-    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
         }
         return undefined
     };
 
-  return "        <p>\r\n            <b>Velikost:</b> "
-    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"file_size") || (depth0 != null ? lookupProperty(depth0,"file_size") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"file_size","hash":{},"data":data,"loc":{"start":{"line":11,"column":29},"end":{"line":11,"column":42}}}) : helper)))
+  return "        <p>\r\n            <b>"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"mc_size",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":11,"column":15},"end":{"line":11,"column":43}}}))
+    + "</b> "
+    + alias3(((helper = (helper = lookupProperty(helpers,"file_size") || (depth0 != null ? lookupProperty(depth0,"file_size") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"file_size","hash":{},"data":data,"loc":{"start":{"line":11,"column":48},"end":{"line":11,"column":61}}}) : helper)))
     + "\r\n        </p>\r\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, alias4="function", lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
         }
         return undefined
     };
 
-  return "<div id=\"model_choices\">\r\n    <h3>Zvolte kvalitu modelu</h3>\r\n<form name=\"selection_form\" action=\"javascript:void(0);\" onsubmit=\"choose_model(event, "
-    + alias4(((helper = (helper = lookupProperty(helpers,"model_scale") || (depth0 != null ? lookupProperty(depth0,"model_scale") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"model_scale","hash":{},"data":data,"loc":{"start":{"line":3,"column":87},"end":{"line":3,"column":102}}}) : helper)))
+  return "<div id=\"model_choices\">\r\n    <h3>"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"mc_choose",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":2,"column":8},"end":{"line":2,"column":38}}}))
+    + "</h3>\r\n<form name=\"selection_form\" action=\"javascript:void(0);\" onsubmit=\"choose_model(event, "
+    + alias3(((helper = (helper = lookupProperty(helpers,"model_scale") || (depth0 != null ? lookupProperty(depth0,"model_scale") : depth0)) != null ? helper : alias2),(typeof helper === alias4 ? helper.call(alias1,{"name":"model_scale","hash":{},"data":data,"loc":{"start":{"line":3,"column":87},"end":{"line":3,"column":102}}}) : helper)))
     + ", '"
-    + alias4(((helper = (helper = lookupProperty(helpers,"model_rotation") || (depth0 != null ? lookupProperty(depth0,"model_rotation") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"model_rotation","hash":{},"data":data,"loc":{"start":{"line":3,"column":105},"end":{"line":3,"column":123}}}) : helper)))
+    + alias3(((helper = (helper = lookupProperty(helpers,"model_rotation") || (depth0 != null ? lookupProperty(depth0,"model_rotation") : depth0)) != null ? helper : alias2),(typeof helper === alias4 ? helper.call(alias1,{"name":"model_rotation","hash":{},"data":data,"loc":{"start":{"line":3,"column":105},"end":{"line":3,"column":123}}}) : helper)))
     + "')\">\r\n"
     + ((stack1 = lookupProperty(helpers,"each").call(alias1,(depth0 != null ? lookupProperty(depth0,"qualities") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":4,"column":4},"end":{"line":18,"column":13}}})) != null ? stack1 : "")
     + "\r\n    <input type=\"submit\" value=\"OK\">\r\n</form>\r\n</div>";
@@ -124,9 +171,45 @@ this["Handlebars"]["templates"]["player"] = Handlebars.template({"1":function(co
     + alias4(((helper = (helper = lookupProperty(helpers,"model_rotation") || (depth0 != null ? lookupProperty(depth0,"model_rotation") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"model_rotation","hash":{},"data":data,"loc":{"start":{"line":22,"column":115},"end":{"line":22,"column":133}}}) : helper)))
     + "\"></a-entity>\r\n    ";
 },"11":function(container,depth0,helpers,partials,data) {
-    return "<p>Vítejte ve webovém prohlížeči 3D objektů. Snad Vám tato nápověda usnadní jeho používání.</p>\r\n<p><b>Ovládání: </b>v této variantě pouze otáčení pohledu myší.</p>\r\n<p>\r\n    V bočním panelu, kde se nachází tato nápověda, najdete také tlačítko anotace, kterým můžete vypnout zobrazování anotací,\r\n    pokud si chcete nerušeně prohlížet model.\r\n</p>\r\n</div>\r\n</div>\r\n\r\n";
+    var alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<p>"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"hlp_together",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":33,"column":3},"end":{"line":33,"column":36}}}))
+    + "</p>\r\n<p><b>"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"hlp_controls",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":34,"column":6},"end":{"line":34,"column":39}}}))
+    + " </b>"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"hlp_orbit_controls",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":34,"column":44},"end":{"line":34,"column":83}}}))
+    + "</p>\r\n<p>\r\n    "
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"hlp_orbit",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":36,"column":4},"end":{"line":36,"column":34}}}))
+    + "\r\n</p>\r\n</div>\r\n</div>\r\n\r\n";
 },"13":function(container,depth0,helpers,partials,data) {
-    return "<p>Vítejte ve webovém prohlížeči 3D objektů. Snad Vám tato nápověda usnadní jeho používání.</p>\r\n<p><b>Ovládání: </b>pomocí šipek nebo WASD a myší otáčení pohledu. Na dotykovém zařízení joystickem.</p>\r\n<p>\r\n    Pokud byste zabloudili, tlačítkem <b>domečku</b> se můžete navrátit zpět na <b>počáteční pozici.</b></p>\r\n<p>\r\n    V bočním panelu, kde se nachází tato nápověda, najdete další užitečné funkce. <br>Můžete <b>vypnout zobrazování \r\n    anotací,</b> pokud si chcete nerušeně prohlédnout model. Také se zde nachází možnost nastavení rychlosti pohybu.\r\n</p>\r\n<p>\r\n    Dvojicí tlačítek <b>Kopírovat pozici</b> a <b>Přejít na pozici</b> si můžete uschovat svoji aktuální polohu a následně se na \r\n    ni kdykoliv vrátit. <br>Tlačítko <b>Kopírovat pozici</b> ji zkopíruje do schránky.\r\n</p>\r\n</div>\r\n</div>\r\n\r\n<img id=\"home_button\" title=\"Return back to origin.\" src=\"../../control_graphic/home.png\"></img>\r\n\r\n\r\n";
+    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<p>"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"hlp_together",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":42,"column":3},"end":{"line":42,"column":36}}}))
+    + "</p>\r\n<p><b>"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"hlp_controls",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":43,"column":6},"end":{"line":43,"column":39}}}))
+    + " </b>"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"hlp_normal_controls",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":43,"column":44},"end":{"line":43,"column":84}}}))
+    + "</p>\r\n<p>\r\n    "
+    + ((stack1 = (lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"hlp_normal_1",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":45,"column":4},"end":{"line":45,"column":39}}})) != null ? stack1 : "")
+    + "\r\n    </p>\r\n<p>\r\n    "
+    + ((stack1 = (lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"hlp_normal_2",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":48,"column":4},"end":{"line":48,"column":39}}})) != null ? stack1 : "")
+    + "\r\n</p>\r\n<p>\r\n    "
+    + ((stack1 = (lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"hlp_normal_3",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":51,"column":4},"end":{"line":51,"column":39}}})) != null ? stack1 : "")
+    + "\r\n</p>\r\n</div>\r\n</div>\r\n\r\n<img id=\"home_button\" title=\""
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"home_button_txt",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":56,"column":29},"end":{"line":56,"column":65}}}))
+    + "\" src=\"../../control_graphic/home.png\"></img>\r\n\r\n\r\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -135,8 +218,8 @@ this["Handlebars"]["templates"]["player"] = Handlebars.template({"1":function(co
         return undefined
     };
 
-  return "<a-scene  background=\" color: "
-    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"background_color") || (depth0 != null ? lookupProperty(depth0,"background_color") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"background_color","hash":{},"data":data,"loc":{"start":{"line":1,"column":91},"end":{"line":1,"column":111}}}) : helper)))
+  return "<a-scene  vr-mode-ui=\"enabled: false\" background=\" color: "
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"background_color") || (depth0 != null ? lookupProperty(depth0,"background_color") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"background_color","hash":{},"data":data,"loc":{"start":{"line":1,"column":119},"end":{"line":1,"column":139}}}) : helper)))
     + "\" joystick>\r\n"
     + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"orbit_control") : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data,"loc":{"start":{"line":2,"column":4},"end":{"line":10,"column":11}}})) != null ? stack1 : "")
     + "\r\n    <a-entity raycaster=\"objects: [data-clickable]\" id=\"raycaster\" cursor=\"rayOrigin:mouse\"></a-entity>\r\n    <!--<a-assets timeout=\"100000000\">\r\n"
@@ -144,7 +227,7 @@ this["Handlebars"]["templates"]["player"] = Handlebars.template({"1":function(co
     + "    </a-assets>\r\n"
     + ((stack1 = (lookupProperty(helpers,"if_equals")||(depth0 && lookupProperty(depth0,"if_equals"))||alias2).call(alias1,(depth0 != null ? lookupProperty(depth0,"model_src") : depth0),"",{"name":"if_equals","hash":{},"fn":container.program(5, data, 0),"inverse":container.program(9, data, 0),"data":data,"loc":{"start":{"line":20,"column":4},"end":{"line":23,"column":18}}})) != null ? stack1 : "")
     + "-->\r\n    <a-entity light=\"type: point; intensity: 1; distance: 100; decay: 2\" position=\"0 0 0\"></a-entity>\r\n    <a-entity light=\"type: ambient; color: #CCC\"></a-entity>\r\n</a-scene>\r\n\r\n<div class=\"popup\" id=\"help_popup\">\r\n<div class=\"popup_heading\"> <span class=\"back_icon\"><img src=\"../control_graphic/back_icon.png\"></span>Nápověda</div>\r\n<div class=\"popup_body\">\r\n"
-    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"orbit_control") : depth0),{"name":"if","hash":{},"fn":container.program(11, data, 0),"inverse":container.program(13, data, 0),"data":data,"loc":{"start":{"line":31,"column":0},"end":{"line":60,"column":7}}})) != null ? stack1 : "");
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"orbit_control") : depth0),{"name":"if","hash":{},"fn":container.program(11, data, 0),"inverse":container.program(13, data, 0),"data":data,"loc":{"start":{"line":31,"column":0},"end":{"line":59,"column":7}}})) != null ? stack1 : "");
 },"useData":true});
 this["Handlebars"]["templates"]["popup"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {

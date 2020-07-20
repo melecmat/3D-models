@@ -203,6 +203,12 @@ div#change_visibility {
     left: 12%;
   }
 
+  #lang_switch {
+    border-radius: 3px;
+    border-color: #2196F3;
+    font-size: 1em;
+  }
+
 
   @media only screen and (pointer:coarse) {
       #gyroscope{

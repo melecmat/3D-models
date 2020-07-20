@@ -1,4 +1,4 @@
-<a-scene {{!cursor="rayOrigin:mouse" raycaster="objects: .clickable"}} background=" color: {{background_color}}" joystick>
+<a-scene {{!cursor="rayOrigin:mouse" raycaster="objects: .clickable"}} vr-mode-ui="enabled: false" background=" color: {{background_color}}" joystick>
     {{#if orbit_control}}
         
         <a-entity id="camera" camera=" active: true" look-controls orbit-controls=" target: 0 0 0; minDistance: 1; maxDistance: 50; initialPosition: {{camera_position}}; maxPolarAngle: 180"></a-entity>
@@ -29,32 +29,31 @@
 <div class="popup_heading"> <span class="back_icon"><img src="../control_graphic/back_icon.png"></span>Nápověda</div>
 <div class="popup_body">
 {{#if orbit_control}}
-<p>Vítejte ve webovém prohlížeči 3D objektů. Snad Vám tato nápověda usnadní jeho používání.</p>
-<p><b>Ovládání: </b>v této variantě pouze otáčení pohledu myší.</p>
+{{! here add language versions -- add helpers english tc}}
+<p>{{getTranslation "hlp_together"}}</p>
+<p><b>{{getTranslation "hlp_controls"}} </b>{{getTranslation "hlp_orbit_controls"}}</p>
 <p>
-    V bočním panelu, kde se nachází tato nápověda, najdete také tlačítko anotace, kterým můžete vypnout zobrazování anotací,
-    pokud si chcete nerušeně prohlížet model.
+    {{getTranslation "hlp_orbit"}}
 </p>
 </div>
 </div>
 
 {{else}}
-<p>Vítejte ve webovém prohlížeči 3D objektů. Snad Vám tato nápověda usnadní jeho používání.</p>
-<p><b>Ovládání: </b>pomocí šipek nebo WASD a myší otáčení pohledu. Na dotykovém zařízení joystickem.</p>
+<p>{{getTranslation "hlp_together"}}</p>
+<p><b>{{getTranslation "hlp_controls"}} </b>{{getTranslation "hlp_normal_controls"}}</p>
 <p>
-    Pokud byste zabloudili, tlačítkem <b>domečku</b> se můžete navrátit zpět na <b>počáteční pozici.</b></p>
+    {{{getTranslation "hlp_normal_1"}}}
+    </p>
 <p>
-    V bočním panelu, kde se nachází tato nápověda, najdete další užitečné funkce. <br>Můžete <b>vypnout zobrazování 
-    anotací,</b> pokud si chcete nerušeně prohlédnout model. Také se zde nachází možnost nastavení rychlosti pohybu.
+    {{{getTranslation "hlp_normal_2"}}}
 </p>
 <p>
-    Dvojicí tlačítek <b>Kopírovat pozici</b> a <b>Přejít na pozici</b> si můžete uschovat svoji aktuální polohu a následně se na 
-    ni kdykoliv vrátit. <br>Tlačítko <b>Kopírovat pozici</b> ji zkopíruje do schránky.
+    {{{getTranslation "hlp_normal_3"}}}
 </p>
 </div>
 </div>
 
-<img id="home_button" title="Return back to origin." src="../../control_graphic/home.png"></img>
+<img id="home_button" title="{{getTranslation "home_button_txt"}}" src="../../control_graphic/home.png"></img>
 
 
 {{/if}}

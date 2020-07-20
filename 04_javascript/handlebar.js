@@ -21,9 +21,52 @@ var App = (function () {
         return ++num;
     });
 
+    // helper to get current language -- for displaying annotations in specific language
+    Handlebars.registerHelper("language", function() {
+        return Language.language();
+    });
+
+    // helper to check for language -- for displaying user interface text 
+    Handlebars.registerHelper("currentLanguage", function(lang) {
+        return json_obj.languages[lang] == Language.language();
+    });
+
+    /**
+     * As a parameter gets id of block and puts it into whatever language is needed
+     * -- wrapper, the interesting function is located in module Language
+     */
+    Handlebars.registerHelper("getTranslation", function(toTranslate) {
+        
+        return Language.translate(toTranslate);
+    });
+
+    /**
+     * Implements language switch
+     */
+    Handlebars.registerHelper("languageSwitch", function () {
+        str = "";
+        for (l of Language.getProvidedLanguage()) {
+            str += '<option value="'+ l + '"';
+            if (l == Language.language()) {
+                str += ' selected';
+                console.log("selected " + l);
+            }
+            str += '>' + l + '</option>';
+        }
+        return str;
+    });
+
+    
+    Handlebars.registerHelper("notNullLanguages", function() {
+        return Language.getProvidedLanguage().length > 0;
+    });
+
     (function main() {
+
         var addr = location.search.slice(1, location.search.length);
         local_data = JSON.parse(window.localStorage.getItem(addr));
+
+        // for loading from local data -- used for quick and dirty annotation in browser
         if (local_data != null) {
             var loading_style = "<style type='text/css'> #loading_screen {background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('" + addr + "/background.jpg');background-position:center;background-size: cover;} </style>";
             document.querySelector("body").innerHTML += loading_style;
@@ -69,6 +112,13 @@ var App = (function () {
         } else {
             json_obj = JSON.parse(this.responseText);
         }
+        // decide what language should be used
+        Language.determineLanguage();
+        console.log(Language.language());
+        
+        // control panel
+        put_template_to_html(null, "body", Handlebars.templates.control_panel)
+        
         // title
         document.querySelector("title").innerHTML = json_obj.title;
         try {
@@ -99,7 +149,9 @@ var App = (function () {
         
         // check for edit mode
         if(json_obj.edit_mode) {
-            AnnotationWindow.init_annotation_editor();
+            document.addEventListener("template_done", function () {
+                AnnotationWindow.init_annotation_editor();
+            });
         }
 
         // templating done

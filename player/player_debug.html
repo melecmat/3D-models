@@ -13,6 +13,9 @@
       <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script>
       
       <!--APP LOGIC-->
+      <script src="../04_javascript/language.js"></script>
+      <script src="../04_javascript/translations.js"></script>
+      <!-- TODO -- add above to the final thing -->
       <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
       <script src="../compiled_templates.js"></script>
       <script src="../04_javascript/control.js"></script>
@@ -62,31 +65,6 @@
           <div id="progress"></div>
         </div>
         <script src="../04_javascript/handlebar.js"></script>
-            
-          <img src="../control_graphic/right.png" id="control_trigger">
-        <div id="control_panel">
-          <h3>Nastavení</h3>
-          <div class="item">Anotace
-            <label class="switch" id="change_visibility">
-              <input type="checkbox" checked><span class="slider round"></span>
-            </label>
-          </div>
-          <div class="item" id="gyroscope">Gyroskop
-            <label class="switch" id="switch_gyro">
-              <input type="checkbox"><span class="slider round"></span>
-            </label>
-          </div>
-          <div class="item" id="speed">Rychlost
-            <input class="speed_slider" type="range" value="40" min="5" max="130" step="1">
-            <div id="speed_val">40</div>
-          </div>
-          <button class="item button" id="copy_pos" title="Zkopíruje pozici do schránky">Kopírovat pozici</button>
-          <div class="item" id="goto">Přejít na pozici
-            <input type="text" id="user_pos">
-            <button class="button" id="goto_pos">OK</button>
-          </div>
-          <button class="item button" id="help">Nápověda</button>
-        </div>
     
   </body>
 </html>

@@ -8,6 +8,7 @@ var GalleryControl = (function () {
         oReq.onload = function () {
             json = JSON.parse(this.responseText);
             //console.log("json length " + json.length);
+            Language.selectGalleryLanguage(json);
             if (Object.values(json).length == 0) {
                 console.log("Empty gallery " + gallery_obj.json_gallery_src);
                 return;

@@ -16,7 +16,7 @@ function css() {
 }
 
 function js() {
-  return src([
+  return src([ "04_javascript/language.js", "04_javascript/translations.js",
     "javascript_aframe/aframe.min.js", "javascript_aframe/aframe-event-set-component.min.js", 
     "javascript_aframe/aframe-look-at-component.min.js", "compiled_templates.js",
     "04_javascript/a-touch-controls.js", "04_javascript/my-gltf-model.js", "javascript_aframe/aframe-orbit-controls.min.js",
