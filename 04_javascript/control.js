@@ -124,6 +124,13 @@ AFRAME.registerComponent('big_model', {
  });
 
 
+AFRAME.registerComponent('look-at-camera', {
+    tick: function() {
+        var camPos = document.getElementById("camera").components.camera.camera.getWorldPosition(new THREE.Vector3());
+        this.el.object3D.lookAt(camPos);
+    }
+});
+
 
 /**
  * Autoscaling component - centers gltf model and scales it.
@@ -168,8 +175,7 @@ AFRAME.registerComponent('autoscale', {
 
 });
 
-function degToRad(degrees)
-{
+function degToRad(degrees) {
   return degrees * (Math.PI/180);
 }
 

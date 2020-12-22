@@ -2,9 +2,9 @@
 <div class="popup" id="{{@key}}">
     <div class="popup_heading"> <span class="back_icon" onclick="close_windows()"><img src="../../control_graphic/back_icon.png"></span><span class="heading_span" >{{heading}}</span></div>
     <div class="popup_body"> <span class="popup_text"> {{{text}}}</span> </div>
-    {{#if ../edit_mode}}
-        <button class="button ed_button" id="edit{{@key}}">Upravit</button>
-        <button class="button ed_button delete" id="delete{{@key}}">Smazat</button>
-    {{/if}}
+    
+    <button class="button ed_button" id="edit{{@key}}">Upravit</button>
+    <button class="button ed_button delete" id="delete{{@key}}">Smazat</button>
+    
 </div>
 {{/each}}

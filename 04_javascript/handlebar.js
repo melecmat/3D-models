@@ -63,7 +63,11 @@ var App = (function () {
 
     (function main() {
 
+        // addr -- just the name of the project, so the thing after the ?
         var addr = location.search.slice(1, location.search.length);
+        //console.log(addr.split("&")[0])
+        // to take care of facebook parameters etc
+        addr = addr.split("&")[0]
         local_data = JSON.parse(window.localStorage.getItem(addr));
 
         // for loading from local data -- used for quick and dirty annotation in browser

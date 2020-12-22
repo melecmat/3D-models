@@ -1,8 +1,8 @@
 <a-scene {{!cursor="rayOrigin:mouse" raycaster="objects: .clickable"}} vr-mode-ui="enabled: false" background=" color: {{background_color}}" joystick>
     {{#if orbit_control}}
-        
+        <a-entity id="camera_rig"></a-entity>
         <a-entity id="camera" camera=" active: true" look-controls orbit-controls=" target: 0 0 0; minDistance: 1; maxDistance: 50; initialPosition: {{camera_position}}; maxPolarAngle: 180"></a-entity>
-          
+        </a-entity>
     {{else}}
         <a-entity id="camera_rig">
             <a-entity id="camera" camera position="{{camera_position}}" default-position="{{camera_position}}" touch-controls="gyroEnabled:false" wasd-controls=" fly:true; acceleration:40"></a-entity>

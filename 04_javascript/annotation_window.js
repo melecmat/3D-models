@@ -1,3 +1,6 @@
+// WARNING ----- this module in this project is outdated, the editing capabilities should not be used in browser anymore
+// and they will be DELETED shortly. Use the desktop app instead.
+
 /**
  * Module used for creation of new annoattions and manipulation with them.
  */

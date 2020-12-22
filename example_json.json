@@ -33,7 +33,7 @@
                 }
             },
             "position": "",
-            "id": "uniqueID1 -- when it contains number the annotation will be numbered"
+            "id": "uniqueID1 -- when it contains number the annotation will be numbered  -- DEPRECATED, now id is the key!!"
         }
     },
     "galleries": [
