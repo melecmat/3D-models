@@ -248,7 +248,7 @@ this["Handlebars"]["templates"]["player"] = Handlebars.template({"1":function(co
     + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"home_button_txt",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":56,"column":29},"end":{"line":56,"column":65}}}))
     + "\" src=\"../../control_graphic/home.png\"></img>\r\n\r\n\r\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
         }
@@ -256,14 +256,16 @@ this["Handlebars"]["templates"]["player"] = Handlebars.template({"1":function(co
     };
 
   return "<a-scene  vr-mode-ui=\"enabled: false\" background=\" color: "
-    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"background_color") || (depth0 != null ? lookupProperty(depth0,"background_color") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"background_color","hash":{},"data":data,"loc":{"start":{"line":1,"column":119},"end":{"line":1,"column":139}}}) : helper)))
+    + alias3(((helper = (helper = lookupProperty(helpers,"background_color") || (depth0 != null ? lookupProperty(depth0,"background_color") : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"background_color","hash":{},"data":data,"loc":{"start":{"line":1,"column":119},"end":{"line":1,"column":139}}}) : helper)))
     + "\" joystick>\r\n"
     + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"orbit_control") : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data,"loc":{"start":{"line":2,"column":4},"end":{"line":10,"column":11}}})) != null ? stack1 : "")
     + "\r\n    <a-entity raycaster=\"objects: [data-clickable]\" id=\"raycaster\" cursor=\"rayOrigin:mouse\"></a-entity>\r\n    <!--<a-assets timeout=\"100000000\">\r\n"
     + ((stack1 = (lookupProperty(helpers,"if_equals")||(depth0 && lookupProperty(depth0,"if_equals"))||alias2).call(alias1,(depth0 != null ? lookupProperty(depth0,"model_src") : depth0),"",{"name":"if_equals","hash":{},"fn":container.program(5, data, 0),"inverse":container.program(7, data, 0),"data":data,"loc":{"start":{"line":15,"column":8},"end":{"line":18,"column":22}}})) != null ? stack1 : "")
     + "    </a-assets>\r\n"
     + ((stack1 = (lookupProperty(helpers,"if_equals")||(depth0 && lookupProperty(depth0,"if_equals"))||alias2).call(alias1,(depth0 != null ? lookupProperty(depth0,"model_src") : depth0),"",{"name":"if_equals","hash":{},"fn":container.program(5, data, 0),"inverse":container.program(9, data, 0),"data":data,"loc":{"start":{"line":20,"column":4},"end":{"line":23,"column":18}}})) != null ? stack1 : "")
-    + "-->\r\n    <a-entity light=\"type: point; intensity: 1; distance: 100; decay: 2\" position=\"0 0 0\"></a-entity>\r\n    <a-entity light=\"type: ambient; color: #CCC\"></a-entity>\r\n</a-scene>\r\n\r\n<div class=\"popup\" id=\"help_popup\">\r\n<div class=\"popup_heading\"> <span class=\"back_icon\"><img src=\"../control_graphic/back_icon.png\"></span>Nápověda</div>\r\n<div class=\"popup_body\">\r\n"
+    + "-->\r\n    <a-entity light=\"type: point; intensity: 1; distance: 100; decay: 2\" position=\"0 0 0\"></a-entity>\r\n    <a-entity light=\"type: ambient; color: #CCC\"></a-entity>\r\n</a-scene>\r\n\r\n<div class=\"popup\" id=\"help_popup\">\r\n<div class=\"popup_heading\"> <span class=\"back_icon\"><img src=\"../control_graphic/back_icon.png\"></span>"
+    + alias3((lookupProperty(helpers,"getTranslation")||(depth0 && lookupProperty(depth0,"getTranslation"))||alias2).call(alias1,"cp_help",{"name":"getTranslation","hash":{},"data":data,"loc":{"start":{"line":29,"column":103},"end":{"line":29,"column":131}}}))
+    + "</div>\r\n<div class=\"popup_body\">\r\n"
     + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"orbit_control") : depth0),{"name":"if","hash":{},"fn":container.program(11, data, 0),"inverse":container.program(13, data, 0),"data":data,"loc":{"start":{"line":31,"column":0},"end":{"line":59,"column":7}}})) != null ? stack1 : "");
 },"useData":true});
 this["Handlebars"]["templates"]["popup"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
