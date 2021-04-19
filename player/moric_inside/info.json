@@ -1,1 +1,51 @@
-{"title":"Kostel svatého Mořice - Interiér","languages":{"en":"Church of Saint Maurice","de":"St.-Mauritius-Kirche","cs":"Kostel svatého Mořice - Interiér"},"player":{"orbit_control":false,"model_src":"moric_inside/sv_Moric_Olomouc.glb","qualities":[{"model_sr":"sv_moric_outside/sv_Moric_Olomouc.glb","short_comment":"","file_size":"8"}],"camera_position":"-8.696 1.594 -0.075","model_scale":"30","model_rotation":"-90, 0, 0","backgound_color":"black","camera_rotation":"-0.144 -1.592"},"annotations":{},"galleries":[]}
+{
+    "title": "St.-Mauritius-Kirche in Olmütz",
+    "languages": {
+        "en": "Church of Saint Maurice in Olomouc",
+        "de": "St.-Mauritius-Kirche in Olmütz",
+        "cs": "Chrám sv. Mořice v Olomouci"
+    },
+    "player": {
+        "orbit_control": false,
+        "model_src": "moric_inside/sv_Moric_Olomouc.glb",
+        "qualities": [
+            {
+                "model_sr": "moric_inside/sv_Moric_Olomouc.glb",
+                "short_comment": "",
+                "file_size": "8"
+            }
+        ],
+        "camera_position": "0 0 0",
+        "model_scale": "30",
+        "model_rotation": "-90, 0, 0",
+        "backgound_color": "black"
+    },
+    "annotations": {
+        "uniqueID1": {
+            "heading": "St.-Mauritius-Kirche in Olmütz",
+            "text": "<p>St.-Mauritius-Kirche in Olmütz ist haupt stadt kirche. :)&nbsp;<br></p>",
+            "texts": {
+                "en": {
+                    "heading": "Church of Saint Maurice in Olomouc",
+                    "text": "<p>Church of Saint Maurice in Olomouc is the main city temple.&nbsp;<br></p>"
+                },
+                "de": {
+                    "heading": "St.-Mauritius-Kirche in Olmütz",
+                    "text": "<p>St.-Mauritius-Kirche in Olmütz ist haupt stadt kirche. :)&nbsp;<br></p>"
+                },
+                "cs": {
+                    "heading": "Chrám sv. Mořice v Olomouci",
+                    "text": "<p>Městský proboštský farní kostel sv. Mořice v Olomouci patří k nejvýznamnějším pozdně gotickým památkám na Moravě. Vystavěn byl po etapách v rozmezí let 1412 – 1540 na místě staršího kostela, u kterého se předpokládá, že vznikl iniciativou biskupa Bruna ze Schauenburku v době kolonizace města. První archívní zmínka je z roku 1257. Raně gotická stavba zcela zanikla v rámci postupného budování stávajícího pozdně gotického kostela. Staršího původu je snad jižní věž, půdorysně vyvázaná a odlišující se i stavebním materiálem. Zdá se, že původně byla samostatně stojící zvonicí, vystavěnou ve 14. století. Započetí stavby nového kostela v 15. století vyznačuje nápisová deska na severní věži. V jejím přízemí se nachází kaple Nejsvětější Trojice, jejíž klenba ještě odkazuje ke vzorům pražské královské huti předhusitské doby. Během první poloviny 15. století pak vyrostlo halové trojlodí s křížovými klenbami, k jehož zastřešení je doklad k roku 1443. Presbytář, koncipovaný rovněž jako trojlodní s trojicí pětibokých východních závěrů a síťovými klenbami, je datován na jednom ze svorníků klenby rokem 1483. Po roce 1500 byla ještě rekonstruována západní část kostela s krouženými klenbami nad kruchtou a ve stejné době bylo vystavěno také pozoruhodné zdvojené vřetenové schodiště u jižní věže a velký západní portál. Zatímco počáteční etapa stavby byla vyznačena vztahem k pražskému prostředí, po skončení husitských válek, kdy bylo zřejmě budování kostela pozastaveno, lze sledovat v práci mořické huti i vliv rakouský, zprostředkovaný mimo jiné i hutí svatoštěpánskou ve Vídni. Fragment původní interiérové výzdoby prezentuje malba objevená roku 1937, která zobrazuje rozměrnou kompozici se sv. Kryštofem (zakrývá oltář) a norimberským patronem sv. Sebaldem a sv. Vavřincem s atributy. Klíčovým moravským dílem pozdní gotiky je sousoší Olivetské hory, patrně ze 30. let 15. století, umístěné vně kostela (dnes na místě originálu kopie). Ve druhé polovině 16. století byla k severní straně presbyteria přistavěna nevelká hrobka olomoucké erbovní měšťanské rodiny Edelmannů s náročně zdobenými fasádami, inspirovanými manýrismem benátské provenience. Zhoubný požár Olomouce v roce 1709, který zasáhl velkou část města a poničil také kostel sv. Mořice, zapříčinil jeho rozsáhlou obnovu, i když gotická stavba zůstala vcelku dobře zachována. Kostel dostal nový krov, výrazně nižší, a barokizován byl jeho interiér. Nově vystavěna byla západní kruchta a kaple pod ní a vybudována Loretánská kaple s Petrášovou hrobkou. Z barokního vybavení interiéru se dochovalo mnoho. Proslulé jsou zejména unikátní varhany z vratislavské dílny Michaela Englera z let 1740 – 45, jejichž sochařská část je dílem F. Sattlera a J. A. Richtera. Dílem olomouckého mistra Sattlera je rovněž velká část sochařské práce na barokních oltářích. Obrazy jsou dílem J. K. Handleno, V. J. Noseckého a K. J. Harringera. Ve druhé polovině 19. století byl částečně novogoticky upraven interiér: pořízena byla nová kazatelna, hlavní oltář a některé oltáře vedlejší. Původní pozdně gotická okna s bohatým kružbovím byla zasklena novogotickými barevnými vitrážemi s figurálními náměty.<br></p>"
+                }
+            },
+            "position": "0.751 0.013 -1.557"
+        }
+    },
+    "galleries": [
+        {
+            "json_gallery_src": "moric_inside/galleries/1618780478894",
+            "parent_id": "uniqueID1",
+            "has_full_size_version": true
+        }
+    ]
+}
