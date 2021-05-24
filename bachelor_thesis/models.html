@@ -1,0 +1,208 @@
+<head>
+    <title>Point cloud viewer</title>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-pointcloud-component/dist/aframe-pointcloud-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script> 
+    
+  </head>
+  
+  <body>
+
+    <style>
+      #sidebar {
+        z-index: 100;
+        position: fixed;
+        top:0;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        padding:2em;
+      }
+
+    </style>
+
+    <div id="sidebar">
+      <a href="http://mrs.felk.cvut.cz/melecky2021thesis">Main thesis' page</a>
+
+      <div >Colored distances
+        <label class="switch" >
+          <input type="checkbox" id="colored">
+        </label>
+      </div>
+
+      <h2>Datasets</h2>
+      <div>V1 easy tracker
+        <label class="switch" >
+          <input type="checkbox" id="v1_01_tracker" checked class="model_selector">
+        </label>
+      </div>
+
+      <div>V1 medium tracker
+        <label class="switch" >
+          <input type="checkbox" id="v1_02_tracker" class="model_selector">
+        </label>
+      </div>
+
+      <div>V1 hard tracker
+        <label class="switch" >
+          <input type="checkbox" id="v1_03_tracker" class="model_selector">
+        </label>
+      </div>
+<!--
+      <div>V1 easy matcher
+        <label class="switch" >
+          <input type="checkbox" id="v1_01_matcher" class="model_selector">
+        </label>
+      </div>
+
+      <div>V1 medium matcher
+        <label class="switch" >
+          <input type="checkbox" id="v1_02_matcher" class="model_selector">
+        </label>
+      </div>
+
+      <div>V1 difficult matcher
+        <label class="switch" >
+          <input type="checkbox" id="v1_03_matcher" class="model_selector">
+        </label>
+      </div>
+
+-->
+
+</div>
+    <a-scene>
+        <a-sky color="#A4BBF0"></a-sky>
+        <a-entity camera look-controls orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 180; initialPosition: -5 2.5 -3.7"></a-entity>
+        
+        <!--v1_01_tracker-->
+        <a-pointcloud id="v1_01_tracker_normal"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/v1_01_tracker.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="true">
+        </a-pointcloud>
+
+        <a-pointcloud id="v1_01_tracker_colored"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/colored/v1_01_tracker.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+        <!--v1_01_matcher-->
+        <a-pointcloud id="v1_01_matcher_normal"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/v1_01_matcher.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+        <a-pointcloud id="v1_01_matcher_colored"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/colored/v1_01_matcher.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+        <!--v1_02_matcher-->
+        <a-pointcloud id="v1_02_matcher_normal"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/v1_02_matcher.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+        <a-pointcloud id="v1_02_matcher_colored"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/colored/v1_02_matcher.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+        <!--v1_02_tracker-->
+        <a-pointcloud id="v1_02_tracker_normal"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/v1_02_tracker.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+        <a-pointcloud id="v1_02_tracker_colored"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/colored/v1_02_tracker.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+        <!--v1_03_matcher-->
+        <a-pointcloud id="v1_03_matcher_normal"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/v1_03_matcher.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+        <a-pointcloud id="v1_03_matcher_colored"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/colored/v1_03_matcher.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+
+        <!--v1_03_tracker-->
+        <a-pointcloud id="v1_03_tracker_normal"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/v1_03_tracker.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+        <a-pointcloud id="v1_03_tracker_colored"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/colored/v1_03_tracker.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+    </a-scene>
+
+    <script src="models.js"></script>
+
+  </body>
