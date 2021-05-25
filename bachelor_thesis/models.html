@@ -1,5 +1,6 @@
 <head>
     <title>Point cloud viewer</title>
+    <meta charset="UTF-8">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-pointcloud-component/dist/aframe-pointcloud-component.min.js"></script>
     <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script> 
@@ -17,23 +18,51 @@
         left: 0;
         background-color: white;
         padding:2em;
+        max-width: 20em;
       }
 
+
+      h4 {
+        text-align: center;
+        margin-bottom: 1em;
+      }
+
+      #author {
+        text-align: center;
+        margin-bottom: 1.5em;
+      }
+
+      #thesis {
+        text-align: center;
+      }
     </style>
 
     <div id="sidebar">
-      <a href="http://mrs.felk.cvut.cz/melecky2021thesis">Main thesis' page</a>
+      <h4><a href="http://mrs.felk.cvut.cz/melecky2021thesis">Monocular 3D Scene Reconstruction for an Autonomous
+        Unmanned Aerial Vehicle</a></h4>
+        <div id="thesis">Bachelor's Thesis</div>
+        <div id="author">
+          Matouš Melecký - 2021
+        </div>
 
-      <div >Colored distances
+      
+
+      <div >Colored distances to reference
         <label class="switch" >
           <input type="checkbox" id="colored">
         </label>
       </div>
 
-      <h2>Datasets</h2>
+      <h3>Resulting point clouds of the EuRoC datasets</h3>
       <div>V1 easy tracker
         <label class="switch" >
           <input type="checkbox" id="v1_01_tracker" checked class="model_selector">
+        </label>
+      </div>
+
+      <div>V1 easy tracker - with SOR filter applied
+        <label class="switch" >
+          <input type="checkbox" id="v1_01_sor" class="model_selector">
         </label>
       </div>
 
@@ -48,7 +77,7 @@
           <input type="checkbox" id="v1_03_tracker" class="model_selector">
         </label>
       </div>
-<!--
+
       <div>V1 easy matcher
         <label class="switch" >
           <input type="checkbox" id="v1_01_matcher" class="model_selector">
@@ -67,7 +96,8 @@
         </label>
       </div>
 
--->
+      
+
 
 </div>
     <a-scene>
@@ -90,6 +120,28 @@
           position="-0.6 0 -0.27"
           rotation="-90 0 0" 
           src="models/colored/v1_01_tracker.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+
+        <!--v1_01_tracker -- SOR -->
+        <a-pointcloud id="v1_01_sor_normal"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/v1_01_sor.ply" 
+          size="0.03"
+          depthWrite="false"
+          visible="false">
+        </a-pointcloud>
+
+        <a-pointcloud id="v1_01_sor_colored"
+          scale="1 1 1" 
+          position="-0.6 0 -0.27"
+          rotation="-90 0 0" 
+          src="models/colored/v1_01_sor.ply" 
           size="0.03"
           depthWrite="false"
           visible="false">
