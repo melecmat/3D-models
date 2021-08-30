@@ -3,17 +3,297 @@
 <head>
   <meta charset="UTF-8">
   <title>Matouš Melecký</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <h1>3d models [work in progress]</h1>
-  <h3><a href="player/player.html?moric">Kostel sv. Mořice v Olomouci - exteriér</a></h3>
-  <h3><a href="player/player.html?moric_inside">Kostel sv. Močice v Olomouci - interiér</a></h3>
-  <h2>Stará voda</h2>
-  <h3><a href="player/player.html?ceiling">Strop</a></h3>
-  <h3><a href="player/player.html?stara_voda">Celý kostel - pod 5 MB</a></h3>
-  <h3><a href="player/player.html?angels">Andělíčci</a></h3>
-  <h2><a href="player/player.html?sobotin">Mauzoleum rodiny Kleinů v Sobotíně</a></h2>
+  <!-- TODO -- make repetitive styles into a Handlebars template!!-->
+  <!-- The project bar -- should be visible only on computer -- TODO -- also highlight the current section -->
+  <div class="w3-bar w3-indigo w3-card-4 ">
+    <a href="#bussiness_card" class="w3-bar-item w3-light-blue w3-indigo w3-hover-light-blue"><h5>Bussiness Card</h5></a>
+    <a href="#education" class="w3-bar-item w3-indigo w3-hover-light-blue"><h5>Education</h5></a>
+    <a href="#work_experience" class="w3-bar-item w3-indigo w3-hover-light-blue"><h5>Work Experience</h5></a>
+    <a href="#work_experience" class="w3-bar-item w3-indigo w3-hover-light-blue"><h5>Other Experience</h5></a>
+    <a href="#hobbies" class="w3-bar-item w3-indigo w3-hover-light-blue"><h5>Hobbies</h5></a>
+  </div>
 
-  <!--<h2> <a href="editor.html"> Editor pro anotace</a> </h2>-->
+  <!-- Content of the webpage -->
+  <div class="w3-content  w3-animate-opacity" style="max-width:1100px">
+    <!-- Bussiness card -->
+    <div class="w3-card-4 w3-margin-top" id="bussiness_card">
+      <div class="w3-row">
+        <div class="w3-third" id="meimg_wrapper"><img src="images/Mecrop_edited.jpg" class="w3-margin-left w3-margin-bottom w3-margin-top">
+          <div class="" id="">
+            <a href="CV.pdf" target="_blank" class="icons-container" id="cv-div" style="width:100%;"><span class="material-icons-outlined">picture_as_pdf</span> &nbsp;My CV</a>
+          </div>
+        </div>
+        <div class="w3-twothird"> 
+          <div class="w3-container" id="mename_wrapper"><h3>Matouš Melecký</h3></div>
+          <div class="w3-container">
+            <p>
+              Hello there!
+              I am a Master's student of Computer Vision at FEE CTU in Prague. Currently I am about to set off on Erasmus to TUM.
+            <p>
+              I am passionate about technology that enables human progress and positive change in lives of people all around the globe.
+              I believe that computer vision has many exciting applications and research problems that need to be solved, 
+              which is why I chose it to be the centre of my professional focus.
+            </p>
+              Currently I am looking for some part-time job in Munich to accompany my Erasmus exchange.
+              Are you trying to solve some challenging computer vision / machine learning problem?
+              I think we could work together. Feel free to contact me via any of the chanels below.
+            </p>
+          </div>
+          <div class="w3-row icons-container w3-margin-bottom" style="font-size: 1.5em;">
+            <div class="w3-third w3-center"><a href="mailto:melecky.matous@gmail.com"><span class="material-icons-outlined" style="font-size:1.2em;">email</span></a></div>
+            <div class="w3-third w3-center"><a href="https://www.linkedin.com/in/matou%C5%A1-meleck%C3%BD-84b507214/" target="_blank"><img src="images/icon/linkedindark.png" id="linkedin"></a></div>
+            <div class="w3-third w3-center"><a href="https://github.com/melecmat" target="_blank"><img src="images/icon/github.png" id="git"></a></div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Education -->
+    <div class="w3-container w3-center" id="education">
+      <h3 class="section-header">Education</h3>
+    </div>
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <div class="w3-card-4">
+          <div class="w3-container w3-indigo"><h4>Undergraduate</h4></div>
+          <div class="w3-container">
+            <p>
+              <span class="icons-container"><span class="material-icons-outlined">date_range</span> &nbsp;2018 - 2021 </span>            
+              <a href="https://fel.cvut.cz/en/" target="_blank" class="icons-container"><span class="material-icons-outlined">school</span> &nbsp;Faculty of Electrical Engineering, Czech Technical University</a>
+            </p class="icons-container">
+          </div>
+          <div class="w3-container">
+            <p>
+              Artificial Intelligence and Computer Science - graduated with honours.
+            </p>
+          </div>
+
+        </div>
+      </div>
+ 
+      <div class="w3-half">
+        <div class="w3-card-4">
+          <div class="w3-container w3-indigo"><h4>Postgraduate</h4></div>
+          <div class="w3-container">
+            <p>
+              <span class="icons-container"><span class="material-icons-outlined">date_range</span> &nbsp;2021 - Ongoing </span>            
+              <a href="https://fel.cvut.cz/en/" target="_blank" class="icons-container"><span class="material-icons-outlined">school</span> &nbsp;Faculty of Electrical Engineering, Czech Technical University</a>
+            </p class="icons-container">
+          </div>
+          <div class="w3-container">
+            <p>
+              Major in Computer Vision and Image Processing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <div class="w3-card-4">
+          <div class="w3-container w3-indigo"><h4>prg.ai Minor</h4></div>
+          <div class="w3-container">
+            <p>
+              <span class="icons-container"><span class="material-icons-outlined">date_range</span> &nbsp;2019 - 2021 </span>            
+              <a href="https://prg.ai/en/" target="_blank" class="icons-container"><span class="material-icons-outlined">school</span> &nbsp;prg.ai</a>
+              <a href="documents/prg-ai-certificate.pdf" target="_blank" class="icons-container"><span class="material-icons-outlined">picture_as_pdf</span> &nbsp;Certificate</a>
+            </p class="icons-container">
+          </div>
+          <div class="w3-container">
+            <p>
+              Selective minor bachelor programme encompassing artificial intelligence courses 
+              from the best universities in the Czech Republic.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-half">
+        <div class="w3-card-4">
+          <div class="w3-container w3-indigo"><h4>Erasmus</h4></div>
+          <div class="w3-container">
+            <p>
+              <span class="icons-container"><span class="material-icons-outlined">date_range</span> &nbsp;2019 - 2021 </span>            
+              <a href="https://www.tum.de/en/" target="_blank" class="icons-container"><span class="material-icons-outlined">school</span> &nbsp;Technical University of Munich</a>
+            </p class="icons-container">
+          </div>
+          <div class="w3-container">
+            <p>
+              I will be studying in Munich, taking courses from the Department of Electrical and Computer Engineering and the Department of Informatics.
+              I am looking forward to this experience!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container w3-light-blue highlights-container w3-monospace">
+
+      <div class="w3-container w3-center">
+        <h2 class="highlights w3-monospace">Highlights</h2>
+      </div>
+
+      <div class="w3-content" style="max-width:1100px">
+        
+        <div class="w3-container">
+          <h3 class="highlights w3-monospace">Bachelor's Thesis</h3>
+          <p>
+            Topic:
+            designing a real-time version of Structure From Motion algorithm 
+            for creation of dense map of environment built on top of openVINS visual-inertial estimator,
+             which will be employed on a UAV equipped with monocular camera and IMU.
+          </p>
+          <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/B-WC3n-L3nI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <p>
+            <a href="http://mrs.felk.cvut.cz/melecky2021thesis" target="_blank" class="icons-container"><span class="material-icons-outlined">link</span> &nbsp;Thesis' webpage</a>
+            <a href="bachelor_thesis/models.html" target="_blank" class="icons-container"><span class="material-icons-outlined">link</span> &nbsp;Visualisation of the resulting 3D structure</a>
+          </p class="icons-container">
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="w3-container" id="work_experience">
+      <h3 class="w3-center section-header">Work Experience</h3>
+      <div class="w3-card-4">
+        <div class="w3-container w3-indigo"><h4>Student Researcher</h4></div>
+        <div class="w3-container">
+          <p>
+            <span class="icons-container"><span class="material-icons-outlined">date_range</span> &nbsp;2019 - Ongoing </span>            
+            <a href="http://mrs.felk.cvut.cz/" target="_blank" class="icons-container"><span class="material-icons-outlined">school</span> &nbsp;Multi-Robot Systems, FEE CTU, Department of Cybernetics</a>
+          </p class="icons-container">
+        </div>
+        <div class="w3-container">
+          <p>
+            I joined the group in the beginning of my studies as a student researcher. My main research topic were SLAM algorithms 
+            and 3D reconstruction. This has eventually led to my bachelor's thesis.
+          </p>
+          <p>
+            I have participated on a joint project with the Czech National Heritage Fund. 
+            My contribution was to produce 3D models of the heritage and I also designed a 
+            framework for annotation and display of the 3D models on the web. 
+          </p>
+          <!-- If the repositories will be public, add them here-->
+          <p>
+            <a href="http://mrs.felk.cvut.cz/3d-model-viewer/" target="_blank" class="icons-container"><span class="material-icons-outlined">link</span> &nbsp;Webpage with the models</a>
+            <a href="https://dronument.cz/" target="_blank" class="icons-container"><span class="material-icons-outlined">link</span> &nbsp;Official webpage of the project [in Czech]</a>
+          </p class="icons-container">
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container" id="other_experience">
+      <h3 class="w3-center section-header">Other Experience</h3>
+      <div class="w3-card-4">
+        <div class="w3-container w3-indigo"><h4>Rotary Youth Exchange</h4></div>
+        <div class="w3-container">
+          <p>
+            <span class="icons-container"><span class="material-icons-outlined">date_range</span> &nbsp;2016 - 2017 </span>            
+            <span href="" target="_blank" class="icons-container"><span class="material-icons-outlined">place</span> &nbsp;Dubbo, Australia</span>
+          </p class="icons-container">
+        </div>
+        <div class="w3-container">
+          <p>
+            I studied at <a href="https://www.stjohnsdubbo.catholic.edu.au/" target="_blank">St Johns College</a> in Dubbo, lived with local families 
+            and participated in fundraising events for rural communities in Australia. It was a wonderful experience that had a great impact on me.
+
+          </p>
+          <p>
+            <a href="http://landdu.blogspot.com/" target="_blank" class="icons-container"><span class="material-icons-outlined">link</span> &nbsp;Blog with my memories from the exchange [in Czech]</a>
+          </p class="icons-container">
+
+          <div class="w3-container w3-center photo-show w3-margin-bottom">
+            <img src="images/australia/P1280660.JPG"> 
+            <img src="images/australia/P1280843.JPG">  
+            <img src="images/australia/P1280949.JPG"> 
+          </div>
+        </div>
+      </div>
+      <div class="w3-row">
+        <div class="w3-half">
+          <div class="w3-card-4">
+            <div class="w3-container w3-indigo"><h4>TED Translator</h4></div>
+            <div class="w3-container">
+              <p>
+                <span class="icons-container"><span class="material-icons-outlined">date_range</span> &nbsp;2015 - 2017 </span>        
+                <a href="https://www.ted.com/profiles/5293399/translator" target="_blank" class="icons-container"><span class="material-icons-outlined">link</span> &nbsp;My TED translator profile</a>    
+              </p class="icons-container">
+            </div>
+            <div class="w3-container">
+              <p>
+                Volunteer translator of TED conference videos from English to Czech.
+              </p>
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container" id="hobbies">
+      <h3 class="w3-center section-header">Hobbies</h3>
+      <div class="w3-card-4">
+        <div class="w3-container">
+          <p>
+            I love the nature and outdoors. That is why you can often find me hiking in some mountains, 
+            biking, skiing or just enjoying a walk through a park. I especially fell in love with multi-day trails where I carry everything I need with me 
+             and for a few days just get submerged in the nature.
+          <br>
+            I enjoy learning new things about the world and love reading.
+          <br>
+            I also love dogs and I am looking forward to the day when I get my first own dog.
+          </p>
+        </div>
+        <div class="w3-container w3-center w3-margin-bottom">
+          <img class="slides w3-animate-opacity" src="images/outdoor/DSC00092.JPG"> 
+          <img class="slides w3-animate-opacity" src="images/outdoor/IMG_20200812_193230699_HDR.jpg">  
+          <img class="slides w3-animate-opacity" src="images/outdoor/IMG_20180910_123201.jpg"> 
+          <img class="slides w3-animate-opacity" src="images/outdoor/IMG_20201028_114734230.jpg"> 
+          <img class="slides w3-animate-opacity" src="images/outdoor/IMG_20200827_074418656_HDR.jpg"> 
+          <img class="slides w3-animate-opacity" src="images/outdoor/P1250376.JPG"> 
+          <span id="description">Images from trips</span>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  
+  <div class="w3-container w3-light-blue w3-center w3-padding" id="foot">
+    <footer>&copy; 2021 Matouš Melecký</footer>
+  </div>
+
+  <script>
+    var slideIndex = 0;
+    carousel();
+
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("slides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > x.length) {slideIndex = 1}
+      x[slideIndex-1].style.display = "block";
+      setTimeout(carousel, 5000); // Change image every 2 seconds
+    }
+  </script>
 </body>
 </html>
